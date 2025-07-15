@@ -16,10 +16,16 @@
         <h1 class="auth-title">Iniciar Sesión</h1>
 
         <h:form styleClass="auth-form">
+
+            <!-- Mostrar mensajes globales -->
+            <h:messages globalOnly="true" layout="list" style="color: red; margin-bottom: 1rem;" />
+
             <div class="form-group">
                 <label for="email">Correo electrónico</label>
                 <h:inputText id="email" value="#{loginBean.email}" required="true"
-                             styleClass="form-control" />
+                             styleClass="form-control">
+                    <f:validateRegex pattern="^[^@]+@[^@]+\\.[a-zA-Z]{2,}$" />
+                </h:inputText>
             </div>
 
             <div class="form-group password-field-group">
@@ -31,7 +37,10 @@
                 </a>
             </div>
 
-            <h:commandButton value="Ingresar" action="#{loginBean.login}" styleClass="auth-button"/>
+            <h:commandButton value="Ingresar"
+                             action="#{loginBean.login}"
+                             styleClass="auth-button"/>
+
         </h:form>
 
         <div class="auth-footer">
