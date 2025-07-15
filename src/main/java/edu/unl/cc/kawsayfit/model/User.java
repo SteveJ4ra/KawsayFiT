@@ -3,6 +3,7 @@ package edu.unl.cc.kawsayfit.model;
 import edu.unl.cc.kawsayfit.model.ConsumedDish;
 import edu.unl.cc.kawsayfit.model.enums.Gender;
 import edu.unl.cc.kawsayfit.model.enums.Goal;
+import edu.unl.cc.kawsayfit.model.enums.PhysicalActivityLevel;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -58,13 +59,18 @@ public class User {
     @Column(nullable = false)
     private Goal goal;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private PhysicalActivityLevel activityLevel;
+
+
     @Column(nullable = false)
     private LocalDate registrationDate;
 
     @Transient
     public double getIMC() {
-        double h = height / 100.0;
-        return h <= 0 ? 0 : weight / (h * h);
+        double heightM = height / 100.0;
+        return heightM <= 0 ? 0 : weight / (heightM * heightM);
     }
 
     public Long getId() {
@@ -155,6 +161,14 @@ public class User {
         this.dailyLogs = dailyLogs;
     }
 
+    public PhysicalActivityLevel getActivityLevel() {
+        return activityLevel;
+    }
+
+    public void setActivityLevel(PhysicalActivityLevel activityLevel) {
+        this.activityLevel = activityLevel;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("User{");
@@ -168,6 +182,7 @@ public class User {
         sb.append(", gender=").append(gender);
         sb.append(", goal=").append(goal);
         sb.append(", registrationDate=").append(registrationDate);
+        sb.append(", activityLevel=").append(activityLevel);
         sb.append('}');
         return sb.toString();
     }
