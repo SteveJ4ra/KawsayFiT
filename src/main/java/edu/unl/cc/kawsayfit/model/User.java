@@ -11,6 +11,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,6 +64,8 @@ public class User {
     @Column(nullable = false)
     private PhysicalActivityLevel activityLevel;
 
+    @Column(nullable = false)
+    private LocalDate birthDate;
 
     @Column(nullable = false)
     private LocalDate registrationDate;
@@ -72,6 +75,12 @@ public class User {
         double heightM = height / 100.0;
         return heightM <= 0 ? 0 : weight / (heightM * heightM);
     }
+
+    @Transient
+    public int getAge() {
+        return (birthDate != null) ? Period.between(birthDate, LocalDate.now()).getYears() : 0;
+    }
+
 
     public Long getId() {
         return id;
@@ -169,6 +178,15 @@ public class User {
         this.activityLevel = activityLevel;
     }
 
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("User{");
@@ -183,6 +201,7 @@ public class User {
         sb.append(", goal=").append(goal);
         sb.append(", registrationDate=").append(registrationDate);
         sb.append(", activityLevel=").append(activityLevel);
+        sb.append(", birthDate=").append(birthDate);
         sb.append('}');
         return sb.toString();
     }
