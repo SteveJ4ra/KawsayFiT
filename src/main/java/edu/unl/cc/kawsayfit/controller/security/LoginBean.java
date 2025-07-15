@@ -1,7 +1,7 @@
 package edu.unl.cc.kawsayfit.controller.security;
 
+import edu.unl.cc.kawsayfit.controller.AuthController;
 import edu.unl.cc.kawsayfit.model.User;
-import edu.unl.cc.kawsayfit.service.UserService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
@@ -20,7 +20,7 @@ public class LoginBean implements Serializable {
     private static final Logger logger = Logger.getLogger(LoginBean.class.getName());
 
     @Inject
-    private UserService userService;
+    private AuthController authController;
 
     @NotNull
     private String email;
@@ -40,7 +40,7 @@ public class LoginBean implements Serializable {
         logger.info("Intentando iniciar sesión con: " + email);
 
         try {
-            User user = userService.validateUser(email, password);
+            User user = authController.validateUser(email, password);
 
             if (user != null) {
                 FacesContext.getCurrentInstance()
