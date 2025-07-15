@@ -58,6 +58,10 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
+    private PhysicalActivityLevel physicalActivityLevel;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Goal goal;
 
     @Enumerated(EnumType.STRING)
@@ -186,6 +190,13 @@ public class User {
         this.birthDate = birthDate;
     }
 
+    public PhysicalActivityLevel getPhysicalActivityLevel() {
+        return physicalActivityLevel;
+    }
+
+    public void setPhysicalActivityLevel(PhysicalActivityLevel physicalActivityLevel) {
+        this.physicalActivityLevel = physicalActivityLevel;
+    }
 
     @Override
     public String toString() {
@@ -198,10 +209,11 @@ public class User {
         sb.append(", targetWeight=").append(targetWeight);
         sb.append(", dailyLogs=").append(dailyLogs);
         sb.append(", gender=").append(gender);
+        sb.append(", physicalActivityLevel=").append(physicalActivityLevel);
         sb.append(", goal=").append(goal);
-        sb.append(", registrationDate=").append(registrationDate);
         sb.append(", activityLevel=").append(activityLevel);
         sb.append(", birthDate=").append(birthDate);
+        sb.append(", registrationDate=").append(registrationDate);
         sb.append('}');
         return sb.toString();
     }
