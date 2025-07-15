@@ -6,8 +6,11 @@ import edu.unl.cc.kawsayfit.exception.EntityNotFoundException;
 import edu.unl.cc.kawsayfit.model.User;
 import edu.unl.cc.kawsayfit.repository.UserRepository;
 import edu.unl.cc.kawsayfit.util.EncryptorManager;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Named;
 
-
+@RequestScoped
+@Named
 public class AuthController {
 
     private UserRepository userRepository;
