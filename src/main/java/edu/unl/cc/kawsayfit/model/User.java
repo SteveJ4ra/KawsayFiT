@@ -1,10 +1,17 @@
 package edu.unl.cc.kawsayfit.model;
 
+import edu.unl.cc.kawsayfit.model.ConsumedDish;
+import edu.unl.cc.kawsayfit.model.enums.Gender;
 import edu.unl.cc.kawsayfit.model.enums.Goal;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -14,32 +21,51 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Email
     @NotNull
+    @Column(nullable = false, unique = true)
     private String email;
 
-    @Column
-    @NotNull
+    @NotBlank
+    @Column(nullable = false, unique = true)
     private String username;
 
-    @Column
-    @NotNull
-    private String password;
+    @NotBlank
+    @Column(nullable = false)
+    private String passwordHash;
 
-    @Column
-    @NotNull
-    private double weight;
+    @Positive
+    @Column(nullable = false)
+    private double weight; // en kg
 
-    @Column
-    @NotNull
-    private double height;
+    @Positive
+    @Column(nullable = false)
+    private double height; // en cm
+
+    @Positive
+    @Column(nullable = false)
+    private double targetWeight;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OrderBy("date DESC")
+    private List<DailyLog> dailyLogs = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
-    @Column @NotNull
+    @Column(nullable = false)
+    private Gender gender;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Goal goal;
 
-    @Column @NotNull
+    @Column(nullable = false)
     private LocalDate registrationDate;
+
+    @Transient
+    public double getIMC() {
+        double h = height / 100.0;
+        return h <= 0 ? 0 : weight / (h * h);
+    }
 
     public Long getId() {
         return id;
@@ -49,60 +75,84 @@ public class User {
         this.id = id;
     }
 
-    public @NotNull String getEmail() {
+    public @Email @NotNull String getEmail() {
         return email;
     }
 
-    public void setEmail(@NotNull String email) {
+    public void setEmail(@Email @NotNull String email) {
         this.email = email;
     }
 
-    public @NotNull String getUsername() {
+    public @NotBlank String getUsername() {
         return username;
     }
 
-    public void setUsername(@NotNull String username) {
+    public void setUsername(@NotBlank String username) {
         this.username = username;
     }
 
-    public @NotNull String getPassword() {
-        return password;
+    public @NotBlank String getPasswordHash() {
+        return passwordHash;
     }
 
-    public void setPassword(@NotNull String password) {
-        this.password = password;
+    public void setPasswordHash(@NotBlank String passwordHash) {
+        this.passwordHash = passwordHash;
     }
 
-    public @NotNull double getWeight() {
+    public @Positive double getWeight() {
         return weight;
     }
 
-    public void setWeight(@NotNull double weight) {
+    public void setWeight(@Positive double weight) {
         this.weight = weight;
     }
 
-    public @NotNull double getHeight() {
+    public @Positive double getHeight() {
         return height;
     }
 
-    public void setHeight(@NotNull double height) {
+    public void setHeight(@Positive double height) {
         this.height = height;
     }
 
-    public @NotNull Goal getGoal() {
+    public @Positive double getTargetWeight() {
+        return targetWeight;
+    }
+
+    public void setTargetWeight(@Positive double targetWeight) {
+        this.targetWeight = targetWeight;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public Goal getGoal() {
         return goal;
     }
 
-    public void setGoal(@NotNull Goal goal) {
+    public void setGoal(Goal goal) {
         this.goal = goal;
     }
 
-    public @NotNull LocalDate getRegistrationDate() {
+    public LocalDate getRegistrationDate() {
         return registrationDate;
     }
 
-    public void setRegistrationDate(@NotNull LocalDate registrationDate) {
+    public void setRegistrationDate(LocalDate registrationDate) {
         this.registrationDate = registrationDate;
+    }
+
+    public List<DailyLog> getDailyLogs() {
+        return dailyLogs;
+    }
+
+    public void setDailyLogs(List<DailyLog> dailyLogs) {
+        this.dailyLogs = dailyLogs;
     }
 
     @Override
@@ -113,6 +163,9 @@ public class User {
         sb.append(", username='").append(username).append('\'');
         sb.append(", weight=").append(weight);
         sb.append(", height=").append(height);
+        sb.append(", targetWeight=").append(targetWeight);
+        sb.append(", dailyLogs=").append(dailyLogs);
+        sb.append(", gender=").append(gender);
         sb.append(", goal=").append(goal);
         sb.append(", registrationDate=").append(registrationDate);
         sb.append('}');
