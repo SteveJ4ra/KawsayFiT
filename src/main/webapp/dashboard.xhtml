@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Comidas - Comidas Ecuatorianas</title>
+    <link rel="stylesheet" href="styles/home.css" />
+    <style type="text/css">
+        :root {
+            --primary-color: #4CA1AF;
+            --secondary-color: #e8f4fc;
+            --accent-color: #2C3E50;
+            --text-color: #2c3e50;
+            --light-text: #f8f8f8;
+            --shadow: 0 8px 25px rgba(44, 62, 80, 0.12);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f5f6fa;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: var(--light-text);
+            padding: 1.5rem 2rem;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 3;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('https://images.unsplash.com/photo-1518983175-75f6a8fe2094?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            position: relative;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        header nav {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            position: relative;
+        }
+
+        header nav a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            background-color: rgba(76, 161, 175, 0.8);
+            border: 1px solid rgba(44, 62, 80, 0.3);
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        header nav a:hover {
+            background-color: var(--accent-color);
+            box-shadow: 0 8px 25px rgba(44, 62, 80, 0.2);
+            transform: translateY(-2px);
+        }
+
+        main {
+            max-width: 900px;
+            margin: 2.5rem auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+            background-color: rgba(245, 246, 248, 0.98);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        #filtros {
+            margin-bottom: 2.5rem;
+            position: relative;
+            text-align: center;
+        }
+
+        #buscador {
+            width: 100%;
+            max-width: 600px;
+            padding: 1.2rem 1.8rem;
+            font-size: 1.2rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 30px;
+            outline: none;
+            background-color: var(--light-text);
+            font-family: 'Montserrat', sans-serif;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        #buscador:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 4px rgba(44, 62, 80, 0.25);
+            background-color: white;
+        }
+
+        .sugerencias-lista {
+            position: absolute;
+            width: 80%;
+            max-width: 600px;
+            left: 50%;
+            transform: translateX(-50%);
+            max-height: 280px;
+            overflow-y: auto;
+            background: var(--light-text);
+            border: 1px solid #ddd;
+            border-radius: 0 0 16px 16px;
+            box-shadow: var(--shadow);
+            z-index: 100;
+            list-style: none;
+            padding: 0;
+            margin: 0 auto;
+            display: none;
+        }
+
+        .sugerencias-lista li {
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        .sugerencias-lista li:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        .grid-comidas {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .video-decorativo {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            width: 200px;
+            height: 200px;
+            transform: translateY(-50%);
+            z-index: -2;
+            overflow: hidden;
+            pointer-events: none;
+            border-radius: 50%;
+        }
+
+        .video-decorativo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            opacity: 0.75;
+            animation: rotateClockwise 20s linear infinite;
+            transform-origin: center center;
+        }
+
+        .video-decorativo:hover img {
+            opacity: 0.95;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(245, 246, 248, 0.5) 0%, rgba(245, 246, 248, 0) 70%);
+            z-index: -1;
+        }
+
+        @keyframes rotateClockwise {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="video-decorativo">
+    <img src="images/Chaulafan.png" alt="Pasta decorativa" class="gif-fondo" />
+    <div class="video-overlay"></div>
+</div>
+
+<header>
+    <h1>Comidas Ecuatorianas y demás</h1>
+    <nav>
+        <a href="perfil.html" class="user-profile">Perfil</a>
+        <a href="iniciar-sesion.html" id="logoutBtn">Cerrar Sesión</a>
+    </nav>
+</header>
+
+<main>
+    <div id="filtros">
+        <input type="text" id="buscador" placeholder="Buscar comidas..." autocomplete="off" />
+        <ul id="sugerencias" class="sugerencias-lista" aria-label="Sugerencias de búsqueda"></ul>
+    </div>
+
+    <div id="lista-comidas" class="grid-comidas"></div>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
