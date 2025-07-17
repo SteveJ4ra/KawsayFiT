@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
-<head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      lang="es" xml:lang="es">
+<h:head>
     <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nivel de Actividad</title>
@@ -77,9 +80,6 @@
             background-color: var(--selected-bg);
         }
 
-        /* El pseudo selector :has no es compatible con CSS actual ni XHTML estricto, se ha omitido */
-        /* .activity-option:has(.radio-input:checked) {...} */
-
         .activity-option::before {
             content: "";
             position: absolute;
@@ -139,57 +139,27 @@
             transform: translateY(-2px);
         }
     </style>
-</head>
-<body>
-<div class="container">
-    <h1>¿Cuál es tu nivel de actividad física?</h1>
+</h:head>
+<h:body>
+    <div class="container">
+        <h1>¿Cuál es tu nivel de actividad física?</h1>
 
-    <form class="activity-form" action="entrenamiento-fuerza.html" method="get">
-        <div class="activity-options">
-            <label class="activity-option">
-                <input type="radio" name="activity-level" value="sedentario" class="radio-input" />
-                <div class="option-content">
-                    <h3>Sedentario</h3>
-                    <p>Poco o nada de ejercicio</p>
-                </div>
-            </label>
+        <h:form id="activityForm" class="activity-form" action="#{userActivityController.processActivityLevel}" method="post">
+            <div class="activity-options">
+                <h:selectOneRadio id="activityLevel" value="#{userActivityController.activityLevel}"
+                                  layout="pageDirection" styleClass="activity-options">
+                    <f:selectItem itemValue="sedentario" itemLabel="Sedentario - Poco o nada de ejercicio" />
+                    <f:selectItem itemValue="ligeramente-activo" itemLabel="Ligeramente Activo - Ejercicio 2 a 3 días por semana" />
+                    <f:selectItem itemValue="moderadamente-activo" itemLabel="Moderadamente Activo - Ejercicio 4 a 5 días por semana" />
+                    <f:selectItem itemValue="muy-activo" itemLabel="Muy Activo - Ejercicio 6 a 7 días por semana" />
+                    <f:selectItem itemValue="atleta" itemLabel="Atleta Profesional - Ejercicio intenso 6 a 7 días por semana" />
+                </h:selectOneRadio>
+            </div>
 
-            <label class="activity-option">
-                <input type="radio" name="activity-level" value="ligeramente-activo" class="radio-input" />
-                <div class="option-content">
-                    <h3>Ligeramente Activo</h3>
-                    <p>Ejercicio 2 a 3 días por semana</p>
-                </div>
-            </label>
-
-            <label class="activity-option">
-                <input type="radio" name="activity-level" value="moderadamente-activo" class="radio-input" checked="checked" />
-                <div class="option-content">
-                    <h3>Moderadamente Activo</h3>
-                    <p>Ejercicio 4 a 5 días por semana</p>
-                </div>
-            </label>
-
-            <label class="activity-option">
-                <input type="radio" name="activity-level" value="muy-activo" class="radio-input" />
-                <div class="option-content">
-                    <h3>Muy Activo</h3>
-                    <p>Ejercicio 6 a 7 días por semana</p>
-                </div>
-            </label>
-
-            <label class="activity-option">
-                <input type="radio" name="activity-level" value="atleta" class="radio-input" />
-                <div class="option-content">
-                    <h3>Atleta Profesional</h3>
-                    <p>Ejercicio intenso 6 a 7 días por semana</p>
-                </div>
-            </label>
-        </div>
-
-        <p class="note">No te preocupes, luego lo puedes cambiar</p>
-        <a href="entrenamiento-fuerza.html" class="next-button">Continuar</a>
-    </form>
-</div>
-</body>
+            <p class="note">No te preocupes, luego lo puedes cambiar</p>
+            <h:commandButton value="Continuar" action="#{userActivityController.navigateToStrengthTraining}"
+                             styleClass="next-button" />
+        </h:form>
+    </div>
+</h:body>
 </html>

@@ -4,16 +4,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>edu.unl.cc.jbrew</groupId>
-    <artifactId>jbrew-web</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <groupId>edu.unl.cc.Kawsayfit</groupId>
+    <artifactId>kawsayfit</artifactId>
+    <version>1.0.0</version>
     <packaging>war</packaging>
 
-    <name>JBrews-web Coffe bar</name>
+    <name>KawsayFit - Sistema de Bienestar Integral</name>
     <description>
-        The project demonstrates how you can develop applications with the
-        Jakarta EE platform using widely adopted architectural best
-        practices like Domain-Driven Design (DDD).
+        Plataforma para el manejo integral de salud y bienestar basada en Jakarta EE.
+        Implementa mejores prácticas de diseño como Domain-Driven Design (DDD).
     </description>
 
     <properties>
@@ -25,16 +24,15 @@
         <war-plugin.version>3.4.0</war-plugin.version>
         <liberty-plugin.version>3.10.3</liberty-plugin.version>
 
-        <!--START DATASOURCE CONFIG-->
+        <!-- Configuración de base de datos -->
         <driver.jdbc.dir>${server.config.dir}/lib/global</driver.jdbc.dir>
         <db.server.name>localhost</db.server.name>
         <db.port.number>3306</db.port.number>
 
-        <!--COPIAR VALORES DE CONFIG PARA server.xml-->
+        <!-- Variables para server.xml -->
         <liberty.bootstrap.driver.jdbc.dir>${driver.jdbc.dir}</liberty.bootstrap.driver.jdbc.dir>
         <liberty.bootstrap.db.server.name>${db.server.name}</liberty.bootstrap.db.server.name>
-        <liberty.bootstr    ap.db.port.number>${db.port.number}</liberty.bootstrap.db.port.number>
-
+        <liberty.bootstrap.db.port.number>${db.port.number}</liberty.bootstrap.db.port.number>
     </properties>
 
     <dependencies>
@@ -58,7 +56,7 @@
     </dependencies>
 
     <build>
-        <finalName>jbrew-web</finalName>
+        <finalName>kawsayfit</finalName>  <!-- Cambiado a kawsayfit.war -->
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -69,6 +67,9 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>${war-plugin.version}</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
             </plugin>
 
             <plugin>
@@ -89,22 +90,21 @@
                         <artifactItem>
                             <groupId>com.mysql</groupId>
                             <artifactId>mysql-connector-j</artifactId>
-                            <!--<version>la-version</version>-->
                             <type>jar</type>
                             <overWrite>true</overWrite>
                             <outputDirectory>${project.build.directory}/lib</outputDirectory>
-                            <!--<destFileName>nombre-del-archivo.jar</destFileName>-->
                         </artifactItem>
                     </artifactItems>
                 </configuration>
             </plugin>
 
-            <!-- Execute 'mvn clean package liberty:run' to run the application.  -->
+            <!-- Plugin de Liberty configurado para KawsayFit -->
             <plugin>
                 <groupId>io.openliberty.tools</groupId>
                 <artifactId>liberty-maven-plugin</artifactId>
                 <version>${liberty-plugin.version}</version>
                 <configuration>
+                    <appsDirectory>apps</appsDirectory>
                     <copyDependencies>
                         <dependencyGroup>
                             <location>lib/global</location>
