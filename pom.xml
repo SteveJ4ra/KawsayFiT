@@ -33,7 +33,7 @@
         <!--COPIAR VALORES DE CONFIG PARA server.xml-->
         <liberty.bootstrap.driver.jdbc.dir>${driver.jdbc.dir}</liberty.bootstrap.driver.jdbc.dir>
         <liberty.bootstrap.db.server.name>${db.server.name}</liberty.bootstrap.db.server.name>
-        <liberty.bootstrap.db.port.number>${db.port.number}</liberty.bootstrap.db.port.number>
+        <liberty.bootstr    ap.db.port.number>${db.port.number}</liberty.bootstrap.db.port.number>
 
     </properties>
 
