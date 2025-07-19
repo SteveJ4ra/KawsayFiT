@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      lang="es" xml:lang="es">
-<h:head>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+<head>
     <title>Plato de Comida</title>
     <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style type="text/css">
         /* === CSS embebido === */
+
         body {
             font-family: 'Montserrat', sans-serif;
             background: white;
@@ -28,71 +26,325 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        /* ... (otros estilos se mantienen igual) ... */
+        .titulo-receta {
+            font-family: 'Playfair Display', serif;
+            color: #2c3e50;
+            font-size: 58px;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+
+        .input-busqueda {
+            width: 82%;
+            padding: 1rem;
+            padding-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            font-size: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .input-busqueda:focus {
+            outline: none;
+            box-shadow: 0 2px 15px rgba(52, 152, 219, 0.3);
+            border-color: #3498db;
+            color: #000;
+        }
+
+        .btn-buscar {
+            padding: 1rem 2rem;
+            background: linear-gradient(to right, #e74c3c, #c0392b);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+            text-decoration: none;
+        }
+
+        .btn-buscar:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+        }
+
+        .imagen-centrada {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border: 5px solid white;
+        }
+
+        .imagen-centrada:hover {
+            transform: scale(1.02);
+        }
+
+        .porcion {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            margin: 1rem 0;
+            font-weight: 500;
+        }
+
+        .seccion.nutricion {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-top: 2rem;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .seccion.nutricion h2 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .seccion.nutricion h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            -moz-transform: translateX(-50%);
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #e74c3c, #3498db);
+        }
+
+        .valores-nutricionales {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .valor-nutricional {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .valor-nutricional:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .cantidad {
+            font-size: 2.2rem;
+            color: #e74c3c;
+            margin-bottom: 0.5rem;
+        }
+
+        .nutriente {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            font-weight: 500;
+        }
+
+        .tabla-porcion table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 2rem 0;
+            background: rgb(255, 250, 250);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .tabla-porcion th,
+        .tabla-porcion td {
+            padding: 1rem;
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .tabla-porcion tr:last-child td {
+            border-bottom: none;
+        }
+
+        .tabla-porcion td:first-child {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .tabla-porcion td:last-child {
+            font-weight: 700;
+            color: #e74c3c;
+        }
+
+        .registro-alimento p {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            font-weight: 500;
+            margin: 2rem 0;
+            position: relative;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .registro-alimento p::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, #e74c3c, #3498db);
+        }
+
+        .botones-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .btn-volver,
+        .btn-registrar {
+            border-radius: 30px;
+            padding: 1rem 2rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3);
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .btn-volver {
+            background: linear-gradient(to right, #4ca1af, #2c3e50);
+        }
+
+        .btn-volver:hover {
+            background: linear-gradient(to right, #2c3e50, #4ca1af);
+            -moz-transform: translateY(-3px);
+            -webkit-transform: translateY(-3px);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(44, 62, 80, 0.4);
+        }
+
+        .btn-registrar {
+            background: linear-gradient(to right, #2c3e50, #4ca1af);
+        }
+
+        .btn-registrar:hover {
+            background: linear-gradient(to right, #4ca1af, #2c3e50);
+            -moz-transform: translateY(-3px);
+            -webkit-transform: translateY(-3px);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(44, 62, 80, 0.4);
+        }
     </style>
-</h:head>
+</head>
 
-<h:body>
-    <div class="container">
-        <main>
-            <div id="detalle-receta">
-                <h:form id="searchForm">
-                    <h:inputText id="inputBusqueda" value="#{recetaController.searchTerm}"
-                                 styleClass="input-busqueda" placeholder="Buscar recetas..." />
-                    <h:commandButton value="Buscar" action="#{recetaController.buscarRecetas}"
-                                     styleClass="btn-buscar" />
-                </h:form>
+<body>
+<div class="container">
+    <main>
+        <div id="detalle-receta">
 
-                <h1 id="titulo-receta" class="titulo-receta">#{recetaController.recetaSeleccionada.nombre}</h1>
+            <input type="text" class="input-busqueda" placeholder="Buscar recetas..." />
+            <a href="home.html" class="btn-buscar">Buscar</a>
+            <!--Aqui va a ir la logica para cuando el usuario presione el boton de buscar, se busque las comidas existentes que hay
+            si no hay ninguna comida existente que le aparezca otra vista en la que diga que no se encontro la comida buscada-->
+            <h1 id="titulo-receta" class="titulo-receta">Ceviche de Camaron</h1>
 
-                <div class="seccion nutricion">
-                    <h:graphicImage library="images" name="#{recetaController.recetaSeleccionada.imagen}"
-                                    alt="#{recetaController.recetaSeleccionada.nombre}"
-                                    styleClass="imagen-centrada" />
+            <div class="seccion nutricion">
+                <img id="imagen-receta" src="images/CevicheCamaron.png" alt="Ceviche de Camarón"
+                     class="imagen-centrada" />
+                <!--Aqui vamos a actualizar la imagen de la comida que se va a ingresar -->
+                <p class="porcion">1 porción (456 g)</p>
+                <!--Aqui debe de ir la cantidad de porcion seleccionada esto es dependiendo de la comida ingresada por el usuario-->
+                <h2>Informacion Nutricional</h2>
 
-                    <p class="porcion">1 porción (#{recetaController.recetaSeleccionada.peso}g)</p>
-
-                    <h2>Información Nutricional</h2>
-
-                    <div class="valores-nutricionales">
-                        <div class="valor-nutricional">
-                            <span class="cantidad">#{recetaController.recetaSeleccionada.calorias}</span>
-                            <span class="nutriente"> &#x1F525; Calorías</span>
-                        </div>
-                        <div class="valor-nutricional">
-                            <span class="cantidad">#{recetaController.recetaSeleccionada.proteinas}g</span>
-                            <span class="nutriente"> &#x1F357; Proteínas</span>
-                        </div>
-                        <div class="valor-nutricional">
-                            <span class="cantidad">#{recetaController.recetaSeleccionada.carbohidratos}g</span>
-                            <span class="nutriente">&#x1F954; Carbohidratos</span>
-                        </div>
+                <div class="valores-nutricionales">
+                    <div class="valor-nutricional">
+                        <span class="cantidad" id="calorias">208</span>
+                        <!--Aqui van las calorias de cada comida-->
+                        <span class="nutriente"> &#x1F525; Calorias</span>
                     </div>
+                    <div class="valor-nutricional">
+                        <span class="cantidad" id="proteinas">34.0 g</span>
+                        <!--Aqui van las proteinas de cada comida-->
 
-                    <div class="tabla-porcion">
-                        <h:dataTable value="#{recetaController.recetaSeleccionada.ingredientes}" var="ingrediente"
-                                     styleClass="tabla-ingredientes">
-                            <h:column>
-                                #{ingrediente.nombre}
-                            </h:column>
-                            <h:column>
-                                #{ingrediente.cantidad}g
-                            </h:column>
-                        </h:dataTable>
+                        <span class="nutriente"> &#x1F357; Proteinas</span>
+                    </div>
+                    <div class="valor-nutricional">
+                        <span class="cantidad" id="carbohidratos">19.0 g</span>
+                        <!--Aqui van los carbohidratos de cada comida-->
 
-                        <div class="registro-alimento">
-                            <p>Registrar este alimento en KawsayFit</p>
-                        </div>
-
-                        <div class="botones-container">
-                            <h:button value="Volver" outcome="home" styleClass="btn-volver" />
-                            <h:commandButton value="Registrar" action="#{registroController.registrarReceta}"
-                                             styleClass="btn-registrar" />
-                        </div>
+                        <span class="nutriente">&#x1F954; Carbohidratos</span>
                     </div>
                 </div>
+
+                <div class="tabla-porcion">
+                    <table>
+                        <tr>
+                            <!--Aqui van a ir todos los ingredientes de la comida-->
+                            <td>Camarones</td>
+                            <!--Ingrediente-->
+                            <td>160 g</td>
+                            <!--Gramos de el alimento-->
+                        </tr>
+                        <tr>
+                            <td>Zumo de limon</td>
+                            <!--Ingrediente-->
+                            <td>90 g</td>
+                            <!--Gramos de el alimento-->
+                        </tr>
+                        <tr>
+                            <td>Cebolla</td>
+                            <!--Ingrediente-->
+                            <td>75 g</td>
+                            <!--Gramos de el alimento-->
+                        </tr>
+                        <tr>
+                            <td>Tomate</td>
+                            <!--Ingrediente-->
+                            <td>65 g</td>
+                            <!--Gramos de el alimento-->
+                        </tr>
+                        <tr>
+                            <td>Cilantro</td>
+                            <!--Ingrediente-->
+                            <td>6 g</td>
+                            <!--Gramos de el alimento-->
+                        </tr>
+                    </table>
+                    <div class="registro-alimento">
+                        <p>Registrar este alimento en KawsayFit</p>
+                    </div>
+
+                    <div class="botones-container">
+                        <a href="home.html" class="btn-volver"> Volver</a>
+                        <a href="home.html" class="btn-registrar"> Registrar</a>
+                    </div>
+
+                </div>
+
             </div>
-        </main>
-    </div>
-</h:body>
+        </div>
+    </main>
+</div>
+</body>
 </html>

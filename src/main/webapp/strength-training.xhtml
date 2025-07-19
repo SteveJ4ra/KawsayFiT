@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      lang="es" xml:lang="es">
-<h:head>
-    <title>Entrenamiento de Fuerza</title>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+<head>
     <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <h:outputStylesheet name="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" />
+    <title>Entrenamiento de Fuerza</title>
     <style type="text/css">
         body {
             margin: 0;
@@ -23,65 +19,131 @@
             min-height: 100vh;
         }
 
-        /* ... (otros estilos CSS se mantienen igual) ... */
+        .container {
+            background: #ffffff;
+            padding: 3rem;
+            border-radius: 18px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+            color: #2c3e50;
+        }
+
+        .checkbox-options {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .checkbox-option input[type="radio"] {
+            opacity: 0;
+            position: absolute;
+        }
+
+        .checkmark {
+            width: 22px;
+            height: 22px;
+            border: 2px solid #b0c4de;
+            border-radius: 6px;
+            margin-right: 10px;
+            background-color: #fff;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+        }
+
+        .checkbox-option input[type="radio"]:checked + .checkmark {
+            background-color: #4da8da;
+            border-color: #4da8da;
+        }
+
+        .checkbox-option input[type="radio"]:checked + .checkmark::after {
+            content: "";
+            position: absolute;
+            left: 6px;
+            top: 2px;
+            width: 6px;
+            height: 12px;
+            border: solid #fff;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        .text {
+            font-size: 1rem;
+        }
+
+        .description {
+            font-size: 0.95rem;
+            color: #7f8c8d;
+            margin-top: 10px;
+            margin-bottom: 2.5rem;
+        }
+
+        .next-button {
+            display: inline-block;
+            padding: 12px 28px;
+            background: linear-gradient(to right, #4CA1AF, #2C3E50);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            width: -moz-fit-content;
+            width: fit-content;
+            margin: 0 auto;
+        }
+
+        .next-button:hover {
+            background: linear-gradient(to right, #2C3E50, #4CA1AF);
+            box-shadow: 0 8px 25px rgba(44, 62, 80, 0.2);
+            transform: translateY(-2px);
+        }
     </style>
-</h:head>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet" />
+</head>
+<body>
+<div class="container">
+    <h1>¿Realizas entrenamientos de fuerza?</h1>
 
-<h:body>
-    <div class="container">
-        <h1>¿Realizas entrenamientos de fuerza?</h1>
+    <div class="checkbox-options">
+        <label class="checkbox-option">
+            <input type="radio" name="fuerza" value="si" />
+            <span class="checkmark"></span>
+            <span class="text">Sí</span>
+        </label>
 
-        <h:form id="strengthTrainingForm">
-            <div class="checkbox-options">
-                <h:selectOneRadio id="strengthTraining" value="#{userTrainingController.strengthTraining}"
-                                  layout="pageDirection" styleClass="checkbox-options">
-                    <f:selectItem itemValue="true" itemLabel="Sí" />
-                    <f:selectItem itemValue="false" itemLabel="No" />
-                </h:selectOneRadio>
-            </div>
-
-            <p class="description">
-                Los entrenamientos de fuerza implican desafiar tus músculos con pesas, bandas o tu propio peso corporal.
-            </p>
-
-            <h:commandButton value="Continuar" action="#{userTrainingController.saveTrainingPreference}"
-                             styleClass="next-button" />
-        </h:form>
+        <label class="checkbox-option">
+            <input type="radio" name="fuerza" value="no" checked="checked" />
+            <span class="checkmark"></span>
+            <span class="text">No</span>
+        </label>
     </div>
 
-    <h:outputScript>
-        // Script para mejorar la visualización de los radio buttons personalizados
-        document.addEventListener('DOMContentLoaded', function() {
-        const options = document.querySelectorAll('.checkbox-option');
+    <p class="description">
+        Los entrenamientos de fuerza implican desafiar tus músculos con pesas, bandas o tu propio peso corporal.
+    </p>
 
-        options.forEach(option => {
-        const radio = option.querySelector('input[type="radio"]');
-        const checkmark = option.querySelector('.checkmark');
-
-        // Actualizar estado inicial
-        if(radio.checked) {
-        checkmark.style.backgroundColor = '#4da8da';
-        checkmark.style.borderColor = '#4da8da';
-        checkmark.innerHTML = '<span style="position:absolute;left:6px;top:2px;width:6px;height:12px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)"></span>';
-        }
-
-        // Manejar cambios
-        radio.addEventListener('change', function() {
-        options.forEach(opt => {
-        const chk = opt.querySelector('.checkmark');
-        chk.style.backgroundColor = '#fff';
-        chk.style.borderColor = '#b0c4de';
-        chk.innerHTML = '';
-        });
-
-        if(this.checked) {
-        checkmark.style.backgroundColor = '#4da8da';
-        checkmark.style.borderColor = '#4da8da';
-        checkmark.innerHTML = '<span style="position:absolute;left:6px;top:2px;width:6px;height:12px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)"></span>';
-        }
-        });
-        });
-        });
-    </h:outputScript>
-</h:body>
+    <a href="objetivos-usuario.html" class="next-button">Continuar</a>
+</div>
+</body>
 </html>
