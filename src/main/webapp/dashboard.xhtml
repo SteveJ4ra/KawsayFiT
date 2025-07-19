@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Comidas - Comidas Ecuatorianas</title>
+    <title>Comidas - Comidas Ecuatoriana</title>
     <link rel="stylesheet" href="styles/home.css" />
     <style type="text/css">
         :root {
@@ -39,7 +41,7 @@
             content: "";
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: url('https://images.unsplash.com/photo-1518983175-75f6a8fe2094?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+            background: url('https://images.unsplash.com/photo-1518983175-75f6a8fe2094?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80') center/cover no-repeat;
             opacity: 0.15;
             z-index: 0;
         }
@@ -60,7 +62,7 @@
             position: relative;
         }
 
-        header nav a {
+        header nav a, header nav h:link {
             color: var(--light-text);
             text-decoration: none;
             font-weight: 600;
@@ -72,7 +74,7 @@
             font-size: 1rem;
         }
 
-        header nav a:hover {
+        header nav a:hover, header nav h:link:hover {
             background-color: var(--accent-color);
             box-shadow: 0 8px 25px rgba(44, 62, 80, 0.2);
             transform: translateY(-2px);
@@ -207,20 +209,35 @@
 </div>
 
 <header>
-    <h1>Comidas Ecuatorianas y demás</h1>
+    <h1>Comidas ecuatorianas y demas</h1>
     <nav>
-        <a href="perfil.html" class="user-profile">Perfil</a>
+        <a href="profile.xhtml" class="user-profile">Perfil</a>
         <a href="iniciar-sesion.html" id="logoutBtn">Cerrar Sesión</a>
+
     </nav>
 </header>
 
 <main>
     <div id="filtros">
-        <input type="text" id="buscador" placeholder="Buscar comidas..." autocomplete="off" />
-        <ul id="sugerencias" class="sugerencias-lista" aria-label="Sugerencias de búsqueda"></ul>
+        <h:form>
+            <input type="text" id="buscador" placeholder="Buscar comidas..." autocomplete="off" />
+            <ul id="sugerencias" class="sugerencias-lista" aria-label="Sugerencias de búsqueda"></ul>
+        </h:form>
+        <ul id="sugerencias" class="sugerencias-lista" aria-label="Sugerencias de búsqueda">
+            <ui:repeat value="#{comidaBean.sugerencias}" var="sugerencia">
+                <li>#{sugerencia}</li>
+            </ui:repeat>
+        </ul>
     </div>
 
-    <div id="lista-comidas" class="grid-comidas"></div>
+    <div id="lista-comidas" class="grid-comidas">
+        <ui:repeat value="#{comidaBean.listaComidas}" var="comida">
+            <div class="comida-card">
+
+                <!-- Aquí podrías agregar imagen u otro detalle -->
+            </div>
+        </ui:repeat>
+    </div>
 </main>
 
 <script src="script.js"></script>

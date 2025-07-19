@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      lang="es" xml:lang="es">
 <head>
-    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Nivel de Actividad</title>
     <style type="text/css">
         :root {
@@ -31,7 +34,7 @@
             padding: 25px;
             background: white;
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
         h1 {
@@ -77,9 +80,6 @@
             background-color: var(--selected-bg);
         }
 
-        /* El pseudo selector :has no es compatible con CSS actual ni XHTML estricto, se ha omitido */
-        /* .activity-option:has(.radio-input:checked) {...} */
-
         .activity-option::before {
             content: "";
             position: absolute;
@@ -118,7 +118,7 @@
         }
 
         .next-button {
-            display: inline-block;
+            display: block;
             padding: 12px 28px;
             background: linear-gradient(to right, #4CA1AF, #2C3E50);
             color: white;
@@ -131,6 +131,7 @@
             cursor: pointer;
             width: fit-content;
             margin: 0 auto;
+            text-align: center;
         }
 
         .next-button:hover {
@@ -144,10 +145,20 @@
 <div class="container">
     <h1>¿Cuál es tu nivel de actividad física?</h1>
 
-    <form class="activity-form" action="entrenamiento-fuerza.html" method="get">
+    <h:form id="activityForm">
         <div class="activity-options">
             <label class="activity-option">
-                <input type="radio" name="activity-level" value="sedentario" class="radio-input" />
+                <h:selectOneRadio value="#{actividadBean.nivelActividad}" layout="pageDirection" style="display:none;">
+                    <f:selectItem itemValue="sedentario" itemLabel="Sedentario"/>
+                    <f:selectItem itemValue="ligeramente-activo" itemLabel="Ligeramente Activo"/>
+                    <f:selectItem itemValue="moderadamente-activo" itemLabel="Moderadamente Activo"/>
+                    <f:selectItem itemValue="muy-activo" itemLabel="Muy Activo"/>
+                    <f:selectItem itemValue="atleta" itemLabel="Atleta Profesional"/>
+                </h:selectOneRadio>
+
+                <!-- Botones visibles -->
+                <input type="radio" name="activity-level" value="sedentario" class="radio-input"
+                       onclick="document.getElementById('activityForm:nivelActividad').value='sedentario'"/>
                 <div class="option-content">
                     <h3>Sedentario</h3>
                     <p>Poco o nada de ejercicio</p>
@@ -155,7 +166,8 @@
             </label>
 
             <label class="activity-option">
-                <input type="radio" name="activity-level" value="ligeramente-activo" class="radio-input" />
+                <input type="radio" name="activity-level" value="ligeramente-activo" class="radio-input"
+                       onclick="document.getElementById('activityForm:nivelActividad').value='ligeramente-activo'"/>
                 <div class="option-content">
                     <h3>Ligeramente Activo</h3>
                     <p>Ejercicio 2 a 3 días por semana</p>
@@ -163,7 +175,9 @@
             </label>
 
             <label class="activity-option">
-                <input type="radio" name="activity-level" value="moderadamente-activo" class="radio-input" checked="checked" />
+                <input type="radio" name="activity-level" value="moderadamente-activo" class="radio-input"
+                       checked="checked"
+                       onclick="document.getElementById('activityForm:nivelActividad').value='moderadamente-activo'"/>
                 <div class="option-content">
                     <h3>Moderadamente Activo</h3>
                     <p>Ejercicio 4 a 5 días por semana</p>
@@ -171,7 +185,8 @@
             </label>
 
             <label class="activity-option">
-                <input type="radio" name="activity-level" value="muy-activo" class="radio-input" />
+                <input type="radio" name="activity-level" value="muy-activo" class="radio-input"
+                       onclick="document.getElementById('activityForm:nivelActividad').value='muy-activo'"/>
                 <div class="option-content">
                     <h3>Muy Activo</h3>
                     <p>Ejercicio 6 a 7 días por semana</p>
@@ -179,7 +194,8 @@
             </label>
 
             <label class="activity-option">
-                <input type="radio" name="activity-level" value="atleta" class="radio-input" />
+                <input type="radio" name="activity-level" value="atleta" class="radio-input"
+                       onclick="document.getElementById('activityForm:nivelActividad').value='atleta'"/>
                 <div class="option-content">
                     <h3>Atleta Profesional</h3>
                     <p>Ejercicio intenso 6 a 7 días por semana</p>
@@ -189,7 +205,7 @@
 
         <p class="note">No te preocupes, luego lo puedes cambiar</p>
         <a href="entrenamiento-fuerza.html" class="next-button">Continuar</a>
-    </form>
+    </h:form>
 </div>
 </body>
 </html>
