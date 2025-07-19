@@ -4,16 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>edu.unl.cc.Kawsayfit</groupId>
-    <artifactId>kawsayfit</artifactId>
-    <version>1.0.0</version>
+    <groupId>edu.unl.cc.kawsayfit</groupId>
+    <artifactId>kawsayfit-web</artifactId>
+    <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>KawsayFit - Sistema de Bienestar Integral</name>
-    <description>
-        Plataforma para el manejo integral de salud y bienestar basada en Jakarta EE.
-        Implementa mejores prácticas de diseño como Domain-Driven Design (DDD).
-    </description>
+    <name>KawsayFit Web</name>
+    <description>Aplicación de nutrición con Jakarta EE 10, JSF, y Open Liberty</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -24,54 +21,65 @@
         <war-plugin.version>3.4.0</war-plugin.version>
         <liberty-plugin.version>3.10.3</liberty-plugin.version>
 
-        <!-- Configuración de base de datos -->
+        <server.config.dir>${project.basedir}/src/liberty/config</server.config.dir>
+
+        <!-- Configuración para el datasource -->
         <driver.jdbc.dir>${server.config.dir}/lib/global</driver.jdbc.dir>
         <db.server.name>localhost</db.server.name>
         <db.port.number>3306</db.port.number>
 
-        <!-- Variables para server.xml -->
+        <!-- Variables que pueden ser usadas en server.xml -->
         <liberty.bootstrap.driver.jdbc.dir>${driver.jdbc.dir}</liberty.bootstrap.driver.jdbc.dir>
         <liberty.bootstrap.db.server.name>${db.server.name}</liberty.bootstrap.db.server.name>
         <liberty.bootstrap.db.port.number>${db.port.number}</liberty.bootstrap.db.port.number>
     </properties>
 
     <dependencies>
+        <!-- Jakarta EE Web Profile -->
         <dependency>
             <groupId>jakarta.platform</groupId>
             <artifactId>jakarta.jakartaee-web-api</artifactId>
             <version>${jakartaee-api.version}</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- PrimeFaces (JSF framework) -->
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
             <version>15.0.0</version>
             <classifier>jakarta</classifier>
         </dependency>
+
+        <!-- MySQL Connector -->
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
-            <version>9.3.0</version>
+            <version>8.3.0</version>
         </dependency>
     </dependencies>
 
     <build>
-        <finalName>kawsayfit</finalName>  <!-- Cambiado a kawsayfit.war -->
+        <finalName>kawsayfit-web</finalName>
         <plugins>
+            <!-- Compilación -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${compiler-plugin.version}</version>
+                <configuration>
+                    <release>${maven.compiler.release}</release>
+                </configuration>
             </plugin>
+
+            <!-- Empaquetado WAR -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>${war-plugin.version}</version>
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                </configuration>
             </plugin>
 
+            <!-- Copiar MySQL Connector a /lib -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -80,9 +88,7 @@
                     <execution>
                         <id>copy-dependencies</id>
                         <phase>package</phase>
-                        <goals>
-                            <goal>copy</goal>
-                        </goals>
+                        <goals><goal>copy</goal></goals>
                     </execution>
                 </executions>
                 <configuration>
@@ -90,6 +96,7 @@
                         <artifactItem>
                             <groupId>com.mysql</groupId>
                             <artifactId>mysql-connector-j</artifactId>
+                            <version>8.3.0</version>
                             <type>jar</type>
                             <overWrite>true</overWrite>
                             <outputDirectory>${project.build.directory}/lib</outputDirectory>
@@ -98,13 +105,12 @@
                 </configuration>
             </plugin>
 
-            <!-- Plugin de Liberty configurado para KawsayFit -->
+            <!-- Plugin de Open Liberty -->
             <plugin>
                 <groupId>io.openliberty.tools</groupId>
                 <artifactId>liberty-maven-plugin</artifactId>
                 <version>${liberty-plugin.version}</version>
                 <configuration>
-                    <appsDirectory>apps</appsDirectory>
                     <copyDependencies>
                         <dependencyGroup>
                             <location>lib/global</location>
