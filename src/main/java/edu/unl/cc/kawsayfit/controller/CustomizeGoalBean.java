@@ -49,7 +49,7 @@ public class CustomizeGoalBean implements Serializable {
             userService.update(user);
         }
 
-        // Redirige a la vista de resultados (ajusta según la navegación real)
+        // Redirige a la vista de resultados 
         return "user-results.xhtml?faces-redirect=true";
     }
 
