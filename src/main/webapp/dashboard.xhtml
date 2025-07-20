@@ -202,6 +202,7 @@
         }
     </style>
 </head>
+
 <body>
 <div class="video-decorativo">
     <img src="images/Chaulafan.png" alt="Pasta decorativa" class="gif-fondo" />
@@ -209,37 +210,30 @@
 </div>
 
 <header>
-    <h1>Comidas ecuatorianas y demas</h1>
+    <h1>Comidas Ecuatorianas y Demás</h1>
     <nav>
         <a href="profile.xhtml" class="user-profile">Perfil</a>
-        <a href="iniciar-sesion.html" id="logoutBtn">Cerrar Sesión</a>
-
+        <a href="login.xhtml" id="logoutBtn">Cerrar Sesión</a>
     </nav>
 </header>
 
 <main>
+    <!--OJO PEREZ Conectar a la base de datos y funcionalidad-->
     <div id="filtros">
         <h:form>
             <input type="text" id="buscador" placeholder="Buscar comidas..." autocomplete="off" />
             <ul id="sugerencias" class="sugerencias-lista" aria-label="Sugerencias de búsqueda"></ul>
         </h:form>
-        <ul id="sugerencias" class="sugerencias-lista" aria-label="Sugerencias de búsqueda">
-            <ui:repeat value="#{comidaBean.sugerencias}" var="sugerencia">
-                <li>#{sugerencia}</li>
+        <ul id="sugerencias" class="DasboardBean" aria-label="Sugerencias de búsqueda">
+            <ui:repeat value="#{dashboardBean.suggestion}" var="sugerencia">
             </ui:repeat>
         </ul>
     </div>
 
-    <div id="lista-comidas" class="grid-comidas">
-        <ui:repeat value="#{comidaBean.listaComidas}" var="comida">
-            <div class="comida-card">
-
-                <!-- Aquí podrías agregar imagen u otro detalle -->
-            </div>
+    <div id="lista-comidas" class="DasboardBean">
+        <ui:repeat value="#{dashboardBean.foodList}" var="comida">
         </ui:repeat>
     </div>
 </main>
-
-<script src="script.js"></script>
 </body>
 </html>

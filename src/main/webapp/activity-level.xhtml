@@ -148,7 +148,7 @@
     <h:form id="activityForm">
         <div class="activity-options">
             <label class="activity-option">
-                <h:selectOneRadio value="#{actividadBean.nivelActividad}" layout="pageDirection" style="display:none;">
+                <h:selectOneRadio value="#{activityBean.activityLevel}" layout="pageDirection" style="display:none;">
                     <f:selectItem itemValue="sedentario" itemLabel="Sedentario"/>
                     <f:selectItem itemValue="ligeramente-activo" itemLabel="Ligeramente Activo"/>
                     <f:selectItem itemValue="moderadamente-activo" itemLabel="Moderadamente Activo"/>
@@ -156,9 +156,9 @@
                     <f:selectItem itemValue="atleta" itemLabel="Atleta Profesional"/>
                 </h:selectOneRadio>
 
-                <!-- Botones visibles -->
+
                 <input type="radio" name="activity-level" value="sedentario" class="radio-input"
-                       onclick="document.getElementById('activityForm:nivelActividad').value='sedentario'"/>
+                       onclick="document.getElementById('activityForm:activityLevel').value='sedentario'"/>
                 <div class="option-content">
                     <h3>Sedentario</h3>
                     <p>Poco o nada de ejercicio</p>
@@ -167,7 +167,7 @@
 
             <label class="activity-option">
                 <input type="radio" name="activity-level" value="ligeramente-activo" class="radio-input"
-                       onclick="document.getElementById('activityForm:nivelActividad').value='ligeramente-activo'"/>
+                       onclick="document.getElementById('activityForm:activityLevel').value='ligeramente-activo'"/>
                 <div class="option-content">
                     <h3>Ligeramente Activo</h3>
                     <p>Ejercicio 2 a 3 días por semana</p>
@@ -177,7 +177,7 @@
             <label class="activity-option">
                 <input type="radio" name="activity-level" value="moderadamente-activo" class="radio-input"
                        checked="checked"
-                       onclick="document.getElementById('activityForm:nivelActividad').value='moderadamente-activo'"/>
+                       onclick="document.getElementById('activityForm:activityLevel').value='moderadamente-activo'"/>
                 <div class="option-content">
                     <h3>Moderadamente Activo</h3>
                     <p>Ejercicio 4 a 5 días por semana</p>
@@ -186,7 +186,7 @@
 
             <label class="activity-option">
                 <input type="radio" name="activity-level" value="muy-activo" class="radio-input"
-                       onclick="document.getElementById('activityForm:nivelActividad').value='muy-activo'"/>
+                       onclick="document.getElementById('activityForm:activityLevel').value='muy-activo'"/>
                 <div class="option-content">
                     <h3>Muy Activo</h3>
                     <p>Ejercicio 6 a 7 días por semana</p>
@@ -195,7 +195,7 @@
 
             <label class="activity-option">
                 <input type="radio" name="activity-level" value="atleta" class="radio-input"
-                       onclick="document.getElementById('activityForm:nivelActividad').value='atleta'"/>
+                       onclick="document.getElementById('activityForm:activityLevel').value='atleta'"/>
                 <div class="option-content">
                     <h3>Atleta Profesional</h3>
                     <p>Ejercicio intenso 6 a 7 días por semana</p>
@@ -204,7 +204,7 @@
         </div>
 
         <p class="note">No te preocupes, luego lo puedes cambiar</p>
-        <a href="entrenamiento-fuerza.html" class="next-button">Continuar</a>
+        <a href="strength-training.xhtml" class="next-button">Continuar</a>
     </h:form>
 </div>
 </body>

@@ -35,7 +35,6 @@ public class LoginBean implements Serializable {
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
 
-    // Método principal de login
     public String login() {
         logger.info("Intentando iniciar sesión con: " + email);
 
