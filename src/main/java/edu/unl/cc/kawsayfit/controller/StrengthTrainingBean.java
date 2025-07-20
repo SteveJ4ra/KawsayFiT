@@ -35,6 +35,6 @@ public class StrengthTrainingBean implements Serializable {
             userService.update(user);
         }
 
-        return "customize_goal.xhtml?faces-redirect=true";
+        return "user-objectives.xhtml?faces-redirect=true";
     }
 }

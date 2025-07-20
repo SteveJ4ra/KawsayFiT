@@ -50,7 +50,7 @@ public class CustomizeGoalBean implements Serializable {
         }
 
         // Redirige a la vista de resultados (ajusta según la navegación real)
-        return "userResults.xhtml?faces-redirect=true";
+        return "user-results.xhtml?faces-redirect=true";
     }
 
     // Getters y Setters
