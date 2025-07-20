@@ -7,12 +7,14 @@ import edu.unl.cc.kawsayfit.model.User;
 import edu.unl.cc.kawsayfit.repository.UserRepository;
 import edu.unl.cc.kawsayfit.util.EncryptorManager;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 @RequestScoped
 @Named
 public class AuthController {
 
+    @Inject
     private UserRepository userRepository;
 
     public User validateUser(String name, String password) throws CredentialInvalidException, EncryptorException {

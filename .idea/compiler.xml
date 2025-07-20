@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="kawsayfit" />
         <module name="jbrew-web" />
+        <module name="kawsayfit-web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
