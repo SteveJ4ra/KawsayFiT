@@ -1,4 +1,4 @@
-package edu.unl.cc.kawsayfit.controller.security;
+package edu.unl.cc.kawsayfit.controller.beans;
 
 
 import edu.unl.cc.kawsayfit.model.Food;

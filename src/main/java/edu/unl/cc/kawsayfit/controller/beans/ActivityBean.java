@@ -1,4 +1,4 @@
-package edu.unl.cc.kawsayfit.controller.security;
+package edu.unl.cc.kawsayfit.controller.beans;
 
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;

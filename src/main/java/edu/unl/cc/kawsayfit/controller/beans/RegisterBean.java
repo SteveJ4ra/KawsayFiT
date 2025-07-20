@@ -1,4 +1,4 @@
-package edu.unl.cc.kawsayfit.controller;
+package edu.unl.cc.kawsayfit.controller.beans;
 
 import edu.unl.cc.kawsayfit.model.User;
 import edu.unl.cc.kawsayfit.service.UserService;
