@@ -20,7 +20,7 @@ public class UserRepository {
         tableUserBD = new TreeMap<>();
     }
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "KawsayFitPU")
     private EntityManager em;
 
     public User save(User user) {

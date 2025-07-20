@@ -4,11 +4,6 @@ DB_MYSQL_PORT_PUBLIC=3306
 LOCAL_MYSQL_DATA_DIR_BD=C:\Users\Steven\Desktop\ProjectosIntelliJ\docker\otp\Mysql\kawsayfit-db
 MYSQL_ROOT_PASSWORD=adminer2526
 
-## VARIABLES DE ENTORNO PARA POSTGRES
-POSTGRES_VERSION=16.3-alpine
-DB_PG_PORT_PUBLIC=5433
-LOCAL_PG_DATA_DIR_BD=/home/wduck/opt/docker-pgdata/kawsayfit-db
-
 ## VARIABLES DE ENTORNO COMUNES
 DB_NAME=kawsayfit
 DB_USER=kawsayfit_user

@@ -8,7 +8,7 @@ import jakarta.persistence.PersistenceContext;
 @ApplicationScoped
 public class ConsumedDishRepository {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "KawsayFitPU")
     private EntityManager em;
 
     public ConsumedDish save(ConsumedDish consumedDish) {

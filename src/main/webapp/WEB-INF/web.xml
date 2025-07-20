@@ -13,6 +13,10 @@
         <param-value>url</param-value>
     </context-param>
     <context-param>
+        <param-name>jakarta.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <context-param>
         <param-name>primefaces.THEME</param-name>
         <param-value>saga</param-value>
     </context-param>

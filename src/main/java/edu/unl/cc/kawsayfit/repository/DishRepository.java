@@ -10,7 +10,7 @@ import java.util.List;
 @ApplicationScoped
 public class DishRepository {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "KawsayFitPU")
     private EntityManager em;
 
     public Dish findById(Long id) {
