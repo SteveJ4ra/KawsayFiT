@@ -19,5 +19,4 @@
             <property name="hibernate.cache.use_query_cache" value="false"/>
         </properties>
     </persistence-unit>
-
 </persistence>
