@@ -5,13 +5,14 @@ import edu.unl.cc.kawsayfit.model.Food;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Named("dashboardBean")
 @ViewScoped
-public class DasboardBean implements Serializable{
+public class DasboardBean implements Serializable {
 
     private List<Food> listFood;
     private List<String> suggestion;

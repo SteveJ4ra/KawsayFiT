@@ -2,13 +2,14 @@ package edu.unl.cc.kawsayfit.controller.beans;
 
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;
+
 import java.io.Serializable;
 
 @Named("activityBean")
 @ViewScoped
-public class ActivityBean implements Serializable{
+public class ActivityBean implements Serializable {
 
-    private String activityLevel = "moderadamente-activo";
+    private String activityLevel = "";
 
     public String getActivityLevel() {
         return activityLevel;

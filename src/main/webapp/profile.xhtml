@@ -224,19 +224,19 @@
     <div class="container profile-container">
         <div class="profile-header">
             <div class="buttons-container">
-                <h:graphicImage value="#{perfilBean.fotoPerfil}" alt="Avatar" styleClass="avatar-img"/>
+                <h:graphicImage value="#{profileBean.fotoPerfil}" alt="Avatar" styleClass="avatar-img"/>
                 <div class="buttons-container">
                     <h:link outcome="home" styleClass="regresar-btn" value="Regresar"/>
                 </div>
                 <button class="edit-avatar-btn">✏️</button>
             </div>
 
-            <h1><h:outputText value="#{perfilBean.nombreCompleto}"/></h1>
-            <p class="profile-email"><h:outputText value="#{perfilBean.email}"/></p>
+            <h1><h:outputText value="#{profileBean.nombreCompleto}"/></h1>
+            <p class="profile-email"><h:outputText value="#{profileBean.email}"/></p>
 
             <div class="user-goal-badge">
                 <span class="goal-icon">🏋️</span>
-                <span class="goal-text"><h:outputText value="#{perfilBean.objetivo}"/></span>
+                <span class="goal-text"><h:outputText value="#{profileBean.objetivo}"/></span>
             </div>
         </div>
 
@@ -245,21 +245,21 @@
             <div class="profile-data">
                 <div class="data-item">
                     <span class="data-label">Edad:</span>
-                    <span class="data-value"><h:outputText value="#{perfilBean.edad}"/> años</span>
+                    <span class="data-value"><h:outputText value="#{profileBean.edad}"/> años</span>
                 </div>
                 <div class="data-item">
                     <span class="data-label">Altura:</span>
-                    <span class="data-value"><h:outputText value="#{perfilBean.altura}"/> cm</span>
+                    <span class="data-value"><h:outputText value="#{profileBean.altura}"/> cm</span>
                 </div>
                 <div class="data-item">
                     <span class="data-label">Peso:</span>
-                    <span class="data-value"><h:outputText value="#{perfilBean.peso}"/> kg</span>
+                    <span class="data-value"><h:outputText value="#{profileBean.peso}"/> kg</span>
                 </div>
                 <div class="data-item">
                     <span class="data-label">IMC:</span>
                     <span class="data-value">
-                        <h:outputText value="#{perfilBean.imc}"/>
-                        <span class="imc-status">(<h:outputText value="#{perfilBean.estadoImc}"/>)</span>
+                        <h:outputText value="#{profileBean.imc}"/>
+                        <span class="imc-status">(<h:outputText value="#{profileBean.estadoImc}"/>)</span>
                     </span>
                 </div>
             </div>
@@ -274,8 +274,8 @@
                     <div class="chart-info">
                         <h3>Calorías</h3>
                         <p class="chart-progress">
-                            <h:outputText value="#{perfilBean.caloriasConsumidas}"/> /
-                            <h:outputText value="#{perfilBean.caloriasMeta}"/> kcal
+                            <h:outputText value="#{profileBean.caloriasConsumidas}"/> /
+                            <h:outputText value="#{profileBean.caloriasMeta}"/> kcal
                         </p>
                     </div>
                 </div>
@@ -284,8 +284,8 @@
                     <div class="chart-info">
                         <h3>Proteínas</h3>
                         <p class="chart-progress">
-                            <h:outputText value="#{perfilBean.proteinasConsumidas}"/> /
-                            <h:outputText value="#{perfilBean.proteinasMeta}"/> g
+                            <h:outputText value="#{profileBean.proteinasConsumidas}"/> /
+                            <h:outputText value="#{profileBean.proteinasMeta}"/> g
                         </p>
                     </div>
                 </div>
@@ -294,8 +294,8 @@
                     <div class="chart-info">
                         <h3>Carbohidratos</h3>
                         <p class="chart-progress">
-                            <h:outputText value="#{perfilBean.carbohidratosConsumidos}"/> /
-                            <h:outputText value="#{perfilBean.carbohidratosMeta}"/> g
+                            <h:outputText value="#{profileBean.carbohidratosConsumidos}"/> /
+                            <h:outputText value="#{profileBean.carbohidratosMeta}"/> g
                         </p>
                     </div>
                 </div>
@@ -307,15 +307,15 @@
             <div class="goals-container">
                 <div class="goal-card">
                     <h3>Calorías</h3>
-                    <p><h:outputText value="#{perfilBean.caloriasMeta}"/> kcal</p>
+                    <p><h:outputText value="#{profileBean.caloriasMeta}"/> kcal</p>
                 </div>
                 <div class="goal-card">
                     <h3>Proteínas</h3>
-                    <p><h:outputText value="#{perfilBean.proteinasMeta}"/> g</p>
+                    <p><h:outputText value="#{profileBean.proteinasMeta}"/> g</p>
                 </div>
                 <div class="goal-card">
                     <h3>Carbohidratos</h3>
-                    <p><h:outputText value="#{perfilBean.carbohidratosMeta}"/> g</p>
+                    <p><h:outputText value="#{profileBean.carbohidratosMeta}"/> g</p>
                 </div>
             </div>
         </div>

@@ -263,44 +263,44 @@
         <main>
             <div id="detalle-receta">
                 <h:form>
-                    <h:inputText value="#{recetaBean.busqueda}" styleClass="input-busqueda"
+                    <h:inputText value="#{dishBean.busqueda}" styleClass="input-busqueda"
                                  placeholder="Buscar recetas..." />
-                    <h:commandButton value="Buscar" action="#{recetaBean.buscar}"
+                    <h:commandButton value="Buscar" action="#{dishBean.buscar}"
                                      styleClass="btn-buscar" />
                 </h:form>
 
                 <h1 id="titulo-receta" class="titulo-receta">
-                    #{recetaBean.tituloReceta}
+                    #{dishBean.tituloReceta}
                 </h1>
 
                 <div class="seccion nutricion">
-                    <h:graphicImage name="images/#{recetaBean.imagen}" alt="Imagen de comida"
+                    <h:graphicImage name="images/#{dishBean.imagen}" alt="Imagen de comida"
                                     styleClass="imagen-centrada" />
 
                     <p class="porcion">
-                        #{recetaBean.porcionTexto}
+                        #{dishBean.porcionTexto}
                     </p>
 
                     <h2>Informacion Nutricional</h2>
 
                     <div class="valores-nutricionales">
                         <div class="valor-nutricional">
-                            <span class="cantidad">#{recetaBean.calorias}</span>
+                            <span class="cantidad">#{dishBean.calorias}</span>
                             <span class="nutriente"> 🔥 Calorías</span>
                         </div>
                         <div class="valor-nutricional">
-                            <span class="cantidad">#{recetaBean.proteinas}</span>
+                            <span class="cantidad">#{dishBean.proteinas}</span>
                             <span class="nutriente"> 🍗 Proteínas</span>
                         </div>
                         <div class="valor-nutricional">
-                            <span class="cantidad">#{recetaBean.carbohidratos}</span>
+                            <span class="cantidad">#{dishBean.carbohidratos}</span>
                             <span class="nutriente"> 🥔 Carbohidratos</span>
                         </div>
                     </div>
 
                     <div class="tabla-porcion">
                         <table>
-                            <ui:repeat value="#{recetaBean.ingredientes}" var="ing">
+                            <ui:repeat value="#{dishBean.ingredientes}" var="ing">
                                 <tr>
                                     <td>#{ing.nombre}</td>
                                     <td>#{ing.cantidad} g</td>
@@ -316,7 +316,7 @@
                             <div class="botones-container">
                                 <h:commandButton value="Volver" action="home?faces-redirect=true"
                                                  styleClass="btn-volver" />
-                                <h:commandButton value="Registrar" action="#{recetaBean.registrar}"
+                                <h:commandButton value="Registrar" action="#{dishBean.registrar}"
                                                  styleClass="btn-registrar" />
                             </div>
                         </h:form>
