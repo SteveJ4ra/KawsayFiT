@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Named("dishBean")
 @ViewScoped
@@ -39,9 +40,7 @@ public class DishBean implements Serializable {
                     } else {
                         return new Ingresients(str.trim(), 0);
                     }
-                }).toList();
+                })
+                .collect(Collectors.toList());
     }
-
-
-
 }
