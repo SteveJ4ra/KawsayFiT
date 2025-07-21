@@ -3,14 +3,14 @@ package edu.unl.cc.kawsayfit.controller.beans;
 import edu.unl.cc.kawsayfit.model.User;
 import edu.unl.cc.kawsayfit.service.UserService;
 import jakarta.annotation.PostConstruct;
-import jakarta.faces.view.ViewScoped;
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 import java.io.Serializable;
 
 @Named
-@ViewScoped
+@RequestScoped
 public class RegisterBean implements Serializable {
 
     private String email;
@@ -29,10 +29,10 @@ public class RegisterBean implements Serializable {
         registered = false;
     }
 
-    public void register() {
+    public String register() {
         if (!password.equals(confirmPassword)) {
             message = "Las contraseñas no coinciden.";
-            return;
+            return null;
         }
 
         User user = new User();
@@ -44,6 +44,8 @@ public class RegisterBean implements Serializable {
         registered = true;
         message = "Usuario registrado con éxito.";
         clearForm();
+
+        return "select-target.xhtml?faces-redirect=true";
     }
 
     private void clearForm() {

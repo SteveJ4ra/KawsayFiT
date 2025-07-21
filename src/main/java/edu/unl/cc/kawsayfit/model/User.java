@@ -13,6 +13,9 @@ import java.time.Period;
 @Table(name = "users")
 public class User implements Serializable {
 
+    public User() {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

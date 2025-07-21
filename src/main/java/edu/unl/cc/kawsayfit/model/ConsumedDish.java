@@ -9,6 +9,10 @@ import java.time.LocalDate;
 @Table(name = "consumed_dishes")
 public class ConsumedDish {
 
+    public ConsumedDish() {
+
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

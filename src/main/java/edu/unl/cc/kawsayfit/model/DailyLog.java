@@ -11,6 +11,9 @@ import java.util.List;
 @Table(name = "daily_logs")
 public class DailyLog {
 
+    public DailyLog() {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -12,6 +12,10 @@ import jakarta.validation.constraints.*;
                 query = "select o from Dish o where o.id = :id ")
 })
 public class Dish {
+
+    public Dish() {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
