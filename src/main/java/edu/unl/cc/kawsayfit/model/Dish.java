@@ -5,8 +5,13 @@ import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "dishes")
+@NamedQueries({
+        @NamedQuery(name = "User.findLikeName",
+                query = "select o from Dish o where o.name like :name"),
+        @NamedQuery(name = "User.findById",
+                query = "select o from Dish o where o.id = :id ")
+})
 public class Dish {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

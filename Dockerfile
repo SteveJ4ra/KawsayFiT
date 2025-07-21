@@ -9,5 +9,5 @@ COPY --chown=1001:0 ${ENV_DRIVER_JDBC_DIR} /config/
 # Copiar configuración del servidor Open Liberty
 COPY src/main/liberty/config/server.xml /config/server.xml
 
-# Copiar archivo WAR generado por Maven (nombre basado en finalName del pom.xml)
+# Copiar archivo WAR generado por Maven (name basado en finalName del pom.xml)
 COPY target/kawsayfit-web.war /config/apps/

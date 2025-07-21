@@ -17,13 +17,13 @@ Java Library path = C:\Program Files\Eclipse Adoptium\jdk-21.0.6.7-hotspot\bin;C
 [20/7/25, 16:49:54:702 ECT] 00000038 ConfigEvaluat E   CWWKG0075E: El valor ${DB_PORT_NUMBER} no es válido para el atributo portNumber del elemento de configuración dataSource. El mensaje de validación era: Value "${DB_PORT_NUMBER}" is not a number..
 [20/7/25, 16:49:55:070 ECT] 0000002b SecurityReady I   CWWKS0007I: El servicio de seguridad se está iniciando...
 [20/7/25, 16:49:55:457 ECT] 0000002c DropinMonitor A   CWWKZ0058I: Supervisando aplicaciones de dropins.
-[20/7/25, 16:49:56:334 ECT] 0000002d ServerCache   I   DYNA1001I: La instancia de memoria caché dinámica de WebSphere con nombre baseCache se ha inicializado correctamente.
+[20/7/25, 16:49:56:334 ECT] 0000002d ServerCache   I   DYNA1001I: La instancia de memoria caché dinámica de WebSphere con name baseCache se ha inicializado correctamente.
 [20/7/25, 16:49:56:343 ECT] 0000002d ServerCache   I   DYNA1071I: Se está utilizando el proveedor de memoria caché default.
 [20/7/25, 16:49:56:346 ECT] 0000002d CacheServiceI I   DYNA1056I: La memoria caché dinámica (memoria caché de objeto) se ha inicializado correctamente.
 [20/7/25, 16:49:56:738 ECT] 0000002f Version       I org.jboss.weld.bootstrap.WeldStartup <clinit> WELD-000900: 5.1.1 (SP2)
 [20/7/25, 16:49:57:220 ECT] 00000034 WSKeyStore    I   CWPKI0802I: Creando el certificado SSL. Esto puede tardar unos segundos.
 [20/7/25, 16:49:57:300 ECT] 0000003e LTPAKeyInfoMa I   CWWKS4103I: Creando las claves LTPA. Esto puede tardar unos segundos.
-[20/7/25, 16:49:57:414 ECT] 0000002b JAASServiceIm I   CWWKS1123I: Se ha activado el plugin de autenticación colectivo con el nombre de clase NullCollectiveAuthenticationPlugin.
+[20/7/25, 16:49:57:414 ECT] 0000002b JAASServiceIm I   CWWKS1123I: Se ha activado el plugin de autenticación colectivo con el name de clase NullCollectiveAuthenticationPlugin.
 [20/7/25, 16:49:57:891 ECT] 0000003e LTPAKeyInfoMa A   CWWKS4104A: Las claves LTPA se han creado en 0,590 segundos. Archivo de claves LTPA: C:/Users/Steven/Desktop/KawsayFiT/target/liberty/wlp/usr/servers/defaultServer/resources/security/ltpa.keys
 [20/7/25, 16:49:57:897 ECT] 0000003e SecurityReady I   CWWKS0008I: El servicio de seguridad está listo.
 [20/7/25, 16:49:57:898 ECT] 0000003e LTPAKeyCreate I   CWWKS4105I: La configuración de LTPA estará lista después de 0,609 segundos.
@@ -41,40 +41,40 @@ Java Library path = C:\Program Files\Eclipse Adoptium\jdk-21.0.6.7-hotspot\bin;C
 [20/7/25, 16:50:06:354 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] La clase de entidad de destino (referencia) para el elemento de correlación de muchos con uno [field dish] está tomando como valor predeterminado: class edu.unl.cc.kawsayfit.model.Dish.
 [20/7/25, 16:50:06:354 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] La clase de entidad de destino (referencia) para el elemento de correlación de muchos con uno [field user] está tomando como valor predeterminado: class edu.unl.cc.kawsayfit.model.User.
 [20/7/25, 16:50:06:355 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] El tipo de acceso para la clase persistente [class edu.unl.cc.kawsayfit.model.User] está definido [FIELD].
-[20/7/25, 16:50:06:356 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] El nombre de alias para la clase identidad [class edu.unl.cc.kawsayfit.model.DailyLog] está tomando como valor predeterminado: DailyLog.
-[20/7/25, 16:50:06:378 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [date] está tomando como valor predeterminado: DATE.
-[20/7/25, 16:50:06:384 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [id] está tomando como valor predeterminado: ID.
-[20/7/25, 16:50:06:388 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] El nombre de alias para la clase identidad [class edu.unl.cc.kawsayfit.model.Dish] está tomando como valor predeterminado: Dish.
-[20/7/25, 16:50:06:388 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [carbohydrates] está tomando como valor predeterminado: CARBOHYDRATES.
-[20/7/25, 16:50:06:388 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [fats] está tomando como valor predeterminado: FATS.
-[20/7/25, 16:50:06:390 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [imagePath] está tomando como valor predeterminado: IMAGEPATH.
-[20/7/25, 16:50:06:391 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [proteins] está tomando como valor predeterminado: PROTEINS.
-[20/7/25, 16:50:06:392 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [name] está tomando como valor predeterminado: NAME.
-[20/7/25, 16:50:06:392 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [caloriesPerServing] está tomando como valor predeterminado: CALORIESPERSERVING.
-[20/7/25, 16:50:06:392 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [description] está tomando como valor predeterminado: DESCRIPTION.
-[20/7/25, 16:50:06:392 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [ingredients] está tomando como valor predeterminado: INGREDIENTS.
-[20/7/25, 16:50:06:394 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [id] está tomando como valor predeterminado: ID.
-[20/7/25, 16:50:06:395 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] El nombre de alias para la clase identidad [class edu.unl.cc.kawsayfit.model.ConsumedDish] está tomando como valor predeterminado: ConsumedDish.
-[20/7/25, 16:50:06:395 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [servings] está tomando como valor predeterminado: SERVINGS.
-[20/7/25, 16:50:06:395 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [id] está tomando como valor predeterminado: ID.
-[20/7/25, 16:50:06:396 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] El nombre de alias para la clase identidad [class edu.unl.cc.kawsayfit.model.User] está tomando como valor predeterminado: User.
-[20/7/25, 16:50:06:396 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [goal] está tomando como valor predeterminado: GOAL.
-[20/7/25, 16:50:06:400 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [gender] está tomando como valor predeterminado: GENDER.
-[20/7/25, 16:50:06:400 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [strengthTraining] está tomando como valor predeterminado: STRENGTHTRAINING.
-[20/7/25, 16:50:06:400 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [weight] está tomando como valor predeterminado: WEIGHT.
-[20/7/25, 16:50:06:400 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [targetWeight] está tomando como valor predeterminado: TARGETWEIGHT.
-[20/7/25, 16:50:06:402 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [birthDate] está tomando como valor predeterminado: BIRTHDATE.
-[20/7/25, 16:50:06:402 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [passwordHash] está tomando como valor predeterminado: PASSWORDHASH.
-[20/7/25, 16:50:06:403 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [physicalActivityLevel] está tomando como valor predeterminado: PHYSICALACTIVITYLEVEL.
-[20/7/25, 16:50:06:404 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [registrationDate] está tomando como valor predeterminado: REGISTRATIONDATE.
-[20/7/25, 16:50:06:404 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [id] está tomando como valor predeterminado: ID.
-[20/7/25, 16:50:06:405 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [email] está tomando como valor predeterminado: EMAIL.
-[20/7/25, 16:50:06:406 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [username] está tomando como valor predeterminado: USERNAME.
-[20/7/25, 16:50:06:406 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [height] está tomando como valor predeterminado: HEIGHT.
-[20/7/25, 16:50:06:420 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] El nombre de columna de clave primaria para el elemento de correlación [field user] está tomando como valor predeterminado: ID.
-[20/7/25, 16:50:06:421 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] El nombre de columna de clave primaria para el elemento de correlación [field dailyLog] está tomando como valor predeterminado: ID.
-[20/7/25, 16:50:06:421 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] El nombre de columna de clave primaria para el elemento de correlación [field dish] está tomando como valor predeterminado: ID.
-[20/7/25, 16:50:06:421 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] El nombre de columna de clave primaria para el elemento de correlación [field user] está tomando como valor predeterminado: ID.
+[20/7/25, 16:50:06:356 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] El name de alias para la clase identidad [class edu.unl.cc.kawsayfit.model.DailyLog] está tomando como valor predeterminado: DailyLog.
+[20/7/25, 16:50:06:378 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [date] está tomando como valor predeterminado: DATE.
+[20/7/25, 16:50:06:384 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [id] está tomando como valor predeterminado: ID.
+[20/7/25, 16:50:06:388 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] El name de alias para la clase identidad [class edu.unl.cc.kawsayfit.model.Dish] está tomando como valor predeterminado: Dish.
+[20/7/25, 16:50:06:388 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [carbohydrates] está tomando como valor predeterminado: CARBOHYDRATES.
+[20/7/25, 16:50:06:388 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [fats] está tomando como valor predeterminado: FATS.
+[20/7/25, 16:50:06:390 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [imagePath] está tomando como valor predeterminado: IMAGEPATH.
+[20/7/25, 16:50:06:391 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [proteins] está tomando como valor predeterminado: PROTEINS.
+[20/7/25, 16:50:06:392 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [name] está tomando como valor predeterminado: NAME.
+[20/7/25, 16:50:06:392 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [caloriesPerServing] está tomando como valor predeterminado: CALORIESPERSERVING.
+[20/7/25, 16:50:06:392 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [description] está tomando como valor predeterminado: DESCRIPTION.
+[20/7/25, 16:50:06:392 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [ingredients] está tomando como valor predeterminado: INGREDIENTS.
+[20/7/25, 16:50:06:394 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [id] está tomando como valor predeterminado: ID.
+[20/7/25, 16:50:06:395 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] El name de alias para la clase identidad [class edu.unl.cc.kawsayfit.model.ConsumedDish] está tomando como valor predeterminado: ConsumedDish.
+[20/7/25, 16:50:06:395 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [servings] está tomando como valor predeterminado: SERVINGS.
+[20/7/25, 16:50:06:395 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [id] está tomando como valor predeterminado: ID.
+[20/7/25, 16:50:06:396 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] El name de alias para la clase identidad [class edu.unl.cc.kawsayfit.model.User] está tomando como valor predeterminado: User.
+[20/7/25, 16:50:06:396 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [goal] está tomando como valor predeterminado: GOAL.
+[20/7/25, 16:50:06:400 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [gender] está tomando como valor predeterminado: GENDER.
+[20/7/25, 16:50:06:400 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [strengthTraining] está tomando como valor predeterminado: STRENGTHTRAINING.
+[20/7/25, 16:50:06:400 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [weight] está tomando como valor predeterminado: WEIGHT.
+[20/7/25, 16:50:06:400 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [targetWeight] está tomando como valor predeterminado: TARGETWEIGHT.
+[20/7/25, 16:50:06:402 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [birthDate] está tomando como valor predeterminado: BIRTHDATE.
+[20/7/25, 16:50:06:402 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [passwordHash] está tomando como valor predeterminado: PASSWORDHASH.
+[20/7/25, 16:50:06:403 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [physicalActivityLevel] está tomando como valor predeterminado: PHYSICALACTIVITYLEVEL.
+[20/7/25, 16:50:06:404 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [registrationDate] está tomando como valor predeterminado: REGISTRATIONDATE.
+[20/7/25, 16:50:06:404 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [id] está tomando como valor predeterminado: ID.
+[20/7/25, 16:50:06:405 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [email] está tomando como valor predeterminado: EMAIL.
+[20/7/25, 16:50:06:406 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [username] está tomando como valor predeterminado: USERNAME.
+[20/7/25, 16:50:06:406 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [height] está tomando como valor predeterminado: HEIGHT.
+[20/7/25, 16:50:06:420 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] El name de columna de clave primaria para el elemento de correlación [field user] está tomando como valor predeterminado: ID.
+[20/7/25, 16:50:06:421 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] El name de columna de clave primaria para el elemento de correlación [field dailyLog] está tomando como valor predeterminado: ID.
+[20/7/25, 16:50:06:421 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] El name de columna de clave primaria para el elemento de correlación [field dish] está tomando como valor predeterminado: ID.
+[20/7/25, 16:50:06:421 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] El name de columna de clave primaria para el elemento de correlación [field user] está tomando como valor predeterminado: ID.
 [20/7/25, 16:50:06:744 ECT] 0000003d eclipselink   I   CWWJP9990I: [eclipselink] EclipseLink, versión: Eclipse Persistence Services - 4.0.7.v202506240759-923a428d4722d199eff24e730890e156ce7ea9de
 [20/7/25, 16:50:06:810 ECT] 0000003d connection    I   CWWJP9990I: [eclipselink.connection] Conectado:
 	Usuario:
@@ -417,40 +417,40 @@ Consulta: DataModifyQuery(sql="ALTER TABLE consumed_dishes ADD CONSTRAINT FK_con
 [20/7/25, 16:50:21:988 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] La clase de entidad de destino (referencia) para el elemento de correlación de muchos con uno [field dish] está tomando como valor predeterminado: class edu.unl.cc.kawsayfit.model.Dish.
 [20/7/25, 16:50:21:988 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] La clase de entidad de destino (referencia) para el elemento de correlación de muchos con uno [field user] está tomando como valor predeterminado: class edu.unl.cc.kawsayfit.model.User.
 [20/7/25, 16:50:21:990 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] El tipo de acceso para la clase persistente [class edu.unl.cc.kawsayfit.model.User] está definido [FIELD].
-[20/7/25, 16:50:21:990 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] El nombre de alias para la clase identidad [class edu.unl.cc.kawsayfit.model.DailyLog] está tomando como valor predeterminado: DailyLog.
-[20/7/25, 16:50:21:991 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [date] está tomando como valor predeterminado: DATE.
-[20/7/25, 16:50:22:000 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [id] está tomando como valor predeterminado: ID.
-[20/7/25, 16:50:22:005 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] El nombre de alias para la clase identidad [class edu.unl.cc.kawsayfit.model.Dish] está tomando como valor predeterminado: Dish.
-[20/7/25, 16:50:22:006 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [carbohydrates] está tomando como valor predeterminado: CARBOHYDRATES.
-[20/7/25, 16:50:22:006 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [fats] está tomando como valor predeterminado: FATS.
-[20/7/25, 16:50:22:008 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [imagePath] está tomando como valor predeterminado: IMAGEPATH.
-[20/7/25, 16:50:22:010 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [proteins] está tomando como valor predeterminado: PROTEINS.
-[20/7/25, 16:50:22:011 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [name] está tomando como valor predeterminado: NAME.
-[20/7/25, 16:50:22:011 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [caloriesPerServing] está tomando como valor predeterminado: CALORIESPERSERVING.
-[20/7/25, 16:50:22:011 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [description] está tomando como valor predeterminado: DESCRIPTION.
-[20/7/25, 16:50:22:011 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [ingredients] está tomando como valor predeterminado: INGREDIENTS.
-[20/7/25, 16:50:22:011 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [id] está tomando como valor predeterminado: ID.
-[20/7/25, 16:50:22:011 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] El nombre de alias para la clase identidad [class edu.unl.cc.kawsayfit.model.ConsumedDish] está tomando como valor predeterminado: ConsumedDish.
-[20/7/25, 16:50:22:011 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [servings] está tomando como valor predeterminado: SERVINGS.
-[20/7/25, 16:50:22:011 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [id] está tomando como valor predeterminado: ID.
-[20/7/25, 16:50:22:013 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] El nombre de alias para la clase identidad [class edu.unl.cc.kawsayfit.model.User] está tomando como valor predeterminado: User.
-[20/7/25, 16:50:22:013 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [goal] está tomando como valor predeterminado: GOAL.
-[20/7/25, 16:50:22:015 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [gender] está tomando como valor predeterminado: GENDER.
-[20/7/25, 16:50:22:015 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [strengthTraining] está tomando como valor predeterminado: STRENGTHTRAINING.
-[20/7/25, 16:50:22:025 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [weight] está tomando como valor predeterminado: WEIGHT.
-[20/7/25, 16:50:22:026 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [targetWeight] está tomando como valor predeterminado: TARGETWEIGHT.
-[20/7/25, 16:50:22:026 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [birthDate] está tomando como valor predeterminado: BIRTHDATE.
-[20/7/25, 16:50:22:027 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [passwordHash] está tomando como valor predeterminado: PASSWORDHASH.
-[20/7/25, 16:50:22:027 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [physicalActivityLevel] está tomando como valor predeterminado: PHYSICALACTIVITYLEVEL.
-[20/7/25, 16:50:22:027 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [registrationDate] está tomando como valor predeterminado: REGISTRATIONDATE.
-[20/7/25, 16:50:22:028 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [id] está tomando como valor predeterminado: ID.
-[20/7/25, 16:50:22:028 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [email] está tomando como valor predeterminado: EMAIL.
-[20/7/25, 16:50:22:028 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [username] está tomando como valor predeterminado: USERNAME.
-[20/7/25, 16:50:22:028 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL nombre de columna para el elemento [height] está tomando como valor predeterminado: HEIGHT.
-[20/7/25, 16:50:22:028 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] El nombre de columna de clave primaria para el elemento de correlación [field user] está tomando como valor predeterminado: ID.
-[20/7/25, 16:50:22:028 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] El nombre de columna de clave primaria para el elemento de correlación [field dailyLog] está tomando como valor predeterminado: ID.
-[20/7/25, 16:50:22:030 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] El nombre de columna de clave primaria para el elemento de correlación [field dish] está tomando como valor predeterminado: ID.
-[20/7/25, 16:50:22:030 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] El nombre de columna de clave primaria para el elemento de correlación [field user] está tomando como valor predeterminado: ID.
+[20/7/25, 16:50:21:990 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] El name de alias para la clase identidad [class edu.unl.cc.kawsayfit.model.DailyLog] está tomando como valor predeterminado: DailyLog.
+[20/7/25, 16:50:21:991 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [date] está tomando como valor predeterminado: DATE.
+[20/7/25, 16:50:22:000 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [id] está tomando como valor predeterminado: ID.
+[20/7/25, 16:50:22:005 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] El name de alias para la clase identidad [class edu.unl.cc.kawsayfit.model.Dish] está tomando como valor predeterminado: Dish.
+[20/7/25, 16:50:22:006 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [carbohydrates] está tomando como valor predeterminado: CARBOHYDRATES.
+[20/7/25, 16:50:22:006 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [fats] está tomando como valor predeterminado: FATS.
+[20/7/25, 16:50:22:008 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [imagePath] está tomando como valor predeterminado: IMAGEPATH.
+[20/7/25, 16:50:22:010 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [proteins] está tomando como valor predeterminado: PROTEINS.
+[20/7/25, 16:50:22:011 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [name] está tomando como valor predeterminado: NAME.
+[20/7/25, 16:50:22:011 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [caloriesPerServing] está tomando como valor predeterminado: CALORIESPERSERVING.
+[20/7/25, 16:50:22:011 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [description] está tomando como valor predeterminado: DESCRIPTION.
+[20/7/25, 16:50:22:011 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [ingredients] está tomando como valor predeterminado: INGREDIENTS.
+[20/7/25, 16:50:22:011 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [id] está tomando como valor predeterminado: ID.
+[20/7/25, 16:50:22:011 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] El name de alias para la clase identidad [class edu.unl.cc.kawsayfit.model.ConsumedDish] está tomando como valor predeterminado: ConsumedDish.
+[20/7/25, 16:50:22:011 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [servings] está tomando como valor predeterminado: SERVINGS.
+[20/7/25, 16:50:22:011 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [id] está tomando como valor predeterminado: ID.
+[20/7/25, 16:50:22:013 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] El name de alias para la clase identidad [class edu.unl.cc.kawsayfit.model.User] está tomando como valor predeterminado: User.
+[20/7/25, 16:50:22:013 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [goal] está tomando como valor predeterminado: GOAL.
+[20/7/25, 16:50:22:015 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [gender] está tomando como valor predeterminado: GENDER.
+[20/7/25, 16:50:22:015 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [strengthTraining] está tomando como valor predeterminado: STRENGTHTRAINING.
+[20/7/25, 16:50:22:025 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [weight] está tomando como valor predeterminado: WEIGHT.
+[20/7/25, 16:50:22:026 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [targetWeight] está tomando como valor predeterminado: TARGETWEIGHT.
+[20/7/25, 16:50:22:026 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [birthDate] está tomando como valor predeterminado: BIRTHDATE.
+[20/7/25, 16:50:22:027 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [passwordHash] está tomando como valor predeterminado: PASSWORDHASH.
+[20/7/25, 16:50:22:027 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [physicalActivityLevel] está tomando como valor predeterminado: PHYSICALACTIVITYLEVEL.
+[20/7/25, 16:50:22:027 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [registrationDate] está tomando como valor predeterminado: REGISTRATIONDATE.
+[20/7/25, 16:50:22:028 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [id] está tomando como valor predeterminado: ID.
+[20/7/25, 16:50:22:028 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [email] está tomando como valor predeterminado: EMAIL.
+[20/7/25, 16:50:22:028 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [username] está tomando como valor predeterminado: USERNAME.
+[20/7/25, 16:50:22:028 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [height] está tomando como valor predeterminado: HEIGHT.
+[20/7/25, 16:50:22:028 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] El name de columna de clave primaria para el elemento de correlación [field user] está tomando como valor predeterminado: ID.
+[20/7/25, 16:50:22:028 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] El name de columna de clave primaria para el elemento de correlación [field dailyLog] está tomando como valor predeterminado: ID.
+[20/7/25, 16:50:22:030 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] El name de columna de clave primaria para el elemento de correlación [field dish] está tomando como valor predeterminado: ID.
+[20/7/25, 16:50:22:030 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] El name de columna de clave primaria para el elemento de correlación [field user] está tomando como valor predeterminado: ID.
 [20/7/25, 16:50:22:312 ECT] 00000038 eclipselink   I   CWWJP9990I: [eclipselink] EclipseLink, versión: Eclipse Persistence Services - 4.0.7.v202506240759-923a428d4722d199eff24e730890e156ce7ea9de
 [20/7/25, 16:50:22:314 ECT] 00000038 connection    I   CWWJP9990I: [eclipselink.connection] Conectado:
 	Usuario:

@@ -3,6 +3,7 @@ package edu.unl.cc.kawsayfit.model;
 import edu.unl.cc.kawsayfit.model.enums.Gender;
 import edu.unl.cc.kawsayfit.model.enums.Goal;
 import edu.unl.cc.kawsayfit.model.enums.PhysicalActivityLevel;
+import edu.unl.cc.kawsayfit.service.ImcCalculator;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -37,6 +38,13 @@ public class User implements Serializable {
     private double height; // Centímetros
 
     private double targetWeight;
+    private double imc;
+
+    private double calculate () {
+        ImcCalculator imcCalculator = new ImcCalculator(weight, height);
+        imc = imcCalculator.calculate(weight, height);
+        return imc;
+    }
 
     @Enumerated(EnumType.STRING)
     private Goal goal;
@@ -45,6 +53,7 @@ public class User implements Serializable {
     private PhysicalActivityLevel physicalActivityLevel;
 
     private boolean strengthTraining;
+
 
     public Long getId() {
         return id;
