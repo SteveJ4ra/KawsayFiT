@@ -2,232 +2,294 @@
 <!DOCTYPE html
         PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xml:lang="es" lang="es">
 <head>
     <title>Comidas - Iniciar Sesión</title>
     <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style type="text/css">
-        /* Reset básico */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* Fuente elegante */
         body {
             font-family: 'Montserrat', sans-serif;
-            background: #f5f6fa;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            background: white;
+            color: #2c3e50;
+            line-height: 1.6;
         }
 
-        /* Contenedor principal */
-        .auth-container {
-            width: 100%;
-            max-width: 420px;
-            padding: 20px;
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        /* Tarjeta centrada */
-        .auth-card {
-            background-color: #fff;
-            border-radius: 16px;
-            padding: 30px 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        .titulo-receta {
+            font-family: 'Playfair Display', serif;
+            color: #2c3e50;
+            font-size: 58px;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
             text-align: center;
         }
 
-        /* Título elegante */
-        .auth-title {
-            font-size: 28px;
-            color: #2c3e50;
-            margin-bottom: 12px;
-        }
-
-        /* Subtítulo */
-        .auth-subtitle {
-            font-size: 14px;
-            color: #7f8c8d;
-            margin-bottom: 24px;
-        }
-
-        /* Formulario */
-        .auth-form .form-group {
-            text-align: left;
-            margin-bottom: 20px;
-        }
-
-        .auth-form label {
-            font-weight: 600;
-            font-size: 14px;
-            display: block;
-            margin-bottom: 6px;
-            color: #34495e;
-        }
-
-        .auth-form input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 15px;
+        .input-busqueda {
+            width: 82%;
+            padding: 1rem;
+            padding-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            font-size: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
+            margin-bottom: 1rem;
+            color: #2c3e50;
         }
 
-        .auth-form input:focus {
-            border-color: #4CA1AF;
-            box-shadow: 0 0 8px rgba(76, 161, 175, 0.2);
+        .input-busqueda:focus {
             outline: none;
+            box-shadow: 0 2px 15px rgba(52, 152, 219, 0.3);
+            border-color: #3498db;
+            color: #000;
         }
 
-        /* Botón */
-        .auth-button {
-            display: inline-block;
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(to right, #4CA1AF, #2C3E50);
+        .btn-buscar {
+            padding: 1rem 2rem;
+            background: linear-gradient(to right, #e74c3c, #c0392b);
             color: white;
             border: none;
             border-radius: 30px;
             font-weight: 600;
-            letter-spacing: 0.5px;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
             text-decoration: none;
-            text-align: center;
         }
 
-        .auth-button:hover {
-            background: linear-gradient(to right, #2C3E50, #4CA1AF);
-            box-shadow: 0 8px 25px rgba(44, 62, 80, 0.2);
+        .btn-buscar:hover {
             transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
         }
 
-        /* Footer */
-        .auth-footer {
-            margin-top: 20px;
-            font-size: 14px;
-        }
-
-        .auth-footer a {
-            color: #4CA1AF;
-            text-decoration: none;
-        }
-
-        .auth-footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Modal */
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
+        .imagen-centrada {
             width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 999;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border: 5px solid white;
         }
 
-        .modal-content {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 16px;
-            width: 90%;
-            max-width: 400px;
+        .imagen-centrada:hover {
+            transform: scale(1.02);
+        }
+
+        .porcion {
             text-align: center;
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            margin: 1rem 0;
+            font-weight: 500;
+        }
+
+        .seccion.nutricion {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-top: 2rem;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .seccion.nutricion h2 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
             position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .seccion.nutricion h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            -moz-transform: translateX(-50%);
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #e74c3c, #3498db);
+        }
+
+        .valores-nutricionales {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .valor-nutricional {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .valor-nutricional:hover {
+            transform: translateY(-5px);
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
 
-        .modal-content h2 {
-            color: #2c3e50;
-            margin-bottom: 10px;
+        .cantidad {
+            font-size: 2.2rem;
+            color: #e74c3c;
+            margin-bottom: 0.5rem;
         }
 
-        .modal-content p {
+        .nutriente {
+            font-size: 1.1rem;
             color: #7f8c8d;
-            margin-bottom: 20px;
+            font-weight: 500;
         }
 
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 14px;
-            font-size: 22px;
-            cursor: pointer;
-            color: #888;
+        .tabla-porcion table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 2rem 0;
+            background: rgb(255, 250, 250);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
-        .close-btn:hover {
-            color: #000;
+        .tabla-porcion th,
+        .tabla-porcion td {
+            padding: 1rem;
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
-        .forgot-password {
+        .tabla-porcion tr:last-child td {
+            border-bottom: none;
+        }
+
+        .tabla-porcion td:first-child {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .tabla-porcion td:last-child {
+            font-weight: 700;
+            color: #e74c3c;
+        }
+
+        .registro-alimento p {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            font-weight: 500;
+            margin: 2rem 0;
+            position: relative;
             display: inline-block;
-            text-align: right;
-            width: auto;
-            font-size: 0.8em;
-            color: #3498db;
-            text-decoration: none;
-            margin-left: auto;
-            padding: 0.2em 0;
-            transition: color 0.3s ease;
+            text-align: center;
         }
 
-        .forgot-password:hover {
-            color: #3498db;
-            text-decoration: underline;
+        .registro-alimento p::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, #e74c3c, #3498db);
+        }
+
+        .botones-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .btn-volver,
+        .btn-registrar {
+            border-radius: 30px;
+            padding: 1rem 2rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3);
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .btn-volver {
+            background: linear-gradient(to right, #4ca1af, #2c3e50);
+        }
+
+        .btn-volver:hover {
+            background: linear-gradient(to right, #2c3e50, #4ca1af);
+            -moz-transform: translateY(-3px);
+            -webkit-transform: translateY(-3px);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(44, 62, 80, 0.4);
+        }
+
+        .btn-registrar {
+            background: linear-gradient(to right, #2c3e50, #4ca1af);
+        }
+
+        .btn-registrar:hover {
+            background: linear-gradient(to right, #4ca1af, #2c3e50);
+            -moz-transform: translateY(-3px);
+            -webkit-transform: translateY(-3px);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(44, 62, 80, 0.4);
         }
     </style>
 </head>
 
-<body>
-<div class="auth-container">
-    <div class="auth-card">
-        <h1 class="auth-title">Iniciar Sesión</h1>
+<h:body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <h1 class="auth-title">Iniciar Sesión</h1>
 
-        <form class="auth-form" id="loginForm" action="#" method="post">
-            <div class="form-group">
-                <label for="email">Correo electrónico</label>
-                <input type="email" id="email" name="email" required="required" />
+            <h:form styleClass="auth-form">
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <h:inputText id="email" value="#{loginBean.correo}" required="true"
+                                 styleClass="form-control" style="width:100%" />
+                </div>
+
+                <div class="form-group password-field-group">
+                    <label for="password">Contraseña</label>
+                    <h:inputSecret id="password" value="#{loginBean.clave}" required="true"
+                                   styleClass="form-control" style="width:100%" />
+                    <h:outputLink value="forgot-password.xhtml" styleClass="forgot-password">
+                        ¿Olvidaste tu contraseña?
+                    </h:outputLink>
+                </div>
+
+                <h:commandButton value="Ingresar" action="#{loginBean.login}"
+                                 styleClass="auth-button" />
+            </h:form>
+
+            <div class="auth-footer">
+                <p>
+                    ¿No tienes una cuenta?
+                    <h:outputLink value="registro.xhtml">Regístrate aquí</h:outputLink>
+                </p>
             </div>
-
-            <div class="form-group password-field-group">
-                <label for="password">Contraseña</label>
-                <input type="password" id="password" name="password" required="required" />
-                <a href="forgot-password.html" class="forgot-password">¿Olvidaste tu contraseña?</a>
-            </div>
-
-            <!-- Cambié el <a> por un botón submit para que sea semántico y válido -->
-            <button type="submit" class="auth-button">Ingresar</button>
-        </form>
-
-        <div class="auth-footer">
-            <p>
-                ¿No tienes una cuenta? <a href="registro.html">Regístrate aquí</a>
-            </p>
         </div>
     </div>
-</div>
-
-<script type="text/javascript">
-    // <![CDATA[
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        // Aquí iría la lógica de autenticación (por ejemplo, con Fetch API a un backend)
-        // Por ahora, solo redirige:
-        window.location.href = "home.html";
-    });
-    // ]]>
-</script>
-</body>
+</h:body>
 </html>

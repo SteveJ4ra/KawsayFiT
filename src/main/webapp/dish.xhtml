@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html
-        PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xml:lang="es" lang="es">
 <head>
     <title>Plato de Comida</title>
     <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
@@ -257,93 +258,72 @@
     </style>
 </head>
 
-<body>
-<div class="container">
-    <main>
-        <div id="detalle-receta">
+<h:body>
+    <div class="container">
+        <main>
+            <div id="detalle-receta">
+                <h:form>
+                    <h:inputText value="#{recetaBean.busqueda}" styleClass="input-busqueda"
+                                 placeholder="Buscar recetas..." />
+                    <h:commandButton value="Buscar" action="#{recetaBean.buscar}"
+                                     styleClass="btn-buscar" />
+                </h:form>
 
-            <input type="text" class="input-busqueda" placeholder="Buscar recetas..." />
-            <a href="home.html" class="btn-buscar">Buscar</a>
-            <!--Aqui va a ir la logica para cuando el usuario presione el boton de buscar, se busque las comidas existentes que hay
-            si no hay ninguna comida existente que le aparezca otra vista en la que diga que no se encontro la comida buscada-->
-            <h1 id="titulo-receta" class="titulo-receta">Ceviche de Camaron</h1>
+                <h1 id="titulo-receta" class="titulo-receta">
+                    #{recetaBean.tituloReceta}
+                </h1>
 
-            <div class="seccion nutricion">
-                <img id="imagen-receta" src="images/CevicheCamaron.png" alt="Ceviche de Camarón"
-                     class="imagen-centrada" />
-                <!--Aqui vamos a actualizar la imagen de la comida que se va a ingresar -->
-                <p class="porcion">1 porción (456 g)</p>
-                <!--Aqui debe de ir la cantidad de porcion seleccionada esto es dependiendo de la comida ingresada por el usuario-->
-                <h2>Informacion Nutricional</h2>
+                <div class="seccion nutricion">
+                    <h:graphicImage name="images/#{recetaBean.imagen}" alt="Imagen de comida"
+                                    styleClass="imagen-centrada" />
 
-                <div class="valores-nutricionales">
-                    <div class="valor-nutricional">
-                        <span class="cantidad" id="calorias">208</span>
-                        <!--Aqui van las calorias de cada comida-->
-                        <span class="nutriente"> &#x1F525; Calorias</span>
+                    <p class="porcion">
+                        #{recetaBean.porcionTexto}
+                    </p>
+
+                    <h2>Informacion Nutricional</h2>
+
+                    <div class="valores-nutricionales">
+                        <div class="valor-nutricional">
+                            <span class="cantidad">#{recetaBean.calorias}</span>
+                            <span class="nutriente"> 🔥 Calorías</span>
+                        </div>
+                        <div class="valor-nutricional">
+                            <span class="cantidad">#{recetaBean.proteinas}</span>
+                            <span class="nutriente"> 🍗 Proteínas</span>
+                        </div>
+                        <div class="valor-nutricional">
+                            <span class="cantidad">#{recetaBean.carbohidratos}</span>
+                            <span class="nutriente"> 🥔 Carbohidratos</span>
+                        </div>
                     </div>
-                    <div class="valor-nutricional">
-                        <span class="cantidad" id="proteinas">34.0 g</span>
-                        <!--Aqui van las proteinas de cada comida-->
 
-                        <span class="nutriente"> &#x1F357; Proteinas</span>
-                    </div>
-                    <div class="valor-nutricional">
-                        <span class="cantidad" id="carbohidratos">19.0 g</span>
-                        <!--Aqui van los carbohidratos de cada comida-->
+                    <div class="tabla-porcion">
+                        <table>
+                            <ui:repeat value="#{recetaBean.ingredientes}" var="ing">
+                                <tr>
+                                    <td>#{ing.nombre}</td>
+                                    <td>#{ing.cantidad} g</td>
+                                </tr>
+                            </ui:repeat>
+                        </table>
 
-                        <span class="nutriente">&#x1F954; Carbohidratos</span>
+                        <div class="registro-alimento">
+                            <p>Registrar este alimento en KawsayFit</p>
+                        </div>
+
+                        <h:form>
+                            <div class="botones-container">
+                                <h:commandButton value="Volver" action="home?faces-redirect=true"
+                                                 styleClass="btn-volver" />
+                                <h:commandButton value="Registrar" action="#{recetaBean.registrar}"
+                                                 styleClass="btn-registrar" />
+                            </div>
+                        </h:form>
                     </div>
                 </div>
-
-                <div class="tabla-porcion">
-                    <table>
-                        <tr>
-                            <!--Aqui van a ir todos los ingredientes de la comida-->
-                            <td>Camarones</td>
-                            <!--Ingrediente-->
-                            <td>160 g</td>
-                            <!--Gramos de el alimento-->
-                        </tr>
-                        <tr>
-                            <td>Zumo de limon</td>
-                            <!--Ingrediente-->
-                            <td>90 g</td>
-                            <!--Gramos de el alimento-->
-                        </tr>
-                        <tr>
-                            <td>Cebolla</td>
-                            <!--Ingrediente-->
-                            <td>75 g</td>
-                            <!--Gramos de el alimento-->
-                        </tr>
-                        <tr>
-                            <td>Tomate</td>
-                            <!--Ingrediente-->
-                            <td>65 g</td>
-                            <!--Gramos de el alimento-->
-                        </tr>
-                        <tr>
-                            <td>Cilantro</td>
-                            <!--Ingrediente-->
-                            <td>6 g</td>
-                            <!--Gramos de el alimento-->
-                        </tr>
-                    </table>
-                    <div class="registro-alimento">
-                        <p>Registrar este alimento en KawsayFit</p>
-                    </div>
-
-                    <div class="botones-container">
-                        <a href="home.html" class="btn-volver"> Volver</a>
-                        <a href="home.html" class="btn-registrar"> Registrar</a>
-                    </div>
-
-                </div>
-
             </div>
-        </div>
-    </main>
-</div>
-</body>
+        </main>
+    </div>
+</h:body>
 </html>
