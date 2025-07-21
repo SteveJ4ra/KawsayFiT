@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html
-        PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
-<head>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xml:lang="es" lang="es">
+<h:head>
     <title>¡Todo listo!</title>
     <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -118,37 +117,41 @@
             transform: translateY(-2px);
         }
     </style>
-</head>
-<body>
-<div class="container results-container">
-    <h1>¡Todo listo!</h1>
+</h:head>
+<h:body>
+    <div class="container results-container">
+        <h1>¡Todo listo!</h1>
 
-    <div class="goal-badge">2</div>
-    <p class="goal-text">Con este objetivo nutricional</p>
+        <div class="goal-badge">
+            <h:outputText value="#{resultadosBean.objetivoNumero}" />
+        </div>
+        <p class="goal-text">Con este objetivo nutricional</p>
 
-    <div class="macros-container">
-        <div class="macro-item">
-            <h3>Proteínas</h3>
-            <p>126g</p>
+        <div class="macros-container">
+            <div class="macro-item">
+                <h3>Proteínas</h3>
+                <p><h:outputText value="#{resultadosBean.proteinas}" />g</p>
+            </div>
+
+            <div class="macro-item">
+                <h3>Carbs</h3>
+                <p><h:outputText value="#{resultadosBean.carbs}" />g</p>
+            </div>
+
+            <div class="macro-item">
+                <h3>Grasas</h3>
+                <p><h:outputText value="#{resultadosBean.grasas}" />g</p>
+            </div>
         </div>
 
-        <div class="macro-item">
-            <h3>Carbs</h3>
-            <p>352g</p>
+        <div class="calories-container">
+            <h2><h:outputText value="#{resultadosBean.calorias}" /> kcal</h2>
+            <p class="calories-note">
+                <h:outputText value="#{resultadosBean.notaCalorias}" />
+            </p>
         </div>
-
-        <div class="macro-item">
-            <h3>Grasas</h3>
-            <p>91g</p>
-        </div>
+        <h:commandButton value="Empecemos!" action="#{objetivoBean.crearPlan}"
+                         styleClass="start-button" />
     </div>
-
-    <div class="calories-container">
-        <h2>2732 kcal</h2>
-        <p class="calories-note">2,732 kcal es el punto medio de tu rango de calorías recomendado de 2,459 a 3,005 kcal.</p>
-    </div>
-
-    <a href="home.html" class="start-button">Empecemos!</a>
-</div>
-</body>
+</h:body>
 </html>

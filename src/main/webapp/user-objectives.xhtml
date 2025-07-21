@@ -1,63 +1,102 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
-<head>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xml:lang="es" lang="es">
+<h:head>
+    <title>Personaliza tu Objetivo</title>
     <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Personaliza tu Objetivo</title>
     <style type="text/css">
-        /* ... CSS completo ... (resumido por brevedad) ... */
-        .container {
-            max-width: 480px;
-            margin: 40px auto;
-            padding: 25px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background: #f7f9fb;
             color: #2c3e50;
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
+
+        .container {
+            background: #ffffff;
+            padding: 3rem;
+            border-radius: 18px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
         h1 {
             font-size: 28px;
             margin-bottom: 8px;
             color: #2c3e50;
-            text-align: center;
         }
-        .subtitle {
-            font-size: 14px;
-            color: #7f8c8d;
-            text-align: center;
-            margin-bottom: 30px;
-            line-height: 1.4;
+
+        .checkbox-options {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
-        .input-group {
-            margin-bottom: 25px;
-        }
-        .input-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
+
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+            font-weight: 600;
             color: #2c3e50;
-            font-size: 15px;
         }
-        input[type="date"],
-        .form-control {
-            width: 100%;
-            padding: 14px;
-            background-color: white;
-            border-radius: 10px;
-            border: 1px solid #e0e3e7;
-            font-size: 15px;
-            transition: border-color 0.3s;
+
+        .checkbox-option input[type="radio"] {
+            opacity: 0;
+            position: absolute;
         }
-        input[type="date"]:focus,
-        .form-control:focus {
-            border-color: #3498db;
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+
+        .checkmark {
+            width: 22px;
+            height: 22px;
+            border: 2px solid #b0c4de;
+            border-radius: 6px;
+            margin-right: 10px;
+            background-color: #fff;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
         }
-        .form-select { /* ...continúa... */ }
+
+        .checkbox-option input[type="radio"]:checked + .checkmark {
+            background-color: #4da8da;
+            border-color: #4da8da;
+        }
+
+        .checkbox-option input[type="radio"]:checked + .checkmark::after {
+            content: "";
+            position: absolute;
+            left: 6px;
+            top: 2px;
+            width: 6px;
+            height: 12px;
+            border: solid #fff;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        .text {
+            font-size: 1rem;
+        }
+
+        .description {
+            font-size: 0.95rem;
+            color: #7f8c8d;
+            margin-top: 10px;
+            margin-bottom: 2.5rem;
+        }
+
         .next-button {
             display: inline-block;
             padding: 12px 28px;
@@ -70,88 +109,67 @@
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
+            width: -moz-fit-content;
             width: fit-content;
             margin: 0 auto;
         }
+
         .next-button:hover {
             background: linear-gradient(to right, #2C3E50, #4CA1AF);
             box-shadow: 0 8px 25px rgba(44, 62, 80, 0.2);
             transform: translateY(-2px);
         }
-        /* ... Agrega aquí el resto del CSS ... */
     </style>
-</head>
-<body>
-<div class="container">
-    <h1>Personaliza tu objetivo</h1>
-    <p class="subtitle">Último paso para conocer tus calorías y macronutrientes</p>
+</h:head>
+<h:body>
+    <div class="container">
+        <h1>Personaliza tu objetivo</h1>
+        <p class="subtitle">Último paso para conocer tus calorías y macronutrientes</p>
 
-    <div class="input-group">
-        <label for="birthdate">Fecha de nacimiento</label>
-        <input type="date" id="birthdate" class="form-control" />
+        <h:form>
+            <div class="input-group">
+                <label for="birthdate">Fecha de nacimiento</label>
+                <h:inputText id="birthdate" value="#{objetivoBean.birthdate}"
+                             type="date" styleClass="form-control" />
+            </div>
+
+            <div class="input-group">
+                <label for="gender">Género</label>
+                <h:selectOneMenu id="gender" value="#{objetivoBean.gender}" styleClass="form-select">
+                    <f:selectItem itemLabel="Seleccionar" itemValue="" />
+                    <f:selectItem itemLabel="Masculino" itemValue="masculino" />
+                    <f:selectItem itemLabel="Femenino" itemValue="femenino" />
+                    <f:selectItem itemLabel="Prefiero no decirlo" itemValue="otro" />
+                </h:selectOneMenu>
+            </div>
+
+            <div class="input-group">
+                <label for="peso-actual">Peso actual</label>
+                <h:inputText id="peso-actual" value="#{objetivoBean.pesoActual}"
+                             styleClass="input-value" />
+                <span class="unit">kg</span>
+            </div>
+
+            <div class="input-group">
+                <label for="peso-objetivo">Peso objetivo</label>
+                <h:selectOneMenu id="peso-objetivo" value="#{objetivoBean.pesoObjetivo}" styleClass="form-select">
+                    <f:selectItem itemLabel="Seleccionar" itemValue="" />
+                    <f:selectItems value="#{objetivoBean.listaPesos}" />
+                </h:selectOneMenu>
+            </div>
+
+            <div class="input-group">
+                <label>Velocidad</label>
+                <h:selectOneRadio value="#{objetivoBean.velocidad}" layout="pageDirection">
+                    <f:selectItem itemLabel="Lento" itemValue="lento" />
+                    <f:selectItem itemLabel="Moderado" itemValue="moderado" />
+                    <f:selectItem itemLabel="Rápido" itemValue="rapido" />
+                </h:selectOneRadio>
+            </div>
+
+            <h:commandButton value="Crear mi Plan" action="#{objetivoBean.crearPlan}"
+                             styleClass="next-button" />
+        </h:form>
     </div>
-
-    <div class="input-group">
-        <label for="gender">Género</label>
-        <select id="gender" class="form-select">
-            <option value="">Seleccionar</option>
-            <option value="masculino">Masculino</option>
-            <option value="femenino">Femenino</option>
-            <option value="otro">Prefiero no decirlo</option>
-        </select>
-    </div>
-
-    <div class="input-group">
-        <label for="peso-actual">Peso actual</label>
-        <div class="input-with-unit">
-            <input type="number" id="peso-actual" placeholder="Ingresa tu peso actual" class="input-value" pattern="[0-9]*" inputmode="numeric" />
-            <span class="unit">kg</span>
-        </div>
-    </div>
-
-    <div class="input-group">
-        <label for="peso-objetivo">Peso objetivo</label>
-        <select id="peso-objetivo" class="form-select">
-            <option>Seleccionar</option>
-            <option>40 kg</option>
-            <option>45 kg</option>
-            <option>50 kg</option>
-            <option>55 kg</option>
-            <option>60 kg</option>
-            <option>65 kg</option>
-            <option>70 kg</option>
-            <option>75 kg</option>
-            <option>80 kg</option>
-            <option>85 kg</option>
-            <option>90 kg</option>
-            <option>95 kg</option>
-            <option>100 kg</option>
-            <option>105 kg</option>
-            <option>110 kg</option>
-            <option>115 kg</option>
-            <option>120 kg</option>
-        </select>
-    </div>
-
-    <div class="input-group">
-        <label>Velocidad</label>
-        <div class="speed-options">
-            <label class="speed-option">
-                <input type="radio" name="speed" value="lento" class="speed-input" />
-                <span class="speed-label">Lento</span>
-            </label>
-            <label class="speed-option">
-                <input type="radio" name="speed" value="moderado" class="speed-input" />
-                <span class="speed-label">Moderado</span>
-            </label>
-            <label class="speed-option">
-                <input type="radio" name="speed" value="rapido" class="speed-input" checked="checked" />
-                <span class="speed-label">Rápido</span>
-            </label>
-        </div>
-    </div>
-
-    <a href="resultados.html" class="next-button">Crear mi Plan</a>
-</div>
-</body>
+</h:body>
 </html>

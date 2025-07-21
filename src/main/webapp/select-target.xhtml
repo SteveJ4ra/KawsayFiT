@@ -1,140 +1,146 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html
-        PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
-<head>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xml:lang="es" lang="es">
+<h:head>
     <title>Selecciona tu Objetivo</title>
     <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style type="text/css">
-        .container {
-            max-width: 480px;
-            margin: 40px auto;
-            padding: 25px 20px;
-            font-family: 'Montserrat', sans-serif;
-            color: #2c3e50;
-            text-align: center;
-            background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-        }
+</h:head>
+<style type="text/css">
+    .container {
+        max-width: 480px;
+        margin: 40px auto;
+        padding: 25px 20px;
+        font-family: 'Montserrat', sans-serif;
+        color: #2c3e50;
+        text-align: center;
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
 
-        h1 {
-            font-size: 28px;
-            margin-bottom: 8px;
-            color: #2c3e50;
-        }
+    h1 {
+        font-size: 28px;
+        margin-bottom: 8px;
+        color: #2c3e50;
+    }
 
-        .subtitle {
-            font-size: 14px;
-            color: #7f8c8d;
-            margin-bottom: 25px;
-        }
+    .subtitle {
+        font-size: 14px;
+        color: #7f8c8d;
+        margin-bottom: 25px;
+    }
 
-        .options-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
+    .options-container {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 30px;
+    }
 
-        .card-selector {
-            display: flex;
-            flex-direction: column;
-        }
+    .card-selector {
+        display: flex;
+        flex-direction: column;
+    }
 
-        .option-card {
-            padding: 0;
-            border-radius: 16px;
-            background-color: #f8f9fa;
-            border: 2px solid #e9ecef;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            overflow: hidden;
-            display: block;
-            text-align: left;
-        }
+    .option-card {
+        padding: 0;
+        border-radius: 16px;
+        background-color: #f8f9fa;
+        border: 2px solid #e9ecef;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        overflow: hidden;
+        display: block;
+        text-align: left;
+    }
 
-        .card-content {
-            padding: 20px;
-        }
+    .card-content {
+        padding: 20px;
+    }
 
-        .radio-input {
-            position: absolute;
-            opacity: 0;
-        }
+    .radio-input {
+        position: absolute;
+        opacity: 0;
+    }
 
-        .option-card:hover {
-            background-color: #eef6fb;
-        }
+    .option-card:hover {
+        background-color: #eef6fb;
+    }
 
-        /* Este selector :has no es compatible con XHTML ni CSS en la mayoría de navegadores, lo omitimos o reemplazamos con JS */
-        .option-card:focus-within {
-            border-color: #4CA1AF;
-            background-color: #e8f4fc;
-            box-shadow: 0 4px 15px rgba(76, 161, 175, 0.4);
-        }
+    /* Este selector :has no es compatible con XHTML ni CSS en la mayoría de navegadores, lo omitimos o reemplazamos con JS */
+    .option-card:focus-within {
+        border-color: #4CA1AF;
+        background-color: #e8f4fc;
+        box-shadow: 0 4px 15px rgba(76, 161, 175, 0.4);
+    }
 
-        .next-button {
-            display: inline-block;
-            padding: 12px 28px;
-            background: linear-gradient(to right, #4CA1AF, #2C3E50);
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            width: fit-content;
-            margin: 0 auto;
-        }
+    .next-button {
+        display: inline-block;
+        padding: 12px 28px;
+        background: linear-gradient(to right, #4CA1AF, #2C3E50);
+        color: white;
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        width: fit-content;
+        margin: 0 auto;
+    }
 
-        .next-button:hover {
-            background: linear-gradient(to right, #2C3E50, #4CA1AF);
-            box-shadow: 0 8px 25px rgba(44, 62, 80, 0.2);
-            -webkit-transform: translateY(-2px);
-            -moz-transform: translateY(-2px);
-            transform: translateY(-2px);
-        }
-    </style>
-</head>
-<body>
-<div class="container">
-    <h1>¿Cuál es tu objetivo?</h1>
-    <p class="subtitle">Calcularemos tus calorías necesarias para lograrlo</p>
+    .next-button:hover {
+        background: linear-gradient(to right, #2C3E50, #4CA1AF);
+        box-shadow: 0 8px 25px rgba(44, 62, 80, 0.2);
+        -webkit-transform: translateY(-2px);
+        -moz-transform: translateY(-2px);
+        transform: translateY(-2px);
+    }
+</style>
+<h:body>
+    <div class="container">
+        <h1>¿Cuál es tu objetivo?</h1>
+        <p class="subtitle">Calcularemos tus calorías necesarias para lograrlo</p>
 
-    <form class="card-selector" action="#" method="get">
-        <div class="options-container">
-            <label class="option-card">
-                <input type="radio" name="goal" value="perder-grasa" class="radio-input" />
-                <div class="card-content">
-                    <h3>Perder Grasa</h3>
-                    <p>Optimiza la pérdida de peso y conserva tu masa muscular</p>
-                </div>
-            </label>
+        <h:form styleClass="card-selector">
+            <div class="options-container">
+                <label class="option-card">
+                    <h:selectOneRadio name="goal" value="perder-grasa" layout="pageDirection" styleClass="radio-input">
+                        <f:selectItem itemValue="perder-grasa" itemLabel="" />
+                    </h:selectOneRadio>
+                    <div class="card-content">
+                        <h3>Perder Grasa</h3>
+                        <p>Optimiza la pérdida de peso y conserva tu masa muscular</p>
+                    </div>
+                </label>
 
-            <label class="option-card">
-                <input type="radio" name="goal" value="ganar-musculo" class="radio-input" checked="checked" />
-                <div class="card-content">
-                    <h3>Ganar Músculo</h3>
-                    <p>Incrementa tu peso y hazte más fuerte</p>
-                </div>
-            </label>
+                <label class="option-card">
+                    <h:selectOneRadio name="goal" value="ganar-musculo" layout="pageDirection" styleClass="radio-input">
+                        <f:selectItem itemValue="ganar-musculo" itemLabel="" />
+                    </h:selectOneRadio>
+                    <div class="card-content">
+                        <h3>Ganar Músculo</h3>
+                        <p>Incrementa tu peso y hazte más fuerte</p>
+                    </div>
+                </label>
 
-            <label class="option-card">
-                <input type="radio" name="goal" value="mantener-peso" class="radio-input" />
-                <div class="card-content">
-                    <h3>Mantener Peso</h3>
-                    <p>Mantén tu peso estable y busca la recomposición corporal</p>
-                </div>
-            </label>
-        </div>
+                <label class="option-card">
+                    <h:selectOneRadio name="goal" value="mantener-peso" styleClass="radio-input">
+                        <f:selectItem itemValue="mantener-peso" itemLabel="" />
+                    </h:selectOneRadio>
+                    <div class="card-content">
+                        <h3>Mantener Peso</h3>
+                        <p>Mantén tu peso estable y busca la recomposición corporal</p>
+                    </div>
+                </label>
+            </div>
 
-        <a href="nivel-actividad.html" class="next-button">Continuar</a>
-    </form>
-</div>
-</body>
+            <h:commandButton value="Continuar" action="#{objetivoBean.irANivelActividad}" styleClass="next-button"/>
+        </h:form>
+    </div>
+</h:body>
 </html>
