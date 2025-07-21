@@ -204,7 +204,9 @@
         </div>
 
         <p class="note">No te preocupes, luego lo puedes cambiar</p>
-        <a href="strength-training.xhtml" class="next-button">Continuar</a>
+        <h:commandButton value="Continuar"
+                         action="#{activityBean.processSelection}"
+                         styleClass="next-button"/>
     </h:form>
 </div>
 </body>

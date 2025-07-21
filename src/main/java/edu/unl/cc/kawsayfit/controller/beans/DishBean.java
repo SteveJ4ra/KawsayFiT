@@ -18,8 +18,8 @@ public class DishBean implements Serializable {
         //TODO
     }
 
-    public String register() {
-        return "registroConfirmado?faces-redirect=true";
+    public String registerFood() { //Antes de regresar cambiar valores segun la nutricion
+        return "profile.xhtml?faces-redirect=true";
     }
 
     Dish dish = new Dish();
