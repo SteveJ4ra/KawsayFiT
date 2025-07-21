@@ -21,7 +21,7 @@
         <war-plugin.version>3.4.0</war-plugin.version>
         <liberty-plugin.version>3.10.3</liberty-plugin.version>
 
-        <server.config.dir>${project.basedir}/src/liberty/config</server.config.dir>
+        <!--<server.config.dir>${project.basedir}/src/liberty/config</server.config.dir>-->
 
         <!-- Configuración para el datasource -->
         <driver.jdbc.dir>${server.config.dir}/lib/global</driver.jdbc.dir>
@@ -55,7 +55,7 @@
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
-            <version>8.3.0</version>
+            <version>9.3.0</version>
         </dependency>
     </dependencies>
 

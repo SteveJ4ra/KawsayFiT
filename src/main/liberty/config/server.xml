@@ -21,11 +21,11 @@
     <dataSource id="kawsayfitDS" jndiName="jdbc/kawsayfitDS">
         <jdbcDriver id="mysql-driver" libraryRef="MySqlJDBCLib" />
         <properties
-                serverName="${DB_SERVER_NAME}"
-                portNumber="${DB_PORT_NUMBER}"
-                databaseName="${DB_NAME}"
-                user="${DB_USER}"
-                password="${DB_PASSWORD}"
+                serverName="${db.server.name}"
+                portNumber="${db.port.number}"
+                databaseName="kawsayfit"
+                user="kawsayfit_user"
+                password="kawsayfit123"
                 useSSL="false"
                 serverTimezone="UTC"
                 allowPublicKeyRetrieval="true" />
@@ -33,6 +33,6 @@
 
     <!-- Driver JDBC MySQL -->
     <library id="MySqlJDBCLib">
-        <fileset dir="${DRIVER_JDBC_DIR}" includes="mysql-connector-j-*.jar" />
+        <fileset dir="${driver.jdbc.dir}" includes="mysql-connector-j-*.jar" />
     </library>
 </server>

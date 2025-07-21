@@ -12,7 +12,7 @@ import java.util.List;
 @ApplicationScoped
 public class DailyLogRepository {
 
-    @PersistenceContext(unitName = "KawsayFitPU")
+    @PersistenceContext
     private EntityManager em;
 
     public DailyLog save(DailyLog log) {
