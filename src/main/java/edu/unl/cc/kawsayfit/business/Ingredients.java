@@ -1,10 +1,10 @@
 package edu.unl.cc.kawsayfit.business;
 
-public class Ingresients {
+public class Ingredients {
     private String name;
     private double amount;
 
-    public Ingresients(String name, double amount) {
+    public Ingredients(String name, double amount) {
         this.name = name;
         this.amount = amount;
     }

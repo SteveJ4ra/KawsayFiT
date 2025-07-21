@@ -1,6 +1,6 @@
 package edu.unl.cc.kawsayfit.controller.beans;
 
-import edu.unl.cc.kawsayfit.business.Ingresients;
+import edu.unl.cc.kawsayfit.business.Ingredients;
 import edu.unl.cc.kawsayfit.model.Dish;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;
@@ -27,7 +27,7 @@ public class DishBean implements Serializable {
         return dish;
     }
 
-    public List<Ingresients> getIngredients() {
+    public List<Ingredients> getIngredients() {
         if (dish.getIngredients() == null || dish.getIngredients().isEmpty()) {
             return Collections.emptyList();
         }
@@ -36,9 +36,9 @@ public class DishBean implements Serializable {
                 .map(str -> {
                     String[] parts = str.split(":");
                     if (parts.length == 2) {
-                        return new Ingresients(parts[0].trim(), Double.parseDouble(parts[1].trim()));
+                        return new Ingredients(parts[0].trim(), Double.parseDouble(parts[1].trim()));
                     } else {
-                        return new Ingresients(str.trim(), 0);
+                        return new Ingredients(str.trim(), 0);
                     }
                 })
                 .collect(Collectors.toList());
