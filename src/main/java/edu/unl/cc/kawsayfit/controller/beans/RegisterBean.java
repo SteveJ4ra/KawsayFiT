@@ -3,14 +3,16 @@ package edu.unl.cc.kawsayfit.controller.beans;
 import edu.unl.cc.kawsayfit.model.User;
 import edu.unl.cc.kawsayfit.service.UserService;
 import jakarta.annotation.PostConstruct;
-import jakarta.enterprise.context.RequestScoped;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 import java.io.Serializable;
 
 @Named
-@RequestScoped
+@ViewScoped
 public class RegisterBean implements Serializable {
 
     private String email;
@@ -31,21 +33,27 @@ public class RegisterBean implements Serializable {
 
     public String register() {
         if (!password.equals(confirmPassword)) {
-            message = "Las contraseñas no coinciden.";
+            FacesContext.getCurrentInstance().addMessage(null,
+            new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error", "Las contraseñas no coinciden"));
             return null;
         }
 
         User user = new User();
         user.setEmail(email);
         user.setUsername(username);
-        user.setPasswordHash(password); // Usar Encryptor manager después
+        user.setPasswordHash(password);
 
-        userService.register(user);
-        registered = true;
-        message = "Usuario registrado con éxito.";
-        clearForm();
-
-        return "select-target.xhtml?faces-redirect=true";
+        try {
+            userService.register(user);
+            FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage(FacesMessage.SEVERITY_INFO, "Éxito", "Usuario registrado con éxito"));
+            clearForm();
+            return "select-target.xhtml?faces-redirect=true";
+        } catch (RuntimeException e) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", e.getMessage()));
+            return null;
+        }
     }
 
     private void clearForm() {

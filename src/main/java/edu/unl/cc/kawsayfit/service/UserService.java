@@ -6,6 +6,9 @@ import edu.unl.cc.kawsayfit.model.enums.PhysicalActivityLevel;
 import edu.unl.cc.kawsayfit.repository.UserRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.persistence.PersistenceException;
+import jakarta.transaction.Transactional;
+
 import java.time.LocalDate;
 import java.util.Optional;
 
@@ -20,9 +23,14 @@ public class UserService {
                 .filter(user -> user.getPasswordHash().equals(rawPassword)); // Simplificado. Usa hashing en producción.
     }
 
+    @Transactional
     public User register(User user) {
         user.setRegistrationDate(LocalDate.now());
-        return userRepository.save(user);
+        try {
+            return userRepository.save(user);
+        }catch (PersistenceException e) {
+            throw new RuntimeException("El correo ya se encuentra registrado", e);
+        }
     }
 
     public User update(User user) {
