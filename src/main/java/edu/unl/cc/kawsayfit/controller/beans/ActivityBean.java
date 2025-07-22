@@ -1,7 +1,9 @@
 package edu.unl.cc.kawsayfit.controller.beans;
 
+import edu.unl.cc.kawsayfit.model.training.*;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;
+
 import java.io.Serializable;
 
 @Named("activityBean")
@@ -9,6 +11,7 @@ import java.io.Serializable;
 public class ActivityBean implements Serializable {
 
     private String activityLevel = "";
+    private Training entrenamiento;
 
     public String getActivityLevel() {
         return activityLevel;
@@ -18,28 +21,31 @@ public class ActivityBean implements Serializable {
         this.activityLevel = activityLevel;
     }
 
+    public Training getTraining() {
+        return entrenamiento;
+    }
+
     public String processSelection() {
         switch (activityLevel) {
             case "sedentario":
-                // entrenamiento = new EntrenamientoSedentario();
+                entrenamiento = new Sedentary();
                 break;
             case "ligeramente-activo":
-                // entrenamiento = new EntrenamientoLigero();
+                entrenamiento = new LightlyActive();
                 break;
             case "moderadamente-activo":
-                // entrenamiento = new EntrenamientoModerado();
+                entrenamiento = new ModeratelyActive();
                 break;
             case "muy-activo":
-                // entrenamiento = new EntrenamientoIntenso();
+                entrenamiento = new VeryActive();
                 break;
             case "atleta":
-                // entrenamiento = new EntrenamientoAvanzado();
+                entrenamiento = new ProfessionalAthlete();
                 break;
             default:
-                // Opcional: redirige a una vista de error o alerta
+                entrenamiento = null;
                 break;
         }
-
         return "strength-training.xhtml?faces-redirect=true";
     }
 }

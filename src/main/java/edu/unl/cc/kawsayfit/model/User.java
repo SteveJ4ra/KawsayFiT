@@ -41,6 +41,7 @@ public class User implements Serializable {
     private double height; // Centímetros
 
     private double targetWeight;
+
     private double imc;
 
     private double calculate () {
