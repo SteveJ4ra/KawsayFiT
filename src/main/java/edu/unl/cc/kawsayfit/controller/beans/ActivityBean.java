@@ -1,9 +1,13 @@
 package edu.unl.cc.kawsayfit.controller.beans;
 
+import edu.unl.cc.kawsayfit.controller.UserSession;
+import edu.unl.cc.kawsayfit.model.User;
+import edu.unl.cc.kawsayfit.model.enums.PhysicalActivityLevel;
 import edu.unl.cc.kawsayfit.model.training.*;
+import edu.unl.cc.kawsayfit.service.UserService;
 import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
-
 import java.io.Serializable;
 
 @Named("activityBean")
@@ -11,7 +15,13 @@ import java.io.Serializable;
 public class ActivityBean implements Serializable {
 
     private String activityLevel = "";
-    private Training entrenamiento;
+    private Training trainType;
+
+    @Inject
+    private UserSession userSession;
+
+    @Inject
+    private UserService userService;
 
     public String getActivityLevel() {
         return activityLevel;
@@ -22,30 +32,43 @@ public class ActivityBean implements Serializable {
     }
 
     public Training getTraining() {
-        return entrenamiento;
+        return trainType;
     }
 
     public String processSelection() {
+        PhysicalActivityLevel levelEnum;
         switch (activityLevel) {
             case "sedentario":
-                entrenamiento = new Sedentary();
+                levelEnum = PhysicalActivityLevel.SEDENTARY;
+                trainType = new Sedentary();
                 break;
             case "ligeramente-activo":
-                entrenamiento = new LightlyActive();
+                levelEnum = PhysicalActivityLevel.LIGHTLY_ACTIVE;
+                trainType = new LightlyActive();
                 break;
             case "moderadamente-activo":
-                entrenamiento = new ModeratelyActive();
+                levelEnum = PhysicalActivityLevel.MODERATELY_ACTIVE;
+                trainType = new ModeratelyActive();
                 break;
             case "muy-activo":
-                entrenamiento = new VeryActive();
+                levelEnum = PhysicalActivityLevel.VERY_ACTIVE;
+                trainType = new VeryActive();
                 break;
             case "atleta":
-                entrenamiento = new ProfessionalAthlete();
+                levelEnum = PhysicalActivityLevel.ATHLETE;
+                trainType = new ProfessionalAthlete();
                 break;
             default:
-                entrenamiento = null;
+                levelEnum = null;
+                trainType = null;
                 break;
+        }
+
+        if (levelEnum != null) {
+            User user = userSession.getCurrentUser();
+            userService.updateActivityLevel(user, levelEnum);
         }
         return "strength-training.xhtml?faces-redirect=true";
     }
 }
+

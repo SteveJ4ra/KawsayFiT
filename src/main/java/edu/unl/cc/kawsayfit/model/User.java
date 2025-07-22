@@ -54,6 +54,7 @@ public class User implements Serializable {
     private Goal goal;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "physicalActivityLevel")
     private PhysicalActivityLevel physicalActivityLevel;
 
     private boolean strengthTraining;
