@@ -1,5 +1,6 @@
 package edu.unl.cc.kawsayfit.controller.beans;
 
+import edu.unl.cc.kawsayfit.controller.UserSession;
 import edu.unl.cc.kawsayfit.model.User;
 import edu.unl.cc.kawsayfit.service.UserService;
 import jakarta.annotation.PostConstruct;
@@ -24,6 +25,9 @@ public class RegisterBean implements Serializable {
     private boolean registered;
 
     @Inject
+    private UserSession userSession;
+
+    @Inject
     private UserService userService;
 
     @PostConstruct
@@ -45,6 +49,7 @@ public class RegisterBean implements Serializable {
 
         try {
             userService.register(user);
+            userSession.setLoggedUser(user);
             FacesContext.getCurrentInstance().addMessage(null,
                 new FacesMessage(FacesMessage.SEVERITY_INFO, "Éxito", "Usuario registrado con éxito"));
             clearForm();

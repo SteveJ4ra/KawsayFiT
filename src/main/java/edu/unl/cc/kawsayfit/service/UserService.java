@@ -37,7 +37,9 @@ public class UserService {
         return userRepository.update(user);
     }
 
+    @Transactional
     public void updateGoal(User user, Goal newGoal) {
+        System.out.println("Actualizando objetivo a: " + newGoal);
         user.setGoal(newGoal);
         userRepository.update(user);
     }

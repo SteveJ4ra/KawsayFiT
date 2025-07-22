@@ -25,26 +25,29 @@ public class GoalSelectionBean implements Serializable {
     @Inject
     private UserService userService;
 
-    public void saveGoal() {
+    // Guarda el objetivo y redirige a la siguiente vista
+    public String goToActivityLevel() {
         User user = userSession.getLoggedUser();
+
         if (user == null) {
             message = "Usuario no autenticado.";
-            return;
+            return null;
         }
 
         if (selectedGoal == null) {
             message = "Debes seleccionar un objetivo.";
-            return;
+            return null;
         }
 
         userService.updateGoal(user, selectedGoal);
         message = "Objetivo actualizado a: " + selectedGoal.name();
+
+        return "activity-level.xhtml?faces-redirect=true";
     }
 
     public List<Goal> getAvailableGoals() {
         return Arrays.asList(Goal.values());
     }
-
 
     public Goal getSelectedGoal() {
         return selectedGoal;
@@ -58,3 +61,4 @@ public class GoalSelectionBean implements Serializable {
         return message;
     }
 }
+
