@@ -8,124 +8,254 @@
     <link rel="icon" href="images/KawsayFit.png" type="image/png"/>
     <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
     <style type="text/css">
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Inter', sans-serif;
-            background: #f7f9fb;
-            color: #2c3e50;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+            color: #333;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            overflow: auto;
         }
 
         .container {
             background: #ffffff;
-            padding: 3rem;
-            border-radius: 18px;
-            max-width: 500px;
-            width: 100%;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+            padding: 2.5rem 3rem;
+            border-radius: 20px;
+            max-width: 550px;
+            width: 90%;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
             text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #e0e6ed;
+            margin: 20px 0;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 150px;
+            height: 150px;
+            background: rgba(77, 168, 218, 0.1);
+            border-radius: 50%;
+            filter: blur(40px);
+            z-index: 0;
+        }
+
+        .container::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 120px;
+            height: 120px;
+            background: rgba(76, 161, 175, 0.1);
+            border-radius: 50%;
+            filter: blur(30px);
+            z-index: 0;
         }
 
         h1 {
-            font-size: 28px;
-            margin-bottom: 8px;
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
             color: #2c3e50;
+            font-weight: 700;
         }
 
-        .checkbox-options {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
+        .subtitle {
+            font-size: 1.05rem;
+            color: #7f8c8d;
+            margin-bottom: 2.5rem;
+            font-weight: 400;
         }
 
-        .checkbox-option {
+        .input-group {
+            margin-bottom: 1.7rem;
+            text-align: left;
+            position: relative;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-control, .form-select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #dcdcdc;
+            border-radius: 10px;
+            font-size: 1rem;
+            color: #333;
+            transition: all 0.3s ease;
+            background-color: #f9f9f9;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            box-sizing: border-box;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: #4da8da;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(77, 168, 218, 0.2);
+            background-color: #fff;
+        }
+
+        .input-with-unit {
+            position: relative;
             display: flex;
             align-items: center;
+        }
+
+        .input-with-unit .form-control {
+            width: 100%;
+            padding-right: 50px;
+        }
+
+        .input-with-unit .unit {
+            position: absolute;
+            right: 12px;
+            color: #555;
+            font-weight: 700;
+            font-size: 0.95rem;
+            pointer-events: none;
+        }
+
+        /* Styling for h:selectOneRadio options */
+        .velocity-options-container {
+            /* This div contains all radio options */
+            display: flex;
+            flex-direction: column; /* Stack options vertically */
+            gap: 15px; /* Space between each radio option */
+            margin-top: 10px;
+        }
+
+        /* This targets each individual radio option (the td containing the radio input and label) */
+        .velocity-options-container table tr td {
+            padding: 0; /* Remove default table cell padding */
+            border: none; /* Remove default table cell borders */
+        }
+
+        /* This targets the label itself */
+        .input-group .ui-radio-label {
+            display: flex; /* Use flex to align icon and text horizontally */
+            align-items: center; /* Vertically center icon and text */
             cursor: pointer;
-            position: relative;
-            font-weight: 600;
+            color: #555;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.2s ease;
+            width: fit-content; /* Make label only as wide as its content */
+        }
+
+        .input-group .ui-radio-label:hover {
             color: #2c3e50;
         }
 
-        .checkbox-option input[type="radio"] {
-            opacity: 0;
-            position: absolute;
-        }
-
-        .checkmark {
-            width: 22px;
-            height: 22px;
+        /* Custom radio button appearance */
+        .input-group .ui-radio-icon {
+            width: 20px;
+            height: 20px;
             border: 2px solid #b0c4de;
-            border-radius: 6px;
-            margin-right: 10px;
-            background-color: #fff;
+            border-radius: 50%;
+            margin-right: 10px; /* Space between the circle and the text */
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
             transition: all 0.3s ease;
-            display: inline-block;
-            position: relative;
+            flex-shrink: 0; /* Prevent icon from shrinking */
+            background: #fff;
         }
 
-        .checkbox-option input[type="radio"]:checked + .checkmark {
+        .input-group .ui-radio-checked .ui-radio-icon {
             background-color: #4da8da;
             border-color: #4da8da;
         }
 
-        .checkbox-option input[type="radio"]:checked + .checkmark::after {
-            content: "";
-            position: absolute;
-            left: 6px;
-            top: 2px;
-            width: 6px;
-            height: 12px;
-            border: solid #fff;
-            border-width: 0 2px 2px 0;
-            transform: rotate(45deg);
+        .input-group .ui-radio-checked .ui-radio-icon::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background-color: #fff;
+            border-radius: 50%;
         }
 
-        .text {
-            font-size: 1rem;
+        /* Specific styling for the 'Velocidad' label */
+        .input-group .velocity-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-weight: 700;
+            font-size: 1.05rem;
         }
 
-        .description {
-            font-size: 0.95rem;
-            color: #7f8c8d;
-            margin-top: 10px;
-            margin-bottom: 2.5rem;
-        }
-
-        .next-button {
-            display: inline-block;
-            padding: 12px 28px;
+        .auth-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
             background: linear-gradient(to right, #4CA1AF, #2C3E50);
             color: white;
-            text-decoration: none;
+            border: none;
             border-radius: 30px;
             font-weight: 600;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-            border: none;
+            letter-spacing: 0.8px;
             cursor: pointer;
-            width: -moz-fit-content;
-            width: fit-content;
-            margin: 0 auto;
+            transition: all 0.3s ease;
+            margin-top: 25px;
+            text-decoration: none;
+            text-align: center;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 20px rgba(76, 161, 175, 0.3);
         }
 
-        .next-button:hover {
+        .auth-button:hover {
             background: linear-gradient(to right, #2C3E50, #4CA1AF);
-            box-shadow: 0 8px 25px rgba(44, 62, 80, 0.2);
-            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(44, 62, 80, 0.4);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 2rem 1.5rem;
+                width: 95%;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .subtitle {
+                font-size: 0.95rem;
+            }
+
+            .auth-button {
+                padding: 13px;
+                font-size: 1rem;
+            }
+
+            .input-group .velocity-options-container {
+                gap: 10px;
+            }
         }
     </style>
 </h:head>
 <h:body>
     <div class="container">
         <h1>Personaliza tu objetivo</h1>
-        <p class="subtitle">Último paso para conocer tus calorías y macronutrientes</p>
+        <p class="subtitle">Último paso para conocer tus calorías, carbohidratos y proteínas</p>
 
         <h:form>
             <div class="input-group">
@@ -145,43 +275,48 @@
                     <f:selectItems value="#{customizeGoalBean.genderValues}" var="g"
                                    itemValue="#{g}" itemLabel="#{g eq 'MALE' ? 'Masculino' : 'Femenino'}" />
                 </h:selectOneMenu>
-
             </div>
 
             <div class="input-group">
-                <label for="peso-actual">Peso actual</label>
-                <h:inputText id="peso-actual" value="#{customizeGoalBean.currentWeight}"
-                             styleClass="input-value" />
-                <span class="unit">kg</span>
+                <label for="current-weight">Peso actual</label>
+                <div class="input-with-unit">
+                    <h:inputText id="current-weight" value="#{customizeGoalBean.currentWeight}"
+                                 styleClass="form-control" />
+                    <span class="unit">kg</span>
+                </div>
             </div>
 
             <div class="input-group">
-                <label for="peso-objetivo">Peso objetivo</label>
-                <h:selectOneMenu id="peso-objetivo" value="#{customizeGoalBean.targetWeight}" styleClass="form-select">
+                <label for="target-weight">Peso objetivo</label>
+                <h:selectOneMenu id="target-weight" value="#{customizeGoalBean.targetWeight}" styleClass="form-select">
                     <f:selectItem itemLabel="Seleccionar" itemValue="" />
                     <f:selectItems value="#{customizeGoalBean.weightList}" />
                 </h:selectOneMenu>
             </div>
 
             <div class="input-group">
-                <label for="altura">Altura</label>
-                <h:inputText id="altura" value="#{customizeGoalBean.height}"
-                             styleClass="input-value" />
-                <span class="unit">cm</span>
+                <label for="height">Altura</label>
+                <div class="input-with-unit">
+                    <h:inputText id="height" value="#{customizeGoalBean.height}"
+                                 styleClass="form-control" />
+                    <span class="unit">cm</span>
+                </div>
             </div>
-
 
             <div class="input-group">
-                <label>Velocidad</label>
-                <h:selectOneRadio value="#{customizeGoalBean.velocity}" layout="pageDirection">
-                    <f:selectItem itemLabel="Lento" itemValue="lento" />
-                    <f:selectItem itemLabel="Moderado" itemValue="moderado" />
-                    <f:selectItem itemLabel="Rápido" itemValue="rapido" />
-                </h:selectOneRadio>
+                <label class="velocity-label">Velocidad</label>
+                <div class="velocity-options-container">
+                    <h:selectOneRadio value="#{customizeGoalBean.velocity}" layout="pageDirection">
+                        <f:selectItem itemLabel="Lento" itemValue="lento" />
+                        <f:selectItem itemLabel="Moderado" itemValue="moderado" />
+                        <f:selectItem itemLabel="Rápido" itemValue="rapido" />
+                    </h:selectOneRadio>
+                </div>
             </div>
 
-            <h:commandButton value="Crear mi Plan" action="#{customizeGoalBean.saveAndContinue()}"
-                             styleClass="next-button" />
+            <h:commandLink action="#{customizeGoalBean.saveAndContinue()}" styleClass="auth-button">
+                Crear mi plan
+            </h:commandLink>
         </h:form>
     </div>
 </h:body>
