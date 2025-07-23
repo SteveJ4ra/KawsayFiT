@@ -33,7 +33,7 @@ public class LoginBean implements Serializable {
 
             if (user.getPasswordHash().equals(password)) {
                 userSession.setLoggedUser(user);
-                return "home.xhtml?faces-redirect=true";
+                return "dashboard.xhtml?faces-redirect=true";
             } else {
                 FacesContext.getCurrentInstance().addMessage(null,
                         new FacesMessage(FacesMessage.SEVERITY_ERROR, "Contraseña incorrecta", null));
