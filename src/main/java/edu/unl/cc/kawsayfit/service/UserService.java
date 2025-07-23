@@ -12,7 +12,6 @@ import jakarta.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.Optional;
 
-@Stateless
 @ApplicationScoped
 public class UserService {
 
