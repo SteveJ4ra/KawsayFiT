@@ -117,24 +117,25 @@
             font-style: italic;
         }
 
-        .next-button {
-            display: block;
-            padding: 12px 28px;
+        /* Botón */
+        .auth-button {
+            display: inline-block;
+            width: 100%;
+            padding: 12px;
             background: linear-gradient(to right, #4CA1AF, #2C3E50);
             color: white;
-            text-decoration: none;
+            border: none;
             border-radius: 30px;
             font-weight: 600;
             letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-            border: none;
             cursor: pointer;
-            width: fit-content;
-            margin: 0 auto;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            text-decoration: none;
             text-align: center;
         }
 
-        .next-button:hover {
+        .auth-button:hover {
             background: linear-gradient(to right, #2C3E50, #4CA1AF);
             box-shadow: 0 8px 25px rgba(44, 62, 80, 0.2);
             transform: translateY(-2px);
@@ -152,7 +153,12 @@
         </h:selectOneRadio>
 
         <p class="note">No te preocupes, luego lo puedes cambiar</p>
-        <h:commandButton value="Continuar" action="#{activityBean.processSelection}" styleClass="next-button"/>
+
+
+        <h:commandLink action="#{ActivityBean.processSelection}"  styleClass="auth-button">
+            Continuar
+        </h:commandLink>
+
     </h:form>
 </div>
 </body>

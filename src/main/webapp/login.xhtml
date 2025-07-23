@@ -6,7 +6,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xml:lang="es" lang="es">
 <head>
-    <title>Comidas - Iniciar Sesión</title>
+    <title>Iniciar Sesión</title>
     <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style type="text/css">
@@ -209,12 +209,14 @@
                     <h:inputSecret id="password" value="#{loginBean.password}" required="true"
                                    styleClass="form-control" style="width:100%" />
                     <h:outputLink value="recover-password.xhtml" styleClass="recover-password">
-                        ¿Olvidaste tu contraseña?>
+                        ¿Olvidaste tu contraseña?
                     </h:outputLink>
                 </div>
 
-                <h:commandButton value="Ingresar" action="#{loginBean.login()}"
-                                 styleClass="auth-button" />
+                <h:commandLink action="#{registerBean.register()}" styleClass="auth-button">
+                    Iniciar Sesion
+                </h:commandLink>
+
             </h:form>
 
             <div class="auth-footer">

@@ -76,7 +76,9 @@
             outline: none;
         }
 
+        /* Botón */
         .auth-button {
+            display: inline-block;
             width: 100%;
             padding: 12px;
             background: linear-gradient(to right, #4CA1AF, #2C3E50);
@@ -89,7 +91,6 @@
             transition: all 0.3s ease;
             margin-top: 10px;
             text-decoration: none;
-            display: inline-block;
             text-align: center;
         }
 
@@ -98,6 +99,7 @@
             box-shadow: 0 8px 25px rgba(44, 62, 80, 0.2);
             transform: translateY(-2px);
         }
+
 
         .auth-footer {
             margin-top: 20px;
@@ -189,7 +191,10 @@
                     </div>
                 </div>
 
-                <h:commandButton value="Registrarse" action="#{registerBean.register()}" styleClass="auth-button"/>
+                <h:commandLink action="#{registerBean.register()}" styleClass="auth-button">
+                    Registrarse
+                </h:commandLink>
+
             </h:form>
 
             <div class="auth-footer">

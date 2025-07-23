@@ -28,12 +28,13 @@ public class PasswordRecoveryBean implements Serializable {
     @Inject
     private UserRepository userRepository;
 
-    public void sendCode() {
+    public String sendCode() {
         // Es importante mandar por correo esto
         String code = generateMockCode();
         tempCodes.put(email, code);
         codeSent = true;
-        message = "Código de recuperación enviado (simulado): " + code;
+
+        return "reset-password?faces-redirect=true";
     }
 
     public void resetPassword() {
@@ -67,6 +68,8 @@ public class PasswordRecoveryBean implements Serializable {
     }
 
     private String generateMockCode() {
+
+
         return "123456"; // es la app debe generar aleatoriamente esto
     }
 

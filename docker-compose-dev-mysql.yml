@@ -14,7 +14,7 @@ services:
     ports:
       - ${DB_MYSQL_PORT_PUBLIC}:3306
     volumes:
-      - kawsayfit-mysql-data:/var/lib/mysql
+      - ./mysql-data:/var/lib/mysql
       #- ./init_db/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       kawsayfit-network:
