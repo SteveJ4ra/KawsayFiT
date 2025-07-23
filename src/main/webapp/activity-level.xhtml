@@ -3,7 +3,7 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
       lang="es" xml:lang="es">
 <head>
     <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8"/>
@@ -146,62 +146,10 @@
     <h1>¿Cuál es tu nivel de actividad física?</h1>
 
     <h:form id="activityForm">
-        <div class="activity-options">
-            <label class="activity-option">
-                <h:selectOneRadio value="#{activityBean.activityLevel}" layout="pageDirection" style="display:none;">
-                    <f:selectItem itemValue="sedentario" itemLabel="Sedentario"/>
-                    <f:selectItem itemValue="ligeramente-activo" itemLabel="Ligeramente Activo"/>
-                    <f:selectItem itemValue="moderadamente-activo" itemLabel="Moderadamente Activo"/>
-                    <f:selectItem itemValue="muy-activo" itemLabel="Muy Activo"/>
-                    <f:selectItem itemValue="atleta" itemLabel="Atleta Profesional"/>
-                </h:selectOneRadio>
-
-
-                <input type="radio" name="activity-level" value="sedentario" class="radio-input"
-                       onclick="document.getElementById('activityForm:activityLevel').value='sedentario'"/>
-                <div class="option-content">
-                    <h3>Sedentario</h3>
-                    <p>Poco o nada de ejercicio</p>
-                </div>
-            </label>
-
-            <label class="activity-option">
-                <input type="radio" name="activity-level" value="ligeramente-activo" class="radio-input"
-                       onclick="document.getElementById('activityForm:activityLevel').value='ligeramente-activo'"/>
-                <div class="option-content">
-                    <h3>Ligeramente Activo</h3>
-                    <p>Ejercicio 2 a 3 días por semana</p>
-                </div>
-            </label>
-
-            <label class="activity-option">
-                <input type="radio" name="activity-level" value="moderadamente-activo" class="radio-input"
-                       checked="checked"
-                       onclick="document.getElementById('activityForm:activityLevel').value='moderadamente-activo'"/>
-                <div class="option-content">
-                    <h3>Moderadamente Activo</h3>
-                    <p>Ejercicio 4 a 5 días por semana</p>
-                </div>
-            </label>
-
-            <label class="activity-option">
-                <input type="radio" name="activity-level" value="muy-activo" class="radio-input"
-                       onclick="document.getElementById('activityForm:activityLevel').value='muy-activo'"/>
-                <div class="option-content">
-                    <h3>Muy Activo</h3>
-                    <p>Ejercicio 6 a 7 días por semana</p>
-                </div>
-            </label>
-
-            <label class="activity-option">
-                <input type="radio" name="activity-level" value="atleta" class="radio-input"
-                       onclick="document.getElementById('activityForm:activityLevel').value='atleta'"/>
-                <div class="option-content">
-                    <h3>Atleta Profesional</h3>
-                    <p>Ejercicio intenso 6 a 7 días por semana</p>
-                </div>
-            </label>
-        </div>
+        <h:selectOneRadio value="#{activityBean.activityLevel}" layout="pageDirection" styleClass="activity-options">
+            <f:selectItems value="#{activityBean.activityOptions}" var="option"
+                           itemValue="#{option.value}" itemLabel="#{option.label}" />
+        </h:selectOneRadio>
 
         <p class="note">No te preocupes, luego lo puedes cambiar</p>
         <h:commandButton value="Continuar" action="#{activityBean.processSelection}" styleClass="next-button"/>

@@ -5,6 +5,8 @@ import edu.unl.cc.kawsayfit.model.enums.Goal;
 import edu.unl.cc.kawsayfit.model.enums.PhysicalActivityLevel;
 import edu.unl.cc.kawsayfit.service.ImcCalculator;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
@@ -20,6 +22,7 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
     @Column(nullable = false, unique = true)
     private String email;
 
@@ -36,12 +39,20 @@ public class User implements Serializable {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
+    @NotNull
+    @Column(nullable = false)
     private double weight;
 
+    @NotNull
+    @Column(nullable = false)
     private double height; // Centímetros
 
+    @NotNull
+    @Column(nullable = false)
     private double targetWeight;
 
+    @NotNull
+    @Column(nullable = false)
     private double imc;
 
     private double calculate () {
@@ -57,6 +68,8 @@ public class User implements Serializable {
     @Column(name = "physicalActivityLevel")
     private PhysicalActivityLevel physicalActivityLevel;
 
+    @NotNull
+    @Column(nullable = false)
     private boolean strengthTraining;
 
 
