@@ -163,6 +163,14 @@
             </div>
 
             <div class="input-group">
+                <label for="altura">Altura</label>
+                <h:inputText id="altura" value="#{customizeGoalBean.height}"
+                             styleClass="input-value" />
+                <span class="unit">cm</span>
+            </div>
+
+
+            <div class="input-group">
                 <label>Velocidad</label>
                 <h:selectOneRadio value="#{customizeGoalBean.velocity}" layout="pageDirection">
                     <f:selectItem itemLabel="Lento" itemValue="lento" />

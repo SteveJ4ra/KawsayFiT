@@ -70,7 +70,7 @@ public class User implements Serializable {
 
     public double calculate() {
         ImcCalculator imcCalculator = new ImcCalculator(weight, height);
-        imc = imcCalculator.calculate(weight, height);
+        imc = imcCalculator.calculate();
         return imc;
     }
 

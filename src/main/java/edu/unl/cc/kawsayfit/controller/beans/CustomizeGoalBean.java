@@ -11,7 +11,6 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -26,6 +25,7 @@ public class CustomizeGoalBean implements Serializable {
     private Gender gender;
     private double currentWeight;
     private double targetWeight;
+    private double height;
     private String velocity;
 
     @Inject
@@ -42,6 +42,7 @@ public class CustomizeGoalBean implements Serializable {
             this.gender = user.getGender();
             this.currentWeight = user.getWeight();
             this.targetWeight = user.getTargetWeight();
+            this.height = user.getHeight();
         }
     }
 
@@ -52,10 +53,11 @@ public class CustomizeGoalBean implements Serializable {
             user.setGender(gender);
             user.setWeight(currentWeight);
             user.setTargetWeight(targetWeight);
+            user.setHeight(height);
+            user.calculate();
             userService.update(user);
         }
 
-        // Redirige a la vista de resultados
         return "user-results.xhtml?faces-redirect=true";
     }
 
@@ -70,8 +72,6 @@ public class CustomizeGoalBean implements Serializable {
     public Gender[] getGenderValues() {
         return Gender.values();
     }
-
-    // Getters y Setters
 
     public Date getBirthdate() {
         return birthdate;
@@ -105,6 +105,14 @@ public class CustomizeGoalBean implements Serializable {
         this.targetWeight = targetWeight;
     }
 
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
     public String getVelocity() {
         return velocity;
     }
@@ -113,5 +121,3 @@ public class CustomizeGoalBean implements Serializable {
         this.velocity = velocity;
     }
 }
-
-

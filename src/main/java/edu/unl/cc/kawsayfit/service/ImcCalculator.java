@@ -4,9 +4,8 @@ import java.io.Serializable;
 
 public class ImcCalculator implements Serializable {
 
-    private double weight;
-    private double height;
-
+    private double weight; // kg
+    private double height; // cm
     private double imc;
 
     public ImcCalculator(double weight, double height) {
@@ -14,8 +13,9 @@ public class ImcCalculator implements Serializable {
         this.height = height;
     }
 
-    public double calculate(double weight , double height) {
-        imc = weight / (height * height);
+    public double calculate() {
+        double heightInMeters = height / 100.0;
+        imc = weight / (heightInMeters * heightInMeters);
         return imc;
     }
 
