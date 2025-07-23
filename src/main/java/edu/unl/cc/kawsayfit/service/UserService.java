@@ -4,14 +4,15 @@ import edu.unl.cc.kawsayfit.model.User;
 import edu.unl.cc.kawsayfit.model.enums.Goal;
 import edu.unl.cc.kawsayfit.model.enums.PhysicalActivityLevel;
 import edu.unl.cc.kawsayfit.repository.UserRepository;
+import jakarta.ejb.Stateless;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.persistence.PersistenceException;
 import jakarta.transaction.Transactional;
-
 import java.time.LocalDate;
 import java.util.Optional;
 
+@Stateless
 @ApplicationScoped
 public class UserService {
 
@@ -49,6 +50,7 @@ public class UserService {
         userRepository.update(user);
     }
 
+    @Transactional
     public void updateActivityLevel(User user, PhysicalActivityLevel level) {
         user.setPhysicalActivityLevel(level);
         userRepository.update(user);
