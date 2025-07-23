@@ -9,14 +9,15 @@ import jakarta.validation.constraints.NotNull;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.Period;
+import java.util.Date;
 
 @Entity
 @Table(name = "users")
 public class User implements Serializable {
 
-    public User() {
-    }
+    public User() {}
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +35,8 @@ public class User implements Serializable {
 
     private LocalDate registrationDate;
 
-    private LocalDate birthDate;
+    @Temporal(TemporalType.DATE)
+    private Date birthDate;
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
@@ -55,12 +57,6 @@ public class User implements Serializable {
     @Column(nullable = false)
     private double imc;
 
-    private double calculate () {
-        ImcCalculator imcCalculator = new ImcCalculator(weight, height);
-        imc = imcCalculator.calculate(weight, height);
-        return imc;
-    }
-
     @Enumerated(EnumType.STRING)
     private Goal goal;
 
@@ -72,6 +68,11 @@ public class User implements Serializable {
     @Column(nullable = false)
     private boolean strengthTraining;
 
+    public double calculate() {
+        ImcCalculator imcCalculator = new ImcCalculator(weight, height);
+        imc = imcCalculator.calculate(weight, height);
+        return imc;
+    }
 
     public Long getId() {
         return id;
@@ -113,11 +114,11 @@ public class User implements Serializable {
         this.registrationDate = registrationDate;
     }
 
-    public LocalDate getBirthDate() {
+    public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
+    public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 
@@ -182,7 +183,8 @@ public class User implements Serializable {
      */
     public int getAge() {
         if (birthDate == null) return 0;
-        return Period.between(birthDate, LocalDate.now()).getYears();
+        LocalDate birthLocal = birthDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        return Period.between(birthLocal, LocalDate.now()).getYears();
     }
 
     @Override
@@ -201,6 +203,5 @@ public class User implements Serializable {
                 ", physicalActivityLevel=" + physicalActivityLevel +
                 ", strengthTraining=" + strengthTraining +
                 '}';
-        // Seguridad: ¡NO incluimos passwordHash para evitar exponer claves!
     }
 }

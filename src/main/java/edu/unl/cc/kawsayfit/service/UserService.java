@@ -33,6 +33,7 @@ public class UserService {
         }
     }
 
+    @Transactional
     public User update(User user) {
         return userRepository.update(user);
     }

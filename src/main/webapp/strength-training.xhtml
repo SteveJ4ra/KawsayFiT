@@ -128,21 +128,10 @@
 
         <h:form>
             <div class="checkbox-options">
-                <label class="checkbox-option">
-                    <h:selectOneRadio value="#{entrenamientoBean.realizaFuerza}" layout="pageDirection" styleClass="radio-input">
-                        <f:selectItem itemValue="si" itemLabel="" />
-                    </h:selectOneRadio>
-                    <span class="checkmark"></span>
-                    <span class="text">Sí</span>
-                </label>
-
-                <label class="checkbox-option">
-                    <h:selectOneRadio value="#{entrenamientoBean.realizaFuerza}" layout="pageDirection" styleClass="radio-input">
-                        <f:selectItem itemValue="no" itemLabel="" />
-                    </h:selectOneRadio>
-                    <span class="checkmark"></span>
-                    <span class="text">No</span>
-                </label>
+                <h:selectOneRadio value="#{strengthTrainingBean.doesStrengthTraining}" layout="lineDirection" styleClass="radio-input">
+                    <f:selectItem itemValue="true" itemLabel="Sí" />
+                    <f:selectItem itemValue="false" itemLabel="No" />
+                </h:selectOneRadio>
             </div>
 
             <p class="description">
@@ -150,7 +139,7 @@
             </p>
 
             <h:commandButton value="Continuar"
-                             action="#{entrenamientoBean.irAOjetivosUsuario}"
+                             action="#{strengthTrainingBean.saveAndContinue()}"
                              styleClass="next-button" />
         </h:form>
     </div>

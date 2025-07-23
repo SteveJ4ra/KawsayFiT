@@ -129,45 +129,49 @@
         <h:form>
             <div class="input-group">
                 <label for="birthdate">Fecha de nacimiento</label>
-                <h:inputText id="birthdate" value="#{objetivoBean.birthdate}"
-                             type="date" styleClass="form-control" />
+                <h:inputText id="birthdate"
+                             value="#{customizeGoalBean.birthdate}"
+                             type="date"
+                             styleClass="form-control">
+                    <f:convertDateTime pattern="yyyy-MM-dd"/>
+                </h:inputText>
             </div>
 
             <div class="input-group">
                 <label for="gender">Género</label>
-                <h:selectOneMenu id="gender" value="#{objetivoBean.gender}" styleClass="form-select">
-                    <f:selectItem itemLabel="Seleccionar" itemValue="" />
-                    <f:selectItem itemLabel="Masculino" itemValue="masculino" />
-                    <f:selectItem itemLabel="Femenino" itemValue="femenino" />
-                    <f:selectItem itemLabel="Prefiero no decirlo" itemValue="otro" />
+                <h:selectOneMenu id="gender" value="#{customizeGoalBean.gender}" styleClass="form-select">
+                    <f:selectItem itemLabel="Seleccionar" itemValue="#{null}" />
+                    <f:selectItems value="#{customizeGoalBean.genderValues}" var="g"
+                                   itemValue="#{g}" itemLabel="#{g eq 'MALE' ? 'Masculino' : 'Femenino'}" />
                 </h:selectOneMenu>
+
             </div>
 
             <div class="input-group">
                 <label for="peso-actual">Peso actual</label>
-                <h:inputText id="peso-actual" value="#{objetivoBean.pesoActual}"
+                <h:inputText id="peso-actual" value="#{customizeGoalBean.currentWeight}"
                              styleClass="input-value" />
                 <span class="unit">kg</span>
             </div>
 
             <div class="input-group">
                 <label for="peso-objetivo">Peso objetivo</label>
-                <h:selectOneMenu id="peso-objetivo" value="#{objetivoBean.pesoObjetivo}" styleClass="form-select">
+                <h:selectOneMenu id="peso-objetivo" value="#{customizeGoalBean.targetWeight}" styleClass="form-select">
                     <f:selectItem itemLabel="Seleccionar" itemValue="" />
-                    <f:selectItems value="#{objetivoBean.listaPesos}" />
+                    <f:selectItems value="#{customizeGoalBean.weightList}" />
                 </h:selectOneMenu>
             </div>
 
             <div class="input-group">
                 <label>Velocidad</label>
-                <h:selectOneRadio value="#{objetivoBean.velocidad}" layout="pageDirection">
+                <h:selectOneRadio value="#{customizeGoalBean.velocity}" layout="pageDirection">
                     <f:selectItem itemLabel="Lento" itemValue="lento" />
                     <f:selectItem itemLabel="Moderado" itemValue="moderado" />
                     <f:selectItem itemLabel="Rápido" itemValue="rapido" />
                 </h:selectOneRadio>
             </div>
 
-            <h:commandButton value="Crear mi Plan" action="#{objetivoBean.crearPlan}"
+            <h:commandButton value="Crear mi Plan" action="#{customizeGoalBean.saveAndContinue()}"
                              styleClass="next-button" />
         </h:form>
     </div>
