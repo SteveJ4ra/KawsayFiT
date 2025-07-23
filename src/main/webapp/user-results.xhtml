@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xml:lang="es" lang="es">
 <h:head>
     <title>¡Todo listo!</title>
     <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style type="text/css">
-        /* Contenedor principal */
         .container {
             max-width: 420px;
             margin: 40px auto;
@@ -20,14 +20,12 @@
             text-align: center;
         }
 
-        /* Título */
         .container h1 {
             font-size: 28px;
             color: #2c3e50;
             margin-bottom: 20px;
         }
 
-        /* Insignia del objetivo */
         .goal-badge {
             width: 60px;
             height: 60px;
@@ -35,9 +33,6 @@
             background-color: #2c3e50;
             color: white;
             border-radius: 50%;
-            display: -webkit-box;
-            display: -moz-box;
-            display: box;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -46,18 +41,13 @@
             box-shadow: 0 4px 15px rgba(52, 152, 219, 0.6);
         }
 
-        /* Texto bajo la insignia */
         .goal-text {
             margin-bottom: 30px;
             color: #7f8c8d;
             font-size: 14px;
         }
 
-        /* Macros (proteínas, carbs, grasas) */
         .macros-container {
-            display: -webkit-box;
-            display: -moz-box;
-            display: box;
             display: flex;
             justify-content: space-around;
             margin: 30px 0;
@@ -66,20 +56,29 @@
             border-bottom: 1px solid #ecf0f1;
         }
 
+        .macro-item {
+            text-align: center;
+        }
+
         .macro-item h3 {
-            margin: 0 0 5px 0;
+            margin: 5px 0;
             color: #7f8c8d;
-            font-size: 16px;
+            font-size: 14px;
         }
 
         .macro-item p {
             margin: 0;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
             color: #2c3e50;
         }
 
-        /* Calorías */
+        .macro-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 6px;
+        }
+
         .calories-container {
             margin: 30px 0;
         }
@@ -96,7 +95,6 @@
             margin-top: 10px;
         }
 
-        /* Botón para comenzar */
         .start-button {
             display: inline-block;
             padding: 14px 30px;
@@ -112,46 +110,64 @@
         .start-button:hover {
             background: linear-gradient(to right, #2C3E50, #4CA1AF);
             box-shadow: 0 8px 25px rgba(44, 62, 80, 0.2);
-            -moz-transform: translateY(-2px);
-            -webkit-transform: translateY(-2px);
             transform: translateY(-2px);
         }
     </style>
 </h:head>
 <h:body>
-    <div class="container results-container">
-        <h1>¡Todo listo!</h1>
+    <h:form>
+        <div class="container results-container">
+            <h1>¡Todo listo!</h1>
 
-        <div class="goal-badge">
-            <h:outputText value="#{resultadosBean.objetivoNumero}" />
-        </div>
-        <p class="goal-text">Con este objetivo nutricional</p>
+            <div class="goal-badge">
+                <h:outputText value="#{userResultBean.plan.goal}" />
+            </div>
+            <p class="goal-text">Este es tu objetivo nutricional</p>
 
-        <div class="macros-container">
-            <div class="macro-item">
-                <h3>Proteínas</h3>
-                <p><h:outputText value="#{resultadosBean.proteinas}" />g</p>
+            <div class="macros-container">
+                <div class="macro-item">
+                    <img src="resources/img/protein.png" alt="Proteínas" class="macro-icon" />
+                    <h3>Proteínas</h3>
+                    <p>
+                        <h:outputText value="#{userResultBean.plan.proteins}">
+                            <f:convertNumber pattern="#0" />
+                        </h:outputText>g
+                    </p>
+                </div>
+
+                <div class="macro-item">
+                    <img src="resources/img/carbs.png" alt="Carbohidratos" class="macro-icon" />
+                    <h3>Carbohidratos</h3>
+                    <p>
+                        <h:outputText value="#{userResultBean.plan.carbs}">
+                            <f:convertNumber pattern="#0" />
+                        </h:outputText>g
+                    </p>
+                </div>
+
+                <div class="macro-item">
+                    <img src="resources/img/fat.png" alt="Grasas" class="macro-icon" />
+                    <h3>Grasas</h3>
+                    <p>
+                        <h:outputText value="#{userResultBean.plan.fats}">
+                            <f:convertNumber pattern="#0" />
+                        </h:outputText>g
+                    </p>
+                </div>
             </div>
 
-            <div class="macro-item">
-                <h3>Carbs</h3>
-                <p><h:outputText value="#{resultadosBean.carbs}" />g</p>
+            <div class="calories-container">
+                <h2>
+                    <h:outputText value="#{userResultBean.plan.calories}">
+                        <f:convertNumber pattern="#0" />
+                    </h:outputText> kcal
+                </h2>
+                <p class="calories-note">Consumo estimado diario recomendado</p>
             </div>
 
-            <div class="macro-item">
-                <h3>Grasas</h3>
-                <p><h:outputText value="#{resultadosBean.grasas}" />g</p>
-            </div>
+            <h:commandButton value="¡Empecemos!" action="dashboard.xhtml?faces-redirect=true"
+                             styleClass="start-button" />
         </div>
-
-        <div class="calories-container">
-            <h2><h:outputText value="#{resultadosBean.calorias}" /> kcal</h2>
-            <p class="calories-note">
-                <h:outputText value="#{resultadosBean.notaCalorias}" />
-            </p>
-        </div>
-        <h:commandButton value="Empecemos!" action="#{objetivoBean.crearPlan}"
-                         styleClass="start-button" />
-    </div>
+    </h:form>
 </h:body>
 </html>

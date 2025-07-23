@@ -43,6 +43,7 @@ public class CustomizeGoalBean implements Serializable {
             this.currentWeight = user.getWeight();
             this.targetWeight = user.getTargetWeight();
             this.height = user.getHeight();
+            this.velocity = user.getVelocity();
         }
     }
 
@@ -55,6 +56,7 @@ public class CustomizeGoalBean implements Serializable {
             user.setTargetWeight(targetWeight);
             user.setHeight(height);
             user.calculate();
+            user.setVelocity(velocity);
             userService.update(user);
         }
 

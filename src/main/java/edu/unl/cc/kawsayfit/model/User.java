@@ -68,11 +68,16 @@ public class User implements Serializable {
     @Column(nullable = false)
     private boolean strengthTraining;
 
+
+    @Column(nullable = true)
+    private String velocity;
+
     public double calculate() {
         ImcCalculator imcCalculator = new ImcCalculator(weight, height);
         imc = imcCalculator.calculate();
         return imc;
     }
+
 
     public Long getId() {
         return id;
@@ -178,6 +183,14 @@ public class User implements Serializable {
         this.strengthTraining = strengthTraining;
     }
 
+    public String getVelocity() {
+        return velocity;
+    }
+
+    public void setVelocity(String velocity) {
+        this.velocity = velocity;
+    }
+
     /**
      * Devuelve la edad en base al campo birthDate.
      */
@@ -202,6 +215,7 @@ public class User implements Serializable {
                 ", goal=" + goal +
                 ", physicalActivityLevel=" + physicalActivityLevel +
                 ", strengthTraining=" + strengthTraining +
+                ", velocity='" + velocity + '\'' +
                 '}';
     }
 }
