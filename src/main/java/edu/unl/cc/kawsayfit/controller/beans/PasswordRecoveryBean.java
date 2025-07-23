@@ -28,8 +28,8 @@ public class PasswordRecoveryBean implements Serializable {
     @Inject
     private UserRepository userRepository;
 
+    
     public String sendCode() {
-        // Es importante mandar por correo esto
         String code = generateMockCode();
         tempCodes.put(email, code);
         codeSent = true;

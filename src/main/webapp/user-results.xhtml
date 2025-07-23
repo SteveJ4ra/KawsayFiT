@@ -5,8 +5,9 @@
       xml:lang="es" lang="es">
 <h:head>
     <title>¡Todo listo!</title>
+    <link rel="icon" href="images/KawsayFit.png" type="image/png"/>
     <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <style type="text/css">
         .container {
             max-width: 420px;
@@ -49,15 +50,23 @@
 
         .macros-container {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-around; /* Distribuye el espacio uniformemente entre los ítems */
+            align-items: flex-start; /* Alinea los ítems al inicio para que las imágenes estén al mismo nivel */
             margin: 30px 0;
             padding: 20px 0;
             border-top: 1px solid #ecf0f1;
             border-bottom: 1px solid #ecf0f1;
+            flex-wrap: wrap; /* Permite que los elementos salten a la siguiente línea si la pantalla es muy pequeña */
         }
 
         .macro-item {
             text-align: center;
+            /* Para que cada item ocupe la misma cantidad de espacio */
+            flex: 1; /* Permite que el ítem crezca y se encoja, ocupando espacio equitativo */
+            min-width: 100px; /* Ancho mínimo para que no se compriman demasiado */
+            max-width: 30%; /* Limita el ancho máximo para que no se estiren demasiado en pantallas grandes */
+            padding: 10px 5px; /* Añade un poco de padding interno a cada item */
+            box-sizing: border-box; /* Asegura que el padding no añada ancho extra */
         }
 
         .macro-item h3 {
@@ -74,9 +83,13 @@
         }
 
         .macro-icon {
-            width: 40px;
-            height: 40px;
-            margin-bottom: 6px;
+            width: 100px;  /* ¡Tamaño fijo para todas las imágenes! */
+            height: 100px; /* Asegura que la imagen sea cuadrada */
+            object-fit: cover; /* Recorta la imagen para que cubra el área, manteniendo proporciones */
+            /* Alternativa a cover: object-fit: contain; Si quieres que la imagen entera se vea sin recortes, aunque deje espacios en blanco si la proporción de la imagen no coincide con el contenedor. */
+            border-radius: 10px; /* Un poco de redondeo en las esquinas de las imágenes */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Una sombra sutil para hacerlas destacar */
+            margin-bottom: 10px; /* Aumenta el margen inferior para separar la imagen del texto */
         }
 
         .calories-container {
@@ -95,19 +108,25 @@
             margin-top: 10px;
         }
 
-        .start-button {
+        /*estilo para el boton empecemos*/
+        .auth-button {
             display: inline-block;
-            padding: 14px 30px;
+            width: 50%;
+            padding: 12px;
             background: linear-gradient(to right, #4CA1AF, #2C3E50);
             color: white;
+            border: none;
             border-radius: 30px;
             font-weight: 600;
             letter-spacing: 0.5px;
-            text-decoration: none;
+            cursor: pointer;
             transition: all 0.3s ease;
+            margin-top: 10px;
+            text-decoration: none;
+            text-align: center;
         }
 
-        .start-button:hover {
+        .auth-button:hover {
             background: linear-gradient(to right, #2C3E50, #4CA1AF);
             box-shadow: 0 8px 25px rgba(44, 62, 80, 0.2);
             transform: translateY(-2px);
@@ -126,32 +145,32 @@
 
             <div class="macros-container">
                 <div class="macro-item">
-                    <img src="resources/img/protein.png" alt="Proteínas" class="macro-icon" />
-                    <h3>Proteínas</h3>
+                    <img src="images/Proteina.png" alt="Proteínas" class="macro-icon" />
+                    <h3>Proteínas 🥩</h3>
                     <p>
                         <h:outputText value="#{userResultBean.plan.proteins}">
                             <f:convertNumber pattern="#0" />
-                        </h:outputText>g
+                        </h:outputText>G
                     </p>
                 </div>
 
                 <div class="macro-item">
-                    <img src="resources/img/carbs.png" alt="Carbohidratos" class="macro-icon" />
-                    <h3>Carbohidratos</h3>
+                    <img src="images/pan.jpeg" alt="Carbohidratos" class="macro-icon" />
+                    <h3>Carbohidratos 🍞</h3>
                     <p>
                         <h:outputText value="#{userResultBean.plan.carbs}">
                             <f:convertNumber pattern="#0" />
-                        </h:outputText>g
+                        </h:outputText>G
                     </p>
                 </div>
 
                 <div class="macro-item">
-                    <img src="resources/img/fat.png" alt="Grasas" class="macro-icon" />
-                    <h3>Grasas</h3>
+                    <img src="images/Salchipapa.png" alt="Grasas" class="macro-icon" />
+                    <h3>Grasas 🔥</h3>
                     <p>
                         <h:outputText value="#{userResultBean.plan.fats}">
                             <f:convertNumber pattern="#0" />
-                        </h:outputText>g
+                        </h:outputText>G
                     </p>
                 </div>
             </div>
@@ -160,13 +179,14 @@
                 <h2>
                     <h:outputText value="#{userResultBean.plan.calories}">
                         <f:convertNumber pattern="#0" />
-                    </h:outputText> kcal
+                    </h:outputText> Kcal
                 </h2>
-                <p class="calories-note">Consumo estimado diario recomendado</p>
+                <p class="calories-note">Consumo diario estimado recomendado</p>
             </div>
 
-            <h:commandButton value="¡Empecemos!" action="dashboard.xhtml?faces-redirect=true"
-                             styleClass="start-button" />
+            <h:commandLink action="dashboard.xhtml?faces-redirect=true" styleClass="auth-button">
+                ¡Empecemos!
+            </h:commandLink>
         </div>
     </h:form>
 </h:body>

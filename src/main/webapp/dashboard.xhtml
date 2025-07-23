@@ -4,9 +4,12 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Comidas - Comidas Ecuatoriana</title>
-    <link rel="stylesheet" href="styles/home.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>Gastronomia Ecuatoriana</title>
+    <link rel="icon" href="images/KawsayFit.png" type="image/png"/>
+
+
     <style type="text/css">
         :root {
             --primary-color: #4CA1AF;
@@ -25,6 +28,9 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
+            display: flex; /* Usar flexbox para centrar contenido */
+            flex-direction: column; /* Apilar elementos verticalmente */
+            min-height: 100vh; /* Asegurar que el cuerpo ocupe al menos el 100% del alto de la ventana */
         }
 
         header {
@@ -80,26 +86,31 @@
             transform: translateY(-2px);
         }
 
+        /* --- Modificaciones para la barra de búsqueda y botón --- */
         main {
-            max-width: 900px;
-            margin: 2.5rem auto;
-            padding: 2rem;
-            position: relative;
-            z-index: 1;
-            background-color: rgba(245, 246, 248, 0.98);
-            border-radius: 16px;
-            box-shadow: var(--shadow);
+            flex-grow: 1; /* Permite que el main ocupe el espacio disponible */
+            display: flex;
+            justify-content: center; /* Centra horizontalmente */
+            align-items: center; /* Centra verticalmente */
+            padding: 0; /* Eliminar padding */
+            background-color: transparent; /* Eliminar fondo blanco */
+            box-shadow: none; /* Eliminar sombra */
+            max-width: 100%; /* Permitir que ocupe todo el ancho */
+            margin: 0; /* Eliminar margen */
         }
 
         #filtros {
-            margin-bottom: 2.5rem;
+            display: flex; /* Usar flexbox para alinear la barra y el botón */
+            align-items: center; /* Centrar verticalmente los elementos */
+            gap: 1rem; /* Espacio entre la barra y el botón */
             position: relative;
             text-align: center;
+            background-color: transparent; /* Eliminar fondo blanco */
+            padding: 0; /* Eliminar padding */
         }
 
         #buscador {
-            width: 100%;
-            max-width: 600px;
+            width: 400px; /* Ancho fijo para la barra de búsqueda */
             padding: 1.2rem 1.8rem;
             font-size: 1.2rem;
             border: 2px solid var(--primary-color);
@@ -109,7 +120,6 @@
             font-family: 'Montserrat', sans-serif;
             box-shadow: var(--shadow);
             transition: var(--transition);
-            display: inline-block;
         }
 
         #buscador:focus {
@@ -118,12 +128,56 @@
             background-color: white;
         }
 
+        .search-button {
+            padding: 1.2rem 2.5rem; /* Ajustar padding para el botón */
+            font-size: 1.2rem;
+            font-weight: 600;
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .search-button:hover {
+            background-color: var(--accent-color);
+            box-shadow: 0 8px 25px rgba(44, 62, 80, 0.2);
+            transform: translateY(-2px);
+        }
+        /* --- Fin de modificaciones para la barra de búsqueda y botón --- */
+        /* Botón */
+        .auth-button {
+            display: inline-block;
+            width: 10%;
+            padding: 12px;
+            background: linear-gradient(to right, #4CA1AF, #2C3E50);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .auth-button:hover {
+            background: linear-gradient(to right, #2C3E50, #4CA1AF);
+            box-shadow: 0 8px 25px rgba(44, 62, 80, 0.2);
+            transform: translateY(-2px);
+        }
+
         .sugerencias-lista {
             position: absolute;
-            width: 80%;
-            max-width: 600px;
-            left: 50%;
-            transform: translateX(-50%);
+            width: calc(400px - 2px); /* Ancho de la barra de búsqueda menos el borde */
+            top: calc(100% + 10px); /* Posicionar debajo de la barra de búsqueda y botón */
+            left: 0;
             max-height: 280px;
             overflow-y: auto;
             background: var(--light-text);
@@ -133,7 +187,7 @@
             z-index: 100;
             list-style: none;
             padding: 0;
-            margin: 0 auto;
+            margin: 0;
             display: none;
         }
 
@@ -156,40 +210,38 @@
             gap: 2rem;
         }
 
+        /* --- Modificaciones para la imagen decorativa --- */
         .video-decorativo {
             position: fixed;
-            top: 50%;
-            right: 20px;
-            width: 200px;
-            height: 200px;
-            transform: translateY(-50%);
+            bottom: 20px; /* Mover más abajo */
+            right: -70px;
+            width: 450px; /* Hacer más grande */
+            height: 450px; /* Hacer más grande */
+            transform: none; /* Eliminar transformación de centrado vertical */
             z-index: -2;
             overflow: hidden;
             pointer-events: none;
             border-radius: 50%;
+            box-shadow: 0 15px 35px rgba(44, 62, 80, 0.2); /* Sombra para que se vea bonita */
+            border: 5px solid rgba(76, 161, 175, 0.6); /* Borde para que se vea bonita */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
         .video-decorativo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            opacity: 0.75;
-            animation: rotateClockwise 20s linear infinite;
+            width: 90%; /* Ajustar el tamaño de la imagen dentro del contenedor */
+            height: 90%;
+            object-fit: contain; /* Asegura que la imagen completa sea visible */
+            opacity: 0.85; /* Un poco más de opacidad */
+            animation: rotateClockwise 25s linear infinite; /* Animación más lenta */
             transform-origin: center center;
+            border-radius: 50%; /* Redondear la imagen dentro del contenedor */
         }
 
         .video-decorativo:hover img {
-            opacity: 0.95;
-        }
-
-        .video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(245, 246, 248, 0.5) 0%, rgba(245, 246, 248, 0) 70%);
-            z-index: -1;
+            opacity: 1; /* Opacidad completa al pasar el mouse */
         }
 
         @keyframes rotateClockwise {
@@ -200,28 +252,28 @@
                 transform: rotate(360deg);
             }
         }
+        /* --- Fin de modificaciones para la imagen decorativa --- */
     </style>
 </head>
 
 <body>
 <div class="video-decorativo">
-    <img src="images/Chaulafan.png" alt="Pasta decorativa" class="gif-fondo" />
-    <div class="video-overlay"></div>
+    <img src="images/Dashboard.jpeg" alt="Comida ecuatoriana decorativa" class="gif-fondo" />
 </div>
 
 <header>
     <h1>Comidas Ecuatorianas y Demás</h1>
     <nav>
-        <a href="profile.xhtml" class="user-profile">Perfil</a>
-        <a href="login.xhtml" id="logoutBtn">Cerrar Sesión</a>
+        <a href="profile.xhtml" class="auth-button">Perfil</a>
+        <a href="login.xhtml" id="logoutBtn" class="auth-button">Cerrar Sesión</a>
     </nav>
 </header>
 
 <main>
-    <!--OJO PEREZ Conectar a la base de datos y funcionalidad-->
     <div id="filtros">
         <h:form>
-            <input type="text" id="buscador" placeholder="Buscar comidas..." autocomplete="off" />
+            <input type="text" id="buscador" placeholder="Buscar comidas..." autocomplete="on" />
+            <button type="submit" class="search-button">Buscar</button>
             <ul id="sugerencias" class="sugerencias-lista" aria-label="Sugerencias de búsqueda"></ul>
         </h:form>
         <ul id="sugerencias" class="DasboardBean" aria-label="Sugerencias de búsqueda">

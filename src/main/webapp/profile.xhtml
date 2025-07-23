@@ -4,8 +4,10 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Mi Perfil</title>
+    <link rel="icon" href="images/KawsayFit.png" type="image/png"/>
+
     <style type="text/css">
         .profile-container {
             max-width: 600px;
@@ -42,27 +44,6 @@
             border: 3px solid #3498db;
         }
 
-        .edit-avatar-btn {
-            position: absolute;
-            top: 70px;
-            left: 60%;
-            background: white;
-            border: 2px solid #3498db;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 16px;
-            color: #3498db;
-            transition: background-color 0.3s;
-        }
-
-        .edit-avatar-btn:hover {
-            background-color: #e8f4fc;
-        }
 
         .profile-header h1 {
             font-size: 28px;
@@ -200,11 +181,9 @@
             font-weight: 600;
             color: #2c3e50;
         }
-
-        /* Botón */
         .auth-button {
             display: inline-block;
-            width: 100%;
+            width: 30%;
             padding: 12px;
             background: linear-gradient(to right, #4CA1AF, #2C3E50);
             color: white;
@@ -224,6 +203,8 @@
             box-shadow: 0 8px 25px rgba(44, 62, 80, 0.2);
             transform: translateY(-2px);
         }
+
+
     </style>
 </h:head>
 <h:body>
@@ -232,9 +213,8 @@
             <div class="buttons-container">
                 <h:graphicImage value="#{profileBean.fotoPerfil}" alt="Avatar" styleClass="avatar-img"/>
                 <div class="buttons-container">
-                    <h:link outcome="home" styleClass="regresar-btn" value="Regresar"/>
+                    <h:link outcome="dashboard" styleClass="regresar-btn" value="Regresar"/>
                 </div>
-                <button class="edit-avatar-btn">✏️</button>
             </div>
 
             <h1><h:outputText value="#{profileBean.nombreCompleto}"/></h1>
@@ -326,9 +306,9 @@
             </div>
         </div>
 
-        <div class="buttons-container">
-            <h:link outcome="selecciona-objetivo" styleClass="auth-button" value="Editar Perfil"/>
-        </div>
+        <h:form>
+            <a href="register.xhtml" class="auth-button">Editar Perfil ✏️</a>
+        </h:form>
     </div>
 </h:body>
 </html>
