@@ -11,23 +11,21 @@ import java.util.List;
 @SessionScoped
 public class DasboardBean implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-
     private String search;
 
     private List<String> dishList;
 
     public List<String> completeSuggestions(String query) {
-        List<String> resultados = new ArrayList<>();
-        for (String plato : dishList) {
-            if (plato.toLowerCase().contains(query.toLowerCase())) {
-                resultados.add(plato);
+        List<String> results = new ArrayList<>();
+        for (String dish : dishList) {
+            if (dish.toLowerCase().contains(query.toLowerCase())) {
+                results.add(dish);
             }
-            if (resultados.size() >= 10) {
+            if (results.size() >= 10) {
                 break;
             }
         }
-        return resultados;
+        return results;
     }
 
     public String find() {
@@ -45,7 +43,6 @@ public class DasboardBean implements Serializable {
 
     public DasboardBean() {
         dishList = new ArrayList<>();
-
         // Alimentos
         dishList.add("Huevos cocidos");
         dishList.add("Manzana");

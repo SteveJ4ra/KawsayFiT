@@ -22,10 +22,7 @@ public class DishBean implements Serializable {
     private String name = dish.getName();
     private String img = dish.getImagePath();
     private double amount = dish.getAmount();
-
-    public void search() {
-        //TODO
-    }
+    
 
     public String registerFood() {
         //TODO
