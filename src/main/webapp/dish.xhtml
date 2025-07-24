@@ -8,6 +8,7 @@
 
 <h:head>
     <title>Plato de comida</title>
+    <link rel="icon" href="images/KawsayFit.png" type="image/png"/>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;family=Playfair+Display:wght@700&amp;display=swap"
           rel="stylesheet"/>
     <style type="text/css">
@@ -79,10 +80,6 @@
             border-color: #3498db;
         }
 
-        .btn-buscar:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
-        }
 
         /* Estilos para el dropdown de sugerencias */
         .ui-autocomplete-panel {
@@ -259,7 +256,6 @@
             gap: 1.5rem;
         }
 
-        .btn-volver,
         .btn-registrar {
             border-radius: 30px;
             padding: 1rem 2rem;
@@ -275,23 +271,49 @@
         }
 
         .btn-volver {
-            background: linear-gradient(135deg, #4ca1af, #2c3e50);
+            display: inline-block;
+            width: 30%;
+            padding: 12px;
+            background: linear-gradient(to right, #4CA1AF, #2C3E50);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            text-decoration: none;
+            text-align: center;
         }
 
         .btn-volver:hover {
-            background: linear-gradient(135deg, #2c3e50, #4ca1af);
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 10px 30px rgba(44, 62, 80, 0.3);
+            background: linear-gradient(to right, #2C3E50, #4CA1AF);
+            box-shadow: 0 8px 25px rgba(44, 62, 80, 0.2);
+            transform: translateY(-2px);
         }
+
 
         .btn-registrar {
-            background: linear-gradient(135deg, #2c3e50, #4ca1af);
-        }
+            display: inline-block;
+            width: 30%;
+            padding: 12px;
+            background: linear-gradient(to right, #4CA1AF, #2C3E50);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            text-decoration: none;
+            text-align: center;        }
 
         .btn-registrar:hover {
-            background: linear-gradient(135deg, #4ca1af, #2c3e50);
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 10px 30px rgba(44, 62, 80, 0.3);
+            background: linear-gradient(to right, #2C3E50, #4CA1AF);
+            box-shadow: 0 8px 25px rgba(44, 62, 80, 0.2);
+            transform: translateY(-2px);
         }
 
         /* Responsive */
@@ -401,10 +423,14 @@
 
                         <h:form>
                             <div class="botones-container">
-                                <h:commandButton value="Volver" action="home?faces-redirect=true"
-                                                 styleClass="btn-volver" />
-                                <h:commandButton value="Registrar" action="#{dishBean.registerFood()}"
-                                                 styleClass="btn-registrar" />
+                                <h:commandLink action="dashboard?faces-redirect=true" styleClass="btn-volver">
+                                    Volver
+                                </h:commandLink>
+
+                                <h:commandLink action="#{dishBean.registerFood()}" styleClass="btn-registrar">
+                                    Registrar
+                                </h:commandLink>
+
                             </div>
                         </h:form>
                     </div>
