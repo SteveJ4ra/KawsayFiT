@@ -273,8 +273,6 @@
                 transform: rotate(360deg);
             }
         }
-
-        /* --- Fin de modificaciones para la imagen decorativa --- */
     </style>
 </h:head>
 
@@ -300,8 +298,8 @@
             <p:autoComplete id="busqueda"
                             inputStyleClass="input-busqueda"
                             styleClass="busqueda-autocompleta"
-                            value="#{dashboardBean.loadFood()}"
-                            completeMethod="#{dashboardBean.makeSuggestion()}"
+                            value="#{dashboardBean.searching}"
+                            completeMethod="#{dashboardBean.completeSuggestions}"
                             var="plato"
                             itemLabel="#{plato}"
                             itemValue="#{plato}"
@@ -309,7 +307,7 @@
                             forceSelection="false"
                             placeholder="Buscar comidas..."/>
             <p:commandButton value="Buscar"
-                             action="#{dashboardBean.loadFood()}"
+                             action="#{dashboardBean.find()}"
                              styleClass="btn-buscar"/>
         </h:form>
     </div>
