@@ -300,8 +300,8 @@
             <p:autoComplete id="busqueda"
                             inputStyleClass="input-busqueda"
                             styleClass="busqueda-autocompleta"
-                            value="#{search.busqueda}"
-                            completeMethod="#{search.completeSuggestions}"
+                            value="#{dashboardBean.loadFood()}"
+                            completeMethod="#{dashboardBean.makeSuggestion()}"
                             var="plato"
                             itemLabel="#{plato}"
                             itemValue="#{plato}"
@@ -309,7 +309,7 @@
                             forceSelection="false"
                             placeholder="Buscar comidas..."/>
             <p:commandButton value="Buscar"
-                             action="#{search.buscar}"
+                             action="#{dashboardBean.loadFood()}"
                              styleClass="btn-buscar"/>
         </h:form>
     </div>

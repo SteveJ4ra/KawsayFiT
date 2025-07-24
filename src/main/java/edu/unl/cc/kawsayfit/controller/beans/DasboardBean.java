@@ -22,13 +22,13 @@ public class DasboardBean implements Serializable {
         makeSuggestion();
     }
 
-    @Inject
-    //TODO
-    private void loadFood() {
 
+    public void loadFood() {
+        //TODO
     }
 
-    private void makeSuggestion() {
+
+    public void makeSuggestion() {
         suggestion = new ArrayList<>();
         for (Food food : listFood) {
             suggestion.add(food.getName());
