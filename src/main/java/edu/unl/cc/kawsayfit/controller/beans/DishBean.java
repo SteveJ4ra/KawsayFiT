@@ -16,12 +16,12 @@ import java.util.stream.Collectors;
 public class DishBean implements Serializable {
 
     Dish dish = new Dish();
-    public double calories = dish.getCalories();
-    public double carbohydrates = dish.getCarbohydrates();
-    public double proteins= dish.getProteins();
-    public String name = dish.getName();
-    public String img = dish.getImagePath();
-    public double amount = dish.getAmount();
+    private double calories = dish.getCalories();
+    private double carbohydrates = dish.getCarbohydrates();
+    private double proteins= dish.getProteins();
+    private String name = dish.getName();
+    private String img = dish.getImagePath();
+    private double amount = dish.getAmount();
 
     public void search() {
         //TODO
@@ -30,10 +30,6 @@ public class DishBean implements Serializable {
     public String registerFood() {
         //TODO
         return "profile.xhtml?faces-redirect=true";
-    }
-
-    public Dish getDish() {
-        return dish;
     }
 
     public List<Ingredients> getIngredients() {
@@ -51,5 +47,53 @@ public class DishBean implements Serializable {
                     }
                 })
                 .collect(Collectors.toList());
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getProteins() {
+        return proteins;
+    }
+
+    public void setProteins(double proteins) {
+        this.proteins = proteins;
+    }
+
+    public double getCarbohydrates() {
+        return carbohydrates;
+    }
+
+    public void setCarbohydrates(double carbohydrates) {
+        this.carbohydrates = carbohydrates;
+    }
+
+    public double getCalories() {
+        return calories;
+    }
+
+    public void setCalories(double calories) {
+        this.calories = calories;
     }
 }
