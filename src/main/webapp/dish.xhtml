@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xml:lang="es" lang="es">
-<head>
-    <title>Plato de Comida</title>
-    <link rel="icon" href="images/KawsayFit.png" type="image/png"/>
-    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <style type="text/css">
+<html lang="es"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 
+<h:head>
+    <title>Plato de comida</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;family=Playfair+Display:wght@700&amp;display=swap"
+          rel="stylesheet"/>
+    <style type="text/css">
         body {
             font-family: 'Montserrat', sans-serif;
-            background: white;
+            background: #f8f9fa;
             color: #2c3e50;
             line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
         }
 
         .container {
@@ -37,16 +40,36 @@
             text-align: center;
         }
 
+        /* Barra de búsqueda optimizada */
+        .form-busqueda-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin: 2rem 0;
+        }
+
+        .busqueda-form {
+            width: 100%;
+            max-width: 700px;
+            padding: 0 20px;
+        }
+
+        .busqueda-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+        }
+
         .input-busqueda {
-            width: 82%;
-            padding: 1rem;
-            padding-bottom: 20px;
+            flex: 1;
+            min-width: 480px;
+            padding: 12px 20px;
             border: 1px solid #ddd;
             border-radius: 30px;
             font-size: 1rem;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
-            margin-bottom: 1rem;
             color: #2c3e50;
         }
 
@@ -54,20 +77,6 @@
             outline: none;
             box-shadow: 0 2px 15px rgba(52, 152, 219, 0.3);
             border-color: #3498db;
-            color: #000;
-        }
-
-        .btn-buscar {
-            padding: 1rem 2rem;
-            background: linear-gradient(to right, #e74c3c, #c0392b);
-            color: white;
-            border: none;
-            border-radius: 30px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
-            text-decoration: none;
         }
 
         .btn-buscar:hover {
@@ -75,6 +84,37 @@
             box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
         }
 
+        /* Estilos para el dropdown de sugerencias */
+        .ui-autocomplete-panel {
+            border: 1px solid #ddd !important;
+            border-radius: 0 0 10px 10px !important;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
+            margin-top: -5px !important;
+            width: auto !important;
+            min-width: 300px !important;
+        }
+
+        .ui-autocomplete-items {
+            padding: 0 !important;
+        }
+
+        .ui-autocomplete-item {
+            padding: 10px 15px !important;
+            border-bottom: 1px solid #eee !important;
+            font-family: 'Montserrat', sans-serif !important;
+            transition: background-color 0.2s !important;
+        }
+
+        .ui-autocomplete-item:hover {
+            background-color: #f5f5f5 !important;
+        }
+
+        .ui-autocomplete-highlight {
+            font-weight: bold !important;
+            color: #e74c3c !important;
+        }
+
+        /* Resto de estilos */
         .imagen-centrada {
             width: 100%;
             border-radius: 12px;
@@ -118,8 +158,6 @@
             position: absolute;
             bottom: 0;
             left: 50%;
-            -moz-transform: translateX(-50%);
-            -webkit-transform: translateX(-50%);
             transform: translateX(-50%);
             width: 80px;
             height: 3px;
@@ -200,6 +238,7 @@
             position: relative;
             display: inline-block;
             text-align: center;
+            width: 100%;
         }
 
         .registro-alimento p::after {
@@ -216,7 +255,8 @@
             display: flex;
             justify-content: space-between;
             width: 100%;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
+            gap: 1.5rem;
         }
 
         .btn-volver,
@@ -231,45 +271,91 @@
             color: white;
             text-decoration: none;
             cursor: pointer;
+            border: none;
         }
 
         .btn-volver {
-            background: linear-gradient(to right, #4ca1af, #2c3e50);
+            background: linear-gradient(135deg, #4ca1af, #2c3e50);
         }
 
         .btn-volver:hover {
-            background: linear-gradient(to right, #2c3e50, #4ca1af);
-            -moz-transform: translateY(-3px);
-            -webkit-transform: translateY(-3px);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(44, 62, 80, 0.4);
+            background: linear-gradient(135deg, #2c3e50, #4ca1af);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(44, 62, 80, 0.3);
         }
 
         .btn-registrar {
-            background: linear-gradient(to right, #2c3e50, #4ca1af);
+            background: linear-gradient(135deg, #2c3e50, #4ca1af);
         }
 
         .btn-registrar:hover {
-            background: linear-gradient(to right, #4ca1af, #2c3e50);
-            -moz-transform: translateY(-3px);
-            -webkit-transform: translateY(-3px);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(44, 62, 80, 0.4);
+            background: linear-gradient(135deg, #4ca1af, #2c3e50);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(44, 62, 80, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+
+            .titulo-receta {
+                font-size: 2.2rem;
+            }
+
+            .valores-nutricionales {
+                grid-template-columns: 1fr;
+            }
+
+            .botones-container {
+                flex-direction: column;
+            }
+
+        }
+        .input-busqueda {
+            min-width: 600px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .busqueda-autocompleta {
+            min-width: 600px;
+        }
+
+        .btn-buscar {
+            left: 15px;
+            padding: 0px 18px;
+            background: #bf5a29 !important;
         }
     </style>
-</head>
+</h:head>
 
 <h:body>
+    <div class="form-busqueda-container">
+        <h:form styleClass="busqueda-form">
+            <div class="busqueda-container">
+                <p:autoComplete id="busqueda"
+                                inputStyleClass="input-busqueda"
+                                styleClass="busqueda-autocompleta"
+                                value="#{search.busqueda}"
+                                completeMethod="#{search.completeSuggestions}"
+                                var="plato"
+                                itemLabel="#{plato}"
+                                itemValue="#{plato}"
+                                minQueryLength="1"
+                                forceSelection="false"
+                                placeholder="Buscar..." />
+                <p:commandButton value="Buscar"
+                                 action="#{search.buscar}"
+                                 styleClass="btn-buscar" />
+            </div>
+        </h:form>
+    </div>
+
     <div class="container">
         <main>
             <div id="detalle-receta">
-                <h:form>
-                    <h:inputText value="#{dishBean.busqueda}" styleClass="input-busqueda"
-                                 placeholder="Buscar recetas..." />
-                    <h:commandButton value="Buscar" action="#{dishBean.buscar}"
-                                     styleClass="btn-buscar" />
-                </h:form>
-
                 <h1 id="titulo-receta" class="titulo-receta">
                     #{dishBean.tituloReceta}
                 </h1>
@@ -286,7 +372,7 @@
 
                     <div class="valores-nutricionales">
                         <div class="valor-nutricional">
-                            <span class="cantidad">#{DishBean.calorias}</span>
+                            <span class="cantidad">#{dishBean.calorias}</span>
                             <span class="nutriente"> 🔥 Calorías</span>
                         </div>
                         <div class="valor-nutricional">
