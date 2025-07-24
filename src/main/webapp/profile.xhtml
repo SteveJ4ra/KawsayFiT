@@ -29,11 +29,8 @@
 
         .buttons-container {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-            position: relative;
         }
 
         .avatar-img {
@@ -205,16 +202,48 @@
         }
 
 
+        .regresar-btn {
+            display: inline-block;
+            width: auto; /* Antes era 100% */
+            padding: 12px;
+            background: linear-gradient(to right, #4CA1AF, #2C3E50);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .regresar-btn:hover {
+            background: linear-gradient(to right, #2C3E50, #4CA1AF);
+            box-shadow: 0 8px 25px rgba(44, 62, 80, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .Profile-img{
+            width: 120px; /* O el tamaño que prefieras */
+            height: 80px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
     </style>
 </h:head>
 <h:body>
     <div class="container profile-container">
         <div class="profile-header">
             <div class="buttons-container">
-                <h:graphicImage value="#{profileBean.fotoPerfil}" alt="Avatar" styleClass="avatar-img"/>
                 <div class="buttons-container">
                     <h:link outcome="dashboard" styleClass="regresar-btn" value="Regresar"/>
                 </div>
+            </div>
+            <div>
+                <img src="images/Profile.png" alt="Profile" class="Profile-img" />
             </div>
 
             <h1><h:outputText value="#{profileBean.nombreCompleto}"/></h1>

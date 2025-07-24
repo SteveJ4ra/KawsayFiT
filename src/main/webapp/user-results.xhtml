@@ -21,6 +21,16 @@
             text-align: center;
         }
 
+        /* Styles for the fuegito GIF when inside the circle */
+        .fuegito {
+            width: 50px;  /* Make it fit inside the 60px circle */
+            height: 50px; /* Make it fit inside the 60px circle */
+            object-fit: contain; /* Ensures the whole image content is visible */
+            border-radius: 50%; /* Makes the image itself circular */
+            box-shadow: 0 0 10px red; /* Adjusted shadow for smaller size */
+            animation: pulso 1s infinite; /* Assuming 'pulso' animation is defined elsewhere */
+        }
+
         .container h1 {
             font-size: 28px;
             color: #2c3e50;
@@ -34,10 +44,10 @@
             background-color: #2c3e50;
             color: white;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
+            display: flex; /* Use flexbox to center content */
+            align-items: center; /* Center vertically */
+            justify-content: center; /* Center horizontally */
+            font-size: 28px; /* This font size will no longer be directly visible if replaced by GIF */
             font-weight: 700;
             box-shadow: 0 4px 15px rgba(52, 152, 219, 0.6);
         }
@@ -50,23 +60,22 @@
 
         .macros-container {
             display: flex;
-            justify-content: space-around; /* Distribuye el espacio uniformemente entre los ítems */
-            align-items: flex-start; /* Alinea los ítems al inicio para que las imágenes estén al mismo nivel */
+            justify-content: space-around;
+            align-items: flex-start;
             margin: 30px 0;
             padding: 20px 0;
             border-top: 1px solid #ecf0f1;
             border-bottom: 1px solid #ecf0f1;
-            flex-wrap: wrap; /* Permite que los elementos salten a la siguiente línea si la pantalla es muy pequeña */
+            flex-wrap: wrap;
         }
 
         .macro-item {
             text-align: center;
-            /* Para que cada item ocupe la misma cantidad de espacio */
-            flex: 1; /* Permite que el ítem crezca y se encoja, ocupando espacio equitativo */
-            min-width: 100px; /* Ancho mínimo para que no se compriman demasiado */
-            max-width: 30%; /* Limita el ancho máximo para que no se estiren demasiado en pantallas grandes */
-            padding: 10px 5px; /* Añade un poco de padding interno a cada item */
-            box-sizing: border-box; /* Asegura que el padding no añada ancho extra */
+            flex: 1;
+            min-width: 100px;
+            max-width: 30%;
+            padding: 10px 5px;
+            box-sizing: border-box;
         }
 
         .macro-item h3 {
@@ -83,13 +92,12 @@
         }
 
         .macro-icon {
-            width: 100px;  /* ¡Tamaño fijo para todas las imágenes! */
-            height: 100px; /* Asegura que la imagen sea cuadrada */
-            object-fit: cover; /* Recorta la imagen para que cubra el área, manteniendo proporciones */
-            /* Alternativa a cover: object-fit: contain; Si quieres que la imagen entera se vea sin recortes, aunque deje espacios en blanco si la proporción de la imagen no coincide con el contenedor. */
-            border-radius: 10px; /* Un poco de redondeo en las esquinas de las imágenes */
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Una sombra sutil para hacerlas destacar */
-            margin-bottom: 10px; /* Aumenta el margen inferior para separar la imagen del texto */
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
         }
 
         .calories-container {
@@ -108,7 +116,6 @@
             margin-top: 10px;
         }
 
-        /*estilo para el boton empecemos*/
         .auth-button {
             display: inline-block;
             width: 50%;
@@ -139,8 +146,9 @@
             <h1>¡Todo listo!</h1>
 
             <div class="goal-badge">
-                <h:outputText value="#{userResultBean.plan.goal}" />
+                <img src="images/Fuegito.gif" alt="Proteínas" class="macro-icon" />
             </div>
+
             <p class="goal-text">Este es tu objetivo nutricional</p>
 
             <div class="macros-container">
@@ -156,7 +164,7 @@
 
                 <div class="macro-item">
                     <img src="images/pan.jpeg" alt="Carbohidratos" class="macro-icon" />
-                    <h3>Carbohidratos 🍞</h3>
+                    <h3>Carbohidratos🍞</h3>
                     <p>
                         <h:outputText value="#{userResultBean.plan.carbs}">
                             <f:convertNumber pattern="#0" />
@@ -168,7 +176,7 @@
                     <img src="images/Salchipapa.png" alt="Grasas" class="macro-icon" />
                     <h3>Grasas 🔥</h3>
                     <p>
-                        <h:outputText value="#{userResultBean.plan.calories}">
+                        <h:outputText value="#{userResultBean.plan.fats}">
                             <f:convertNumber pattern="#0" />
                         </h:outputText>G
                     </p>
