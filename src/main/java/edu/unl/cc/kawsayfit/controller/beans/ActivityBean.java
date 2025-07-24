@@ -41,7 +41,6 @@ public class ActivityBean implements Serializable {
     public String processSelection() {
         PhysicalActivityLevel levelEnum;
         if (activityLevel == null || activityLevel.isEmpty()) {
-            System.out.println("Ningún nivel de actividad seleccionado");
             return null;
         }
         switch (activityLevel) {

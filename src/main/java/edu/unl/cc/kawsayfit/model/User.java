@@ -3,7 +3,7 @@ package edu.unl.cc.kawsayfit.model;
 import edu.unl.cc.kawsayfit.model.enums.Gender;
 import edu.unl.cc.kawsayfit.model.enums.Goal;
 import edu.unl.cc.kawsayfit.model.enums.PhysicalActivityLevel;
-import edu.unl.cc.kawsayfit.service.ImcCalculator;
+import edu.unl.cc.kawsayfit.service.Calculator;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
@@ -68,13 +68,12 @@ public class User implements Serializable {
     @Column(nullable = false)
     private boolean strengthTraining;
 
-
     @Column(nullable = true)
     private String velocity;
 
     public double calculate() {
-        ImcCalculator imcCalculator = new ImcCalculator(weight, height);
-        imc = imcCalculator.calculate();
+        Calculator calculator = new Calculator(weight, height);
+        imc = calculator.calculateIMC();
         return imc;
     }
 

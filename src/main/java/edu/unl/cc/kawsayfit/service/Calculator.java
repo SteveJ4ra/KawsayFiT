@@ -2,22 +2,26 @@ package edu.unl.cc.kawsayfit.service;
 
 import java.io.Serializable;
 
-public class ImcCalculator implements Serializable {
+public class Calculator implements Serializable {
 
     private double weight; // kg
     private double height; // cm
     private double imc;
 
-    public ImcCalculator(double weight, double height) {
+    public Calculator(double weight, double height) {
+        if (weight <= 0 || height <= 0) {
+            throw new IllegalArgumentException("La altura o el peso son invalidos");
+        }
         this.weight = weight;
         this.height = height;
     }
 
-    public double calculate() {
+    public double calculateIMC() {
         double heightInMeters = height / 100.0;
         imc = weight / (heightInMeters * heightInMeters);
         return imc;
     }
+
 
     public double getWeight() {
         return weight;

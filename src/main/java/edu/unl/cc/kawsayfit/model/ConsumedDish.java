@@ -10,7 +10,6 @@ import java.time.LocalDate;
 public class ConsumedDish {
 
     public ConsumedDish() {
-
     }
 
     @Id
