@@ -4,6 +4,7 @@ import edu.unl.cc.kawsayfit.business.Ingredients;
 import edu.unl.cc.kawsayfit.model.Dish;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;
+
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collections;
@@ -14,15 +15,23 @@ import java.util.stream.Collectors;
 @ViewScoped
 public class DishBean implements Serializable {
 
+    Dish dish = new Dish();
+    public double calories = dish.getCalories();
+    public double carbohydrates = dish.getCarbohydrates();
+    public double proteins= dish.getProteins();
+    public String name = dish.getName();
+    public String img = dish.getImagePath();
+    public double amount = dish.getAmount();
+
     public void search() {
         //TODO
     }
 
-    public String registerFood() { //Antes de regresar cambiar valores segun la nutricion
+    public String registerFood() {
+        //TODO
         return "profile.xhtml?faces-redirect=true";
     }
 
-    Dish dish = new Dish();
     public Dish getDish() {
         return dish;
     }

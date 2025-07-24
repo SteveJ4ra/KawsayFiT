@@ -3,8 +3,6 @@ package edu.unl.cc.kawsayfit.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
-import java.time.LocalDate;
-
 @Entity
 @Table(name = "consumed_dishes")
 public class ConsumedDish {
@@ -49,7 +47,7 @@ public class ConsumedDish {
 
     @Transient
     public double getTotalFats() {
-        return servings * dish.getFats();
+        return servings * dish.getCalories();
     }
 
     public Long getId() {

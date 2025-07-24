@@ -40,6 +40,10 @@ public class Dish {
     @Column(nullable = false)
     private double caloriesPerServing;
 
+    @Positive
+    @Column(nullable = false)
+    private double amount;
+
     @PositiveOrZero
     @Column(nullable = false)
     private double proteins;
@@ -50,7 +54,16 @@ public class Dish {
 
     @PositiveOrZero
     @Column(nullable = false)
-    private double fats;
+    private double calories;
+
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
 
     public Long getId() {
         return id;
@@ -116,12 +129,12 @@ public class Dish {
         this.carbohydrates = carbohydrates;
     }
 
-    public @PositiveOrZero double getFats() {
-        return fats;
+    public @PositiveOrZero double getCalories() {
+        return calories;
     }
 
-    public void setFats(@PositiveOrZero double fats) {
-        this.fats = fats;
+    public void setCalories(@PositiveOrZero double calories) {
+        this.calories = calories;
     }
 
     @Override
@@ -135,7 +148,7 @@ public class Dish {
         sb.append(", caloriesPerServing=").append(caloriesPerServing);
         sb.append(", proteins=").append(proteins);
         sb.append(", carbohydrates=").append(carbohydrates);
-        sb.append(", fats=").append(fats);
+        sb.append(", calories=").append(calories);
         sb.append('}');
         return sb.toString();
     }

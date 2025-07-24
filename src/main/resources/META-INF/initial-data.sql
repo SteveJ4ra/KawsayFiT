@@ -1,4 +1,4 @@
-INSERT INTO dishes (name, description, imagePath, ingredients, caloriesPerServing, proteins, carbohydrates, fats)
+INSERT INTO dishes (name, description, imagePath, ingredients, caloriesPerServing, proteins, carbohydrates, calories)
 VALUES
     ('AguadoGallina', 'Sopa tradicional con gallina, arroz y verduras', 'images/AguadoGallina.png', 'Gallina, arroz, cebolla, ajo, zanahoria', 300, 25, 20, 10),
     ('AlitasAsadas', 'Alitas de pollo sazonadas y asadas al horno', 'images/AlitasAsadas.png', 'Alitas de pollo, especias, sal, aceite', 420, 35, 5, 30),

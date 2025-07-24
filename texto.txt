@@ -46,7 +46,7 @@ Java Library path = C:\Program Files\Eclipse Adoptium\jdk-21.0.6.7-hotspot\bin;C
 [20/7/25, 16:50:06:384 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [id] está tomando como valor predeterminado: ID.
 [20/7/25, 16:50:06:388 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] El name de alias para la clase identidad [class edu.unl.cc.kawsayfit.model.Dish] está tomando como valor predeterminado: Dish.
 [20/7/25, 16:50:06:388 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [carbohydrates] está tomando como valor predeterminado: CARBOHYDRATES.
-[20/7/25, 16:50:06:388 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [fats] está tomando como valor predeterminado: FATS.
+[20/7/25, 16:50:06:388 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [calories] está tomando como valor predeterminado: FATS.
 [20/7/25, 16:50:06:390 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [imagePath] está tomando como valor predeterminado: IMAGEPATH.
 [20/7/25, 16:50:06:391 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [proteins] está tomando como valor predeterminado: PROTEINS.
 [20/7/25, 16:50:06:392 ECT] 0000003d metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [name] está tomando como valor predeterminado: NAME.
@@ -422,7 +422,7 @@ Consulta: DataModifyQuery(sql="ALTER TABLE consumed_dishes ADD CONSTRAINT FK_con
 [20/7/25, 16:50:22:000 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [id] está tomando como valor predeterminado: ID.
 [20/7/25, 16:50:22:005 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] El name de alias para la clase identidad [class edu.unl.cc.kawsayfit.model.Dish] está tomando como valor predeterminado: Dish.
 [20/7/25, 16:50:22:006 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [carbohydrates] está tomando como valor predeterminado: CARBOHYDRATES.
-[20/7/25, 16:50:22:006 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [fats] está tomando como valor predeterminado: FATS.
+[20/7/25, 16:50:22:006 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [calories] está tomando como valor predeterminado: FATS.
 [20/7/25, 16:50:22:008 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [imagePath] está tomando como valor predeterminado: IMAGEPATH.
 [20/7/25, 16:50:22:010 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [proteins] está tomando como valor predeterminado: PROTEINS.
 [20/7/25, 16:50:22:011 ECT] 00000038 metadata      I   CWWJP9990I: [eclipselink.metadata] EL name de columna para el elemento [name] está tomando como valor predeterminado: NAME.

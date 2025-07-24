@@ -338,8 +338,8 @@
                 <p:autoComplete id="busqueda"
                                 inputStyleClass="input-busqueda"
                                 styleClass="busqueda-autocompleta"
-                                value="#{search.busqueda}"
-                                completeMethod="#{search.completeSuggestions}"
+                                value="#{dashboardBean.searching}"
+                                completeMethod="#{dashboardBean.completeSuggestions}"
                                 var="plato"
                                 itemLabel="#{plato}"
                                 itemValue="#{plato}"
@@ -347,7 +347,7 @@
                                 forceSelection="false"
                                 placeholder="Buscar..." />
                 <p:commandButton value="Buscar"
-                                 action="#{search.buscar}"
+                                 action="#{dashboardBean.find()}"
                                  styleClass="btn-buscar" />
             </div>
         </h:form>
@@ -357,40 +357,40 @@
         <main>
             <div id="detalle-receta">
                 <h1 id="titulo-receta" class="titulo-receta">
-                    #{dishBean.tituloReceta}
+                    #{dishBean.name}
                 </h1>
 
                 <div class="seccion nutricion">
-                    <h:graphicImage name="images/#{dishBean.imagen}" alt="Imagen de comida"
+                    <h:graphicImage name="images/#{dishBean.img}" alt="Imagen de comida"
                                     styleClass="imagen-centrada" />
 
                     <p class="porcion">
-                        #{dishBean.porcionTexto}
+                        #{dishBean.amount}
                     </p>
 
                     <h2>Informacion Nutricional</h2>
 
                     <div class="valores-nutricionales">
                         <div class="valor-nutricional">
-                            <span class="cantidad">#{dishBean.calorias}</span>
+                            <span class="cantidad">#{dishBean.calories}</span>
                             <span class="nutriente"> 🔥 Calorías</span>
                         </div>
                         <div class="valor-nutricional">
-                            <span class="cantidad">#{dishBean.proteinas}</span>
+                            <span class="cantidad">#{dishBean.proteins}</span>
                             <span class="nutriente"> 🍗 Proteínas</span>
                         </div>
                         <div class="valor-nutricional">
-                            <span class="cantidad">#{dishBean.carbohidratos}</span>
+                            <span class="cantidad">#{dishBean.carbohydrates}</span>
                             <span class="nutriente"> 🥔 Carbohidratos</span>
                         </div>
                     </div>
 
                     <div class="tabla-porcion">
                         <table>
-                            <ui:repeat value="#{dishBean.ingredientes}" var="ing">
+                            <ui:repeat value="#{dishBean.ingredients}" var="ing">
                                 <tr>
-                                    <td>#{ing.nombre}</td>
-                                    <td>#{ing.cantidad} g</td>
+                                    <td>#{ing.name}</td>
+                                    <td>#{ing.amount} g</td>
                                 </tr>
                             </ui:repeat>
                         </table>
@@ -403,7 +403,7 @@
                             <div class="botones-container">
                                 <h:commandButton value="Volver" action="home?faces-redirect=true"
                                                  styleClass="btn-volver" />
-                                <h:commandButton value="Registrar" action="#{dishBean.registrar}"
+                                <h:commandButton value="Registrar" action="#{dishBean.registerFood()}"
                                                  styleClass="btn-registrar" />
                             </div>
                         </h:form>
