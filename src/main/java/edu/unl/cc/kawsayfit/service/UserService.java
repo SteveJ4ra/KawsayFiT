@@ -1,6 +1,9 @@
 package edu.unl.cc.kawsayfit.service;
 
+import edu.unl.cc.kawsayfit.controller.AuthController;
 import edu.unl.cc.kawsayfit.controller.UserSession;
+import edu.unl.cc.kawsayfit.exception.CredentialInvalidException;
+import edu.unl.cc.kawsayfit.exception.EncryptorException;
 import edu.unl.cc.kawsayfit.model.User;
 import edu.unl.cc.kawsayfit.model.enums.Goal;
 import edu.unl.cc.kawsayfit.model.enums.PhysicalActivityLevel;
@@ -12,7 +15,6 @@ import jakarta.inject.Inject;
 import jakarta.persistence.PersistenceException;
 import jakarta.transaction.Transactional;
 import java.time.LocalDate;
-import java.util.Optional;
 
 @ApplicationScoped
 public class UserService {
@@ -26,22 +28,20 @@ public class UserService {
     @Inject
     private UserSession userSession;
 
-    public String login() {
-        Optional<User> optionalUser = userRepository.findByEmail(email);
+    @Inject
+    private AuthController authController;
 
-        if (optionalUser.isPresent()) {
-            User user = optionalUser.get();
-
-            if (user.getPasswordHash().equals(password)) {
-                userSession.setLoggedUser(user);
-                return "dashboard.xhtml?faces-redirect=true";
-            } else {
-                FacesContext.getCurrentInstance().addMessage(null,
-                        new FacesMessage(FacesMessage.SEVERITY_ERROR, "Contraseña incorrecta", null));
-            }
-        } else {
+    public String login(String email, String password) {
+        try {
+            User user = authController.validateUser(email, password);
+            userSession.setLoggedUser(user);
+            return "dashboard.xhtml?faces-redirect=true";
+        } catch (CredentialInvalidException e) {
             FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario no encontrado", null));
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Credenciales inválidas", null));
+        } catch (EncryptorException e) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al encriptar la contraseña", null));
         }
         return null;
     }

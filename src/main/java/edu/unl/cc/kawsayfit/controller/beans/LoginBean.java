@@ -23,8 +23,8 @@ public class LoginBean implements Serializable {
     @Inject
     private UserService userservice;
 
-    public void login() {
-        userservice.login();
+    public String login() {
+        return userservice.login(email, password);
     }
 
     public String getEmail() {
