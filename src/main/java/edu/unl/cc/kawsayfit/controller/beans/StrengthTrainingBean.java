@@ -9,7 +9,7 @@ import jakarta.inject.Named;
 
 import java.io.Serializable;
 
-@Named
+@Named("strengthTrainingBean")
 @ViewScoped
 public class StrengthTrainingBean implements Serializable {
 

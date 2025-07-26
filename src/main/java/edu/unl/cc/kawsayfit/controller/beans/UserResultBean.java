@@ -11,7 +11,7 @@ import jakarta.inject.Named;
 
 import java.io.Serializable;
 
-@Named
+@Named( "userResultBean")
 @ViewScoped
 public class UserResultBean implements Serializable {
 

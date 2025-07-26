@@ -12,7 +12,7 @@ import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
-@Named
+@Named("goalSelectionBean")
 @ViewScoped
 public class GoalSelectionBean implements Serializable {
 

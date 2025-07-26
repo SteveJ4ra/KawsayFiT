@@ -12,7 +12,7 @@ import jakarta.inject.Named;
 
 import java.io.Serializable;
 
-@Named
+@Named("registerBean")
 @ViewScoped
 public class RegisterBean implements Serializable {
 

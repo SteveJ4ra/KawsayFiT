@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Named
+@Named("customizeGoalBean")
 @ViewScoped
 public class CustomizeGoalBean implements Serializable {
 
