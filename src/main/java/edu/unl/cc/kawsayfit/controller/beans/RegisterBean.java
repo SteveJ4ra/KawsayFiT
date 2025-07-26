@@ -38,7 +38,7 @@ public class RegisterBean implements Serializable {
     public String register() {
         if (!password.equals(confirmPassword)) {
             FacesContext.getCurrentInstance().addMessage(null,
-            new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error", "Las contraseñas no coinciden"));
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Las contraseñas no coinciden"));
             return null;
         }
 
@@ -51,12 +51,12 @@ public class RegisterBean implements Serializable {
             userService.register(user);
             userSession.setLoggedUser(user);
             FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage(FacesMessage.SEVERITY_INFO, "Éxito", "Usuario registrado con éxito"));
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Éxito", "Usuario registrado con éxito"));
             clearForm();
             return "select-target.xhtml?faces-redirect=true";
         } catch (RuntimeException e) {
             FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", e.getMessage()));
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", e.getMessage()));
             return null;
         }
     }

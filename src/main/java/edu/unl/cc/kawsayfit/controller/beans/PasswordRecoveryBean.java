@@ -1,17 +1,19 @@
 package edu.unl.cc.kawsayfit.controller.beans;
 
+import edu.unl.cc.kawsayfit.model.RecoveryCode;
 import edu.unl.cc.kawsayfit.model.User;
+import edu.unl.cc.kawsayfit.repository.RecoveryCodeRepository;
 import edu.unl.cc.kawsayfit.repository.UserRepository;
 import edu.unl.cc.kawsayfit.util.EncryptorManager;
+
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
+import java.time.LocalDateTime;
 
-@Named ("passwordRecoveryBean")
+@Named("passwordRecoveryBean")
 @ViewScoped
 public class PasswordRecoveryBean implements Serializable {
 
@@ -22,18 +24,24 @@ public class PasswordRecoveryBean implements Serializable {
     private String message;
     private boolean codeSent;
 
-    // Simula códigos temporales (en memoria)
-    private static final Map<String, String> tempCodes = new HashMap<>();
-
     @Inject
     private UserRepository userRepository;
 
-    
-    public String sendCode() {
-        String code = generateMockCode();
-        tempCodes.put(email, code);
-        codeSent = true;
+    @Inject
+    private RecoveryCodeRepository recoveryCodeRepository;
 
+    public String sendCode() {
+        String code = generateRandomCode();
+
+        recoveryCodeRepository.deleteByEmail(email);
+
+        RecoveryCode recovery = new RecoveryCode();
+        recovery.setEmail(email);
+        recovery.setCode(code);
+        recovery.setExpirationTime(LocalDateTime.now().plusMinutes(10));
+        recoveryCodeRepository.save(recovery);
+
+        codeSent = true;
         return "reset-password?faces-redirect=true";
     }
 
@@ -43,9 +51,14 @@ public class PasswordRecoveryBean implements Serializable {
             return;
         }
 
-        String storedCode = tempCodes.get(email);
-        if (storedCode == null || !storedCode.equals(confirmationCode)) {
+        RecoveryCode storedCode = recoveryCodeRepository.findByEmail(email).orElse(null);
+        if (storedCode == null || !storedCode.getCode().equals(confirmationCode)) {
             message = "Código de confirmación inválido.";
+            return;
+        }
+
+        if (storedCode.getExpirationTime().isBefore(LocalDateTime.now())) {
+            message = "El código ha expirado.";
             return;
         }
 
@@ -59,17 +72,17 @@ public class PasswordRecoveryBean implements Serializable {
             String encrypted = EncryptorManager.encrypt(newPassword);
             user.setPasswordHash(encrypted);
             userRepository.update(user);
+            recoveryCodeRepository.deleteByEmail(email); // limpieza
             message = "Contraseña actualizada con éxito.";
-            tempCodes.remove(email);
             clearForm();
         } catch (Exception e) {
             message = "Error al actualizar la contraseña: " + e.getMessage();
         }
     }
 
-    private String generateMockCode() {
-
-        return "123456"; // es la app debe generar aleatoriamente esto
+    private String generateRandomCode() {
+        int code = (int) (Math.random() * 900000) + 100000; // Genera un número entre 100000 y 999999
+        return String.valueOf(code);
     }
 
     private void clearForm() {

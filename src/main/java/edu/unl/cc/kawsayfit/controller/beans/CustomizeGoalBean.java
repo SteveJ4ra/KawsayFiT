@@ -63,7 +63,7 @@ public class CustomizeGoalBean implements Serializable {
 
     public List<SelectItem> getWeightList() {
         List<SelectItem> items = new ArrayList<>();
-        for(int i = 40; i <= 150; i += 5) {
+        for (int i = 40; i <= 150; i += 5) {
             items.add(new SelectItem(i, i + "kg"));
         }
         return items;

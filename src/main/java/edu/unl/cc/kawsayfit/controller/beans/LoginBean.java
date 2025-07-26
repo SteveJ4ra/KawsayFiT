@@ -13,7 +13,7 @@ import jakarta.inject.Named;
 import java.io.Serializable;
 import java.util.Optional;
 
-@Named ("loginBean")
+@Named("loginBean")
 @RequestScoped
 public class LoginBean implements Serializable {
 
