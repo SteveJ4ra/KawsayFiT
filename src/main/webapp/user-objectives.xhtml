@@ -145,6 +145,9 @@
         .velocity-options-container table tr td {
             padding: 0; /* Remove default table cell padding */
             border: none; /* Remove default table cell borders */
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         /* This targets the label itself */
@@ -302,12 +305,12 @@
             </div>
 
             <div class="input-group">
-                <label class="velocity-label">Velocidad</label>
+                <label class="velocity-label">Velocidad con la que deseas progresar</label>
                 <div class="velocity-options-container">
                     <h:selectOneRadio value="#{customizeGoalBean.velocity}" layout="pageDirection">
-                        <f:selectItem itemLabel="Lento" itemValue="lento" />
-                        <f:selectItem itemLabel="Moderado" itemValue="moderado" />
-                        <f:selectItem itemLabel="Rápido" itemValue="rapido" />
+                        <f:selectItem itemLabel="🐌 Lento" itemValue="lento" />
+                        <f:selectItem itemLabel="🚶 Moderado" itemValue="moderado" />
+                        <f:selectItem itemLabel="🚀 Rápido" itemValue="rapido" />
                     </h:selectOneRadio>
                 </div>
             </div>
