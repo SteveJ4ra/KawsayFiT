@@ -5,7 +5,6 @@ import edu.unl.cc.kawsayfit.model.User;
 import edu.unl.cc.kawsayfit.repository.RecoveryCodeRepository;
 import edu.unl.cc.kawsayfit.repository.UserRepository;
 import edu.unl.cc.kawsayfit.util.EncryptorManager;
-
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
