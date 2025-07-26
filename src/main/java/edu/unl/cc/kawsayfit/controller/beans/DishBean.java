@@ -13,7 +13,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import java.io.Serializable;
 
-@Named
+@Named ("dishBean")
 @RequestScoped
 public class DishBean implements Serializable {
 

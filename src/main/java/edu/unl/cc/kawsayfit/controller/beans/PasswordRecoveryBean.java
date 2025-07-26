@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-@Named
+@Named ("passwordRecoveryBean")
 @ViewScoped
 public class PasswordRecoveryBean implements Serializable {
 
@@ -68,7 +68,6 @@ public class PasswordRecoveryBean implements Serializable {
     }
 
     private String generateMockCode() {
-
 
         return "123456"; // es la app debe generar aleatoriamente esto
     }

@@ -3,6 +3,7 @@ package edu.unl.cc.kawsayfit.controller.beans;
 import edu.unl.cc.kawsayfit.controller.UserSession;
 import edu.unl.cc.kawsayfit.model.User;
 import edu.unl.cc.kawsayfit.repository.UserRepository;
+import edu.unl.cc.kawsayfit.service.UserService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
@@ -12,7 +13,7 @@ import jakarta.inject.Named;
 import java.io.Serializable;
 import java.util.Optional;
 
-@Named
+@Named ("loginBean")
 @RequestScoped
 public class LoginBean implements Serializable {
 
@@ -20,30 +21,10 @@ public class LoginBean implements Serializable {
     private String password;
 
     @Inject
-    private UserRepository userRepository;
+    private UserService userservice;
 
-    @Inject
-    private UserSession userSession;
-
-    public String login() {
-        Optional<User> optionalUser = userRepository.findByEmail(email);
-
-        if (optionalUser.isPresent()) {
-            User user = optionalUser.get();
-
-            if (user.getPasswordHash().equals(password)) {
-                userSession.setLoggedUser(user);
-                return "dashboard.xhtml?faces-redirect=true";
-            } else {
-                FacesContext.getCurrentInstance().addMessage(null,
-                        new FacesMessage(FacesMessage.SEVERITY_ERROR, "Contraseña incorrecta", null));
-            }
-        } else {
-            FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario no encontrado", null));
-        }
-
-        return null;
+    public void login() {
+        userservice.login();
     }
 
     public String getEmail() {

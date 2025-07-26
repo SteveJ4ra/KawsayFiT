@@ -1,11 +1,13 @@
 package edu.unl.cc.kawsayfit.service;
 
+import edu.unl.cc.kawsayfit.controller.UserSession;
 import edu.unl.cc.kawsayfit.model.User;
 import edu.unl.cc.kawsayfit.model.enums.Goal;
 import edu.unl.cc.kawsayfit.model.enums.PhysicalActivityLevel;
 import edu.unl.cc.kawsayfit.repository.UserRepository;
-import jakarta.ejb.Stateless;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
 import jakarta.inject.Inject;
 import jakarta.persistence.PersistenceException;
 import jakarta.transaction.Transactional;
@@ -15,12 +17,33 @@ import java.util.Optional;
 @ApplicationScoped
 public class UserService {
 
+    private String email;
+    private String password;
+
     @Inject
     private UserRepository userRepository;
 
-    public Optional<User> login(String email, String rawPassword) {
-        return userRepository.findByEmail(email)
-                .filter(user -> user.getPasswordHash().equals(rawPassword)); // Simplificado. Usa hashing en producción.
+    @Inject
+    private UserSession userSession;
+
+    public String login() {
+        Optional<User> optionalUser = userRepository.findByEmail(email);
+
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+
+            if (user.getPasswordHash().equals(password)) {
+                userSession.setLoggedUser(user);
+                return "dashboard.xhtml?faces-redirect=true";
+            } else {
+                FacesContext.getCurrentInstance().addMessage(null,
+                        new FacesMessage(FacesMessage.SEVERITY_ERROR, "Contraseña incorrecta", null));
+            }
+        } else {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario no encontrado", null));
+        }
+        return null;
     }
 
     @Transactional
@@ -59,4 +82,6 @@ public class UserService {
     public User findById(Long id) {
         return userRepository.findById(id);
     }
+
+
 }

@@ -1,7 +1,11 @@
 package edu.unl.cc.kawsayfit.controller.beans;
 
+import edu.unl.cc.kawsayfit.controller.UserSession;
+import edu.unl.cc.kawsayfit.model.User;
 import edu.unl.cc.kawsayfit.service.Calculator;
+import jakarta.annotation.PostConstruct;
 import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import java.io.Serializable;
 
@@ -25,23 +29,31 @@ public class ProfileBean implements Serializable {
     private int consumedCarbohydrates;
     private int carbohydratesGoal;
 
-    public ProfileBean() {
-        fullName = "Juan Pérez";
-        email = "juan.perez@example.com";
-        age = 29;
-        height = 175;
-        weight = 72;
-        goal = "Perder grasa";
+    @Inject
+    private UserSession userSession;
 
-        consumedCalories = 1300;
-        caloriesGoal = 2000;
+    @PostConstruct
+    public void init() {
+        User user = userSession.getLoggedUser();
+        if (user != null) {
+            this.fullName = user.getUsername();
+            this.email = user.getEmail();
+            this.age = user.getAge();
+            this.height = user.getHeight();
+            this.weight = user.getWeight();
+            this.goal = user.getGoal() != null ? user.getGoal().toString() : "Sin objetivo";
 
-        comsumedProteins = 80;
-        proteinsGoal = 120;
+            this.consumedCalories = 0;
+            this.caloriesGoal = Calculator.calculateCaloricGoal(user);
 
-        consumedCarbohydrates = 180;
-        carbohydratesGoal = 250;
+            this.comsumedProteins = 0;
+            this.proteinsGoal = Calculator.calculateProteinGoal(user);
+
+            this.consumedCarbohydrates = 0;
+            this.carbohydratesGoal = Calculator.calculateCarbohydrateGoal(user);
+        }
     }
+
 
     public double getImc() {
         try {
