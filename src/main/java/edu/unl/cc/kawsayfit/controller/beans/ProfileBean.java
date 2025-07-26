@@ -1,6 +1,6 @@
 package edu.unl.cc.kawsayfit.controller.beans;
 
-
+import edu.unl.cc.kawsayfit.service.Calculator;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;
 import java.io.Serializable;
@@ -8,75 +8,65 @@ import java.io.Serializable;
 @Named("profileBean")
 @ViewScoped
 public class ProfileBean implements Serializable {
-    private String fotoPerfil;
-    private String nombreCompleto;
+
+    private String fullName;
     private String email;
-    private int edad;
-    private double altura; // en cm
-    private double peso;   // en kg
-    private double imc;
-    private String estadoImc;
+    private int age;
+    private double height; // cm
+    private double weight; // kg
+    private String goal;
 
-    private String objetivo;
+    private int consumedCalories;
+    private int caloriesGoal;
 
-    private int caloriasConsumidas;
-    private int caloriasMeta;
-    private int proteinasConsumidas;
-    private int proteinasMeta;
-    private int carbohidratosConsumidos;
-    private int carbohidratosMeta;
+    private int comsumedProteins;
+    private int proteinsGoal;
+
+    private int consumedCarbohydrates;
+    private int carbohydratesGoal;
 
     public ProfileBean() {
-        fotoPerfil = "avatar_default.png";
-        nombreCompleto = "Juan Pérez";
+        fullName = "Juan Pérez";
         email = "juan.perez@example.com";
-        edad = 29;
-        altura = 175; // cm
-        peso = 72;    // kg
+        age = 29;
+        height = 175;
+        weight = 72;
+        goal = "Perder grasa";
 
-        calcularImc();
+        consumedCalories = 1300;
+        caloriesGoal = 2000;
 
-        objetivo = "Perder grasa";
+        comsumedProteins = 80;
+        proteinsGoal = 120;
 
-        caloriasConsumidas = 1300;
-        caloriasMeta = 2000;
-
-        proteinasConsumidas = 80;
-        proteinasMeta = 120;
-
-        carbohidratosConsumidos = 180;
-        carbohidratosMeta = 250;
+        consumedCarbohydrates = 180;
+        carbohydratesGoal = 250;
     }
 
-    private void calcularImc() {
-        if (altura > 0) {
-            double alturaEnMetros = altura / 100.0;
-            imc = peso / (alturaEnMetros * alturaEnMetros);
-
-            if (imc < 18.5) estadoImc = "Bajo peso";
-            else if (imc < 25) estadoImc = "Normal";
-            else if (imc < 30) estadoImc = "Sobrepeso";
-            else estadoImc = "Obesidad";
-        } else {
-            imc = 0;
-            estadoImc = "No definido";
+    public double getImc() {
+        try {
+            return Math.round(Calculator.calculateIMC(weight, height) * 10) / 10.0;
+        } catch (IllegalArgumentException e) {
+            return 0.0;
         }
     }
 
-    public String getFotoPerfil() {
-        return fotoPerfil;
+    public String getImcState() {
+        try {
+            double imc = Calculator.calculateIMC(weight, height);
+            return Calculator.calculateImcState(imc);
+        } catch (IllegalArgumentException e) {
+            return "No definido";
+        }
     }
 
-    public void setFotoPerfil(String fotoPerfil) {
-        this.fotoPerfil = fotoPerfil;
+
+    public String getFullName() {
+        return fullName;
     }
 
-    public String getNombreCompleto() {
-        return nombreCompleto;
-    }
-
-    public void setNombreCompleto(String nombreCompleto) {
-        this.nombreCompleto = nombreCompleto;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getEmail() {
@@ -87,93 +77,83 @@ public class ProfileBean implements Serializable {
         this.email = email;
     }
 
-    public int getEdad() {
-        return edad;
+    public int getAge() {
+        return age;
     }
 
-    public void setEdad(int edad) {
-        this.edad = edad;
+    public void setAge(int age) {
+        this.age = age;
     }
 
-    public double getAltura() {
-        return altura;
+    public double getHeight() {
+        return height;
     }
 
-    public void setAltura(double altura) {
-        this.altura = altura;
-        calcularImc();
+    public void setHeight(double height) {
+        this.height = height;
     }
 
-    public double getPeso() {
-        return peso;
+    public double getWeight() {
+        return weight;
     }
 
-    public void setPeso(double peso) {
-        this.peso = peso;
-        calcularImc();
+    public void setWeight(double weight) {
+        this.weight = weight;
     }
 
-    public double getImc() {
-        return Math.round(imc * 10) / 10.0;
+    public String getGoal() {
+        return goal;
     }
 
-    public String getEstadoImc() {
-        return estadoImc;
+    public void setGoal(String goal) {
+        this.goal = goal;
     }
 
-    public String getObjetivo() {
-        return objetivo;
+    public int getConsumedCalories() {
+        return consumedCalories;
     }
 
-    public void setObjetivo(String objetivo) {
-        this.objetivo = objetivo;
+    public void setConsumedCalories(int consumedCalories) {
+        this.consumedCalories = consumedCalories;
     }
 
-    public int getCaloriasConsumidas() {
-        return caloriasConsumidas;
+    public int getCaloriesGoal() {
+        return caloriesGoal;
     }
 
-    public void setCaloriasConsumidas(int valor) {
-        this.caloriasConsumidas = valor;
+    public void setCaloriesGoal(int caloriesGoal) {
+        this.caloriesGoal = caloriesGoal;
     }
 
-    public int getCaloriasMeta() {
-        return caloriasMeta;
+    public int getComsumedProteins() {
+        return comsumedProteins;
     }
 
-    public void setCaloriasMeta(int valor) {
-        this.caloriasMeta = valor;
+    public void setComsumedProteins(int comsumedProteins) {
+        this.comsumedProteins = comsumedProteins;
     }
 
-    public int getProteinasConsumidas() {
-        return proteinasConsumidas;
+    public int getProteinsGoal() {
+        return proteinsGoal;
     }
 
-    public void setProteinasConsumidas(int valor) {
-        this.proteinasConsumidas = valor;
+    public void setProteinsGoal(int proteinsGoal) {
+        this.proteinsGoal = proteinsGoal;
     }
 
-    public int getProteinasMeta() {
-        return proteinasMeta;
+    public int getConsumedCarbohydrates() {
+        return consumedCarbohydrates;
     }
 
-    public void setProteinasMeta(int valor) {
-        this.proteinasMeta = valor;
+    public void setConsumedCarbohydrates(int consumedCarbohydrates) {
+        this.consumedCarbohydrates = consumedCarbohydrates;
     }
 
-    public int getCarbohidratosConsumidos() {
-        return carbohidratosConsumidos;
+    public int getCarbohydratesGoal() {
+        return carbohydratesGoal;
     }
 
-    public void setCarbohidratosConsumidos(int valor) {
-        this.carbohidratosConsumidos = valor;
-    }
-
-    public int getCarbohidratosMeta() {
-        return carbohidratosMeta;
-    }
-
-    public void setCarbohidratosMeta(int valor) {
-        this.carbohidratosMeta = valor;
+    public void setCarbohydratesGoal(int carbohydratesGoal) {
+        this.carbohydratesGoal = carbohydratesGoal;
     }
 }

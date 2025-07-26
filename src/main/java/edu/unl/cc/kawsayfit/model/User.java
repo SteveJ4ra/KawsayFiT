@@ -72,11 +72,10 @@ public class User implements Serializable {
     private String velocity;
 
     public double calculate() {
-        Calculator calculator = new Calculator(weight, height);
-        imc = calculator.calculateIMC();
+        Calculator calculator = new Calculator();
+        imc = calculator.calculateIMC(weight, height);
         return imc;
     }
-
 
     public Long getId() {
         return id;

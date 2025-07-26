@@ -19,8 +19,6 @@ import java.util.List;
 @ViewScoped
 public class CustomizeGoalBean implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-
     private Date birthdate;
     private Gender gender;
     private double currentWeight;

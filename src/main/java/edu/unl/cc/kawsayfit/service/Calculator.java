@@ -4,46 +4,18 @@ import java.io.Serializable;
 
 public class Calculator implements Serializable {
 
-    private double weight; // kg
-    private double height; // cm
-    private double imc;
-
-    public Calculator(double weight, double height) {
+    public static double calculateIMC(double weight, double height) {
         if (weight <= 0 || height <= 0) {
-            throw new IllegalArgumentException("La altura o el peso son invalidos");
+            throw new IllegalArgumentException("Peso o altura inválidos");
         }
-        this.weight = weight;
-        this.height = height;
+        double alturaEnMetros = height / 100.0;
+        return weight / (alturaEnMetros * alturaEnMetros);
     }
 
-    public double calculateIMC() {
-        double heightInMeters = height / 100.0;
-        imc = weight / (heightInMeters * heightInMeters);
-        return imc;
-    }
-
-
-    public double getWeight() {
-        return weight;
-    }
-
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-
-    public double getHeight() {
-        return height;
-    }
-
-    public void setHeight(double height) {
-        this.height = height;
-    }
-
-    public double getImc() {
-        return imc;
-    }
-
-    public void setImc(double imc) {
-        this.imc = imc;
+    public static String calculateImcState(double imc) {
+        if (imc < 18.5) return "Bajo peso";
+        else if (imc < 25) return "Normal";
+        else if (imc < 30) return "Sobrepeso";
+        else return "Obesidad";
     }
 }

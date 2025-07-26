@@ -46,11 +46,6 @@ public class LoginBean implements Serializable {
         return null;
     }
 
-    public String logout() {
-        userSession.logout();
-        return "login.xhtml?faces-redirect=true";
-    }
-
     public String getEmail() {
         return email;
     }
