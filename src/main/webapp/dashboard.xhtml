@@ -1,14 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html>
 <html lang="es"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 <h:head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-
-    <title>Gastronomia Ecuatoriana</title>
+    <title>Gastronomía Ecuatoriana</title>
     <link rel="icon" href="images/KawsayFit.png" type="image/png"/>
 
     <style type="text/css">
@@ -29,9 +25,9 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
-            display: flex; /* Usar flexbox para centrar contenido */
-            flex-direction: column; /* Apilar elementos verticalmente */
-            min-height: 100vh; /* Asegurar que el cuerpo ocupe al menos el 100% del alto de la ventana */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         header {
@@ -47,11 +43,7 @@
         header::before {
             content: "";
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('https://images.unsplash.com/photo-1518983175-75f6a8fe2094?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80') center/cover no-repeat;
+            inset: 0;
             opacity: 0.15;
             z-index: 0;
         }
@@ -72,7 +64,7 @@
             position: relative;
         }
 
-        header nav a, header nav h:link {
+        header nav a {
             color: var(--light-text);
             text-decoration: none;
             font-weight: 600;
@@ -84,169 +76,31 @@
             font-size: 1rem;
         }
 
-        header nav a:hover, header nav h:link:hover {
+        header nav a:hover {
             background-color: var(--accent-color);
             box-shadow: 0 8px 25px rgba(44, 62, 80, 0.2);
             transform: translateY(-2px);
         }
 
-        /* --- Modificaciones para la barra de búsqueda y botón --- */
         main {
-            flex-grow: 1; /* Permite que el main ocupe el espacio disponible */
-            display: flex;
-            justify-content: center; /* Centra horizontalmente */
-            align-items: center; /* Centra verticalmente */
-            padding: 0; /* Eliminar padding */
-            background-color: transparent; /* Eliminar fondo blanco */
-            box-shadow: none; /* Eliminar sombra */
-            max-width: 100%; /* Permitir que ocupe todo el ancho */
-            margin: 0; /* Eliminar margen */
-        }
-
-        #filtros {
-            display: flex; /* Usar flexbox para alinear la barra y el botón */
-            align-items: center; /* Centrar verticalmente los elementos */
-            gap: 1rem; /* Espacio entre la barra y el botón */
-            position: relative;
-            text-align: center;
-            background-color: transparent; /* Eliminar fondo blanco */
-            padding: 0; /* Eliminar padding */
-        }
-
-        #buscador {
-            width: 400px; /* Ancho fijo para la barra de búsqueda */
-            padding: 1.2rem 1.8rem;
-            font-size: 1.2rem;
-            border: 2px solid var(--primary-color);
-            border-radius: 30px;
-            outline: none;
-            background-color: var(--light-text);
-            font-family: 'Montserrat', sans-serif;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        #buscador:focus {
-            border-color: var(--accent-color);
-            box-shadow: 0 0 0 4px rgba(44, 62, 80, 0.25);
-            background-color: white;
-        }
-
-        .search-button {
-            padding: 1.2rem 2.5rem; /* Ajustar padding para el botón */
-            font-size: 1.2rem;
-            font-weight: 600;
-            background-color: var(--primary-color);
-            color: var(--light-text);
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .search-button:hover {
-            background-color: var(--accent-color);
-            box-shadow: 0 8px 25px rgba(44, 62, 80, 0.2);
-            transform: translateY(-2px);
-        }
-
-        /* --- Fin de modificaciones para la barra de búsqueda y botón --- */
-        /* Botón */
-        .auth-button {
-            display: inline-block;
-            width: 10%;
-            padding: 12px;
-            background: linear-gradient(to right, #4CA1AF, #2C3E50);
-            color: white;
-            border: none;
-            border-radius: 30px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 10px;
-            text-decoration: none;
-            text-align: center;
-        }
-
-        .auth-button:hover {
-            background: linear-gradient(to right, #2C3E50, #4CA1AF);
-            box-shadow: 0 8px 25px rgba(44, 62, 80, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .sugerencias-lista {
-            position: absolute;
-            width: calc(400px - 2px); /* Ancho de la barra de búsqueda menos el borde */
-            top: calc(100% + 10px); /* Posicionar debajo de la barra de búsqueda y botón */
-            left: 0;
-            max-height: 280px;
-            overflow-y: auto;
-            background: var(--light-text);
-            border: 1px solid #ddd;
-            border-radius: 0 0 16px 16px;
-            box-shadow: var(--shadow);
-            z-index: 100;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: none;
-        }
-
-        .sugerencias-lista li {
-            padding: 0.8rem 1.5rem;
-            cursor: pointer;
-            font-size: 1rem;
-            color: var(--text-color);
-            transition: var(--transition);
-        }
-
-        .sugerencias-lista li:hover {
-            background-color: var(--secondary-color);
-            color: var(--primary-color);
-        }
-
-        .grid-comidas {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        /* --- Modificaciones para la imagen decorativa --- */
-        .video-decorativo {
-            position: fixed;
-            bottom: 20px; /* Mover más abajo */
-            right: -70px;
-            width: 450px; /* Hacer más grande */
-            height: 450px; /* Hacer más grande */
-            transform: none; /* Eliminar transformación de centrado vertical */
-            z-index: -2;
-            overflow: hidden;
-            pointer-events: none;
-            border-radius: 50%;
-            box-shadow: 0 15px 35px rgba(44, 62, 80, 0.2); /* Sombra para que se vea bonita */
-            border: 5px solid rgba(76, 161, 175, 0.6); /* Borde para que se vea bonita */
+            flex-grow: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: rgba(255, 255, 255, 0.1);
+            padding: 0;
+            background-color: transparent;
+            max-width: 100%;
+            margin: 0;
         }
 
-        .video-decorativo img {
-            width: 90%; /* Ajustar el tamaño de la imagen dentro del contenedor */
-            height: 90%;
-            object-fit: contain; /* Asegura que la imagen completa sea visible */
-            opacity: 0.85; /* Un poco más de opacidad */
-            animation: rotateClockwise 25s linear infinite; /* Animación más lenta */
-            transform-origin: center center;
-            border-radius: 50%; /* Redondear la imagen dentro del contenedor */
-        }
-
-        .video-decorativo:hover img {
-            opacity: 1; /* Opacidad completa al pasar el mouse */
+        #filtros {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+            text-align: center;
+            background-color: transparent;
+            padding: 0;
         }
 
         .input-busqueda {
@@ -260,9 +114,15 @@
         }
 
         .btn-buscar {
-                left: 15px;
-                padding: 0px 18px;
-                background: #bf5a29 !important;
+            padding: 0 18px;
+            background: #bf5a29 !important;
+            cursor: pointer;
+            border: none;
+            border-radius: 30px;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
         }
 
         .btn-buscar:hover {
@@ -270,20 +130,44 @@
             box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
         }
 
+        .video-decorativo {
+            position: fixed;
+            bottom: 20px;
+            right: -70px;
+            width: 450px;
+            height: 450px;
+            z-index: -2;
+            overflow: hidden;
+            pointer-events: none;
+            border-radius: 50%;
+            box-shadow: 0 15px 35px rgba(44, 62, 80, 0.2);
+            border: 5px solid rgba(76, 161, 175, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .video-decorativo img {
+            width: 90%;
+            height: 90%;
+            object-fit: contain;
+            opacity: 0.85;
+            animation: rotateClockwise 25s linear infinite;
+            transform-origin: center center;
+            border-radius: 50%;
+        }
+
         @keyframes rotateClockwise {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
     </style>
 </h:head>
 
 <body>
 <div class="video-decorativo">
-    <img src="images/Dashboard.jpeg" alt="Comida ecuatoriana decorativa" class="gif-fondo"/>
+    <img src="images/Dashboard.jpeg" alt="Comida ecuatoriana decorativa"/>
 </div>
 
 <header>
@@ -293,7 +177,8 @@
         <a href="login.xhtml" id="logoutBtn" class="auth-button">Cerrar Sesión</a>
     </nav>
 </header>
-<h1 style="padding-left: 650px">
+
+<h1 style="padding-left: 650px;">
     KawsayFit
 </h1>
 
@@ -313,7 +198,8 @@
                             placeholder="Buscar comidas..."/>
             <p:commandButton value="Buscar"
                              action="#{dashboardBean.find()}"
-                             styleClass="btn-buscar"/>
+                             styleClass="btn-buscar"
+                             ajax="false"/>
         </h:form>
     </div>
 </main>

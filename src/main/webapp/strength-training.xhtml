@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
@@ -6,7 +5,6 @@
 <h:head>
     <title>Entrenamiento de Fuerza</title>
     <link rel="icon" href="images/KawsayFit.png" type="image/png"/>
-    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet" />
 </h:head>
@@ -129,7 +127,7 @@
 
         <h:form>
             <div class="checkbox-options">
-                <h:selectOneRadio value="#{strengthTrainingBean.doesStrengthTraining}" layout="lineDirection" styleClass="radio-input">
+                <h:selectOneRadio value="#{strengthTrainingBean.doesStrengthTraining}" layout="lineDirection">
                     <f:selectItem itemValue="true" itemLabel="Sí" />
                     <f:selectItem itemValue="false" itemLabel="No" />
                 </h:selectOneRadio>

@@ -1,6 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xml:lang="es" lang="es">
@@ -8,42 +5,34 @@
 <h:head>
     <title>KawsayFit - Comida Ecuatoriana Saludable</title>
     <link rel="icon" href="images/KawsayFit.png" type="image/png"/>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-
     <style>
         body {
             font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(to bottom, #ffffff, #f9f9f9);
-            margin: 0;
-            padding: 0;
+            background: linear-gradient(to bottom, #fff, #f9f9f9);
+            margin: 0; padding: 0;
             color: #333;
         }
 
         header {
-            /* Changed header background to a gradient similar to the buttons */
-            background: linear-gradient(to right, #4ca1af, #2c3e50); /* Similar to btn-volver */
+            background: linear-gradient(to right, #4ca1af, #2c3e50);
             padding: 8px;
             position: relative;
-            color: white; /* Changed text color for better contrast on dark header */
-        }
-
-        header h1, header p {
-            color: white; /* Ensure header text is white */
+            color: white;
+            text-align: center;
         }
 
         .top-buttons {
             position: absolute;
             top: 20px;
             right: 20px;
-            display: flex; /* Use flexbox for button alignment */
-            gap: 15px; /* Space between buttons */
+            display: flex;
+            gap: 15px;
         }
 
-        /* Styles for Iniciar Sesión and Registrarse buttons */
-        .top-buttons .btn-header {
+        .btn-header {
             border-radius: 30px;
-            padding: 8px 15px; /* Adjusted padding for top buttons */
+            padding: 8px 15px;
             font-weight: 600;
             letter-spacing: 0.5px;
             text-transform: uppercase;
@@ -52,26 +41,23 @@
             color: white;
             text-decoration: none;
             cursor: pointer;
-            background: linear-gradient(to right, #4ca1af, #2c3e50); /* Apply button gradient */
-            border: none; /* Remove default button border */
+            background: linear-gradient(to right, #4ca1af, #2c3e50);
+            border: none;
         }
 
-        .top-buttons .btn-header:hover {
+        .btn-header:hover {
             background: linear-gradient(to right, #2c3e50, #4ca1af);
-            -moz-transform: translateY(-3px);
-            -webkit-transform: translateY(-3px);
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(44, 62, 80, 0.4);
         }
 
         header h1 {
             margin: 0;
-            text-align: center;
             font-size: 2.5em;
         }
 
         header p {
-            text-align: center;
+            margin: 0;
             font-size: 1.2em;
         }
 
@@ -114,7 +100,7 @@
         }
 
         .dish {
-            background-color: #fff;
+            background: #fff;
             border: 1px solid #eee;
             border-radius: 10px;
             overflow: hidden;
@@ -139,8 +125,7 @@
             margin: 40px 0;
         }
 
-        /* Styles for the "¡Empieza tu plan ahora!" button */
-        .cta-button .btn-cta {
+        .btn-cta {
             border-radius: 30px;
             padding: 1rem 2rem;
             font-weight: 600;
@@ -149,17 +134,15 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3);
             color: white;
-            text-decoration: none;
             cursor: pointer;
-            background: linear-gradient(to right, #4ca1af, #2c3e50); /* Apply button gradient */
-            border: none; /* Remove default button border */
-            font-size: 1.2em; /* Keep original font size */
+            background: linear-gradient(to right, #4ca1af, #2c3e50);
+            border: none;
+            text-decoration: none;
+            font-size: 1.2em;
         }
 
-        .cta-button .btn-cta:hover {
+        .btn-cta:hover {
             background: linear-gradient(to right, #2c3e50, #4ca1af);
-            -moz-transform: translateY(-3px);
-            -webkit-transform: translateY(-3px);
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(44, 62, 80, 0.4);
         }
@@ -181,17 +164,13 @@
 <h:body>
     <header>
         <div class="top-buttons">
-            <h:form>
             <a href="login.xhtml" class="btn-header">Iniciar Sesión</a>
             <a href="register.xhtml" class="btn-header">Registrarse</a>
-
-            </h:form>
         </div>
-        <h1><h:outputText value="&#x1F1EA;&#x1F1E8;" />
-             KawsayFit
-            <h:outputText value="&#x1F1EA;&#x1F1E8;" />
+        <h1>
+            <h:outputText value="&#x1F1EA;&#x1F1E8;" /> KawsayFit <h:outputText value="&#x1F1EA;&#x1F1E8;" />
         </h1>
-        <p>Transforma tu cuerpo con la gastronomia Ecuatoriana </p>
+        <p>Transforma tu cuerpo con la gastronomia Ecuatoriana</p>
     </header>
 
     <div class="container">
@@ -239,8 +218,11 @@
 
         <div class="cta-button">
             <h:form>
-                <h:commandButton value="¡Empieza tu plan ahora!" action="register.xhtml" styleClass="btn-cta" />
+            <h:commandLink action="register.xhtml" styleClass="btn-cta">
+                ¡Empieza tu plan ahora!
+            </h:commandLink>
             </h:form>
+
         </div>
     </div>
 

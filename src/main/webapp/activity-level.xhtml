@@ -3,7 +3,7 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
       lang="es" xml:lang="es">
 <head>
     <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8"/>
@@ -14,11 +14,9 @@
     <style type="text/css">
         :root {
             --primary-color: #3498db;
-            --primary-hover: #2980b9;
             --text-color: #2c3e50;
             --secondary-text: #7f8c8d;
             --light-bg: #f8f9fa;
-            --selected-bg: #e8f4fc;
             --border-color: #e9ecef;
         }
 
@@ -42,10 +40,11 @@
         h1 {
             font-size: 28px;
             margin-bottom: 8px;
-            color: #2c3e50;
+            color: var(--text-color);
             text-align: center;
         }
 
+        /* Estilos básicos para el radio button group */
         .activity-options {
             display: flex;
             flex-direction: column;
@@ -53,64 +52,7 @@
             margin-bottom: 25px;
         }
 
-        .activity-option {
-            position: relative;
-            padding: 0;
-            border-radius: 10px;
-            background-color: var(--light-bg);
-            border: 1px solid var(--border-color);
-            cursor: pointer;
-            transition: all 0.25s ease;
-            overflow: hidden;
-        }
-
-        .option-content {
-            padding: 16px;
-            padding-left: 40px;
-        }
-
-        .activity-option:hover {
-            background-color: #f0f7fd;
-        }
-
-        .radio-input {
-            position: absolute;
-            opacity: 0;
-        }
-
-        .activity-option input[type="radio"]:checked + .option-content {
-            background-color: var(--selected-bg);
-        }
-
-        .activity-option::before {
-            content: "";
-            position: absolute;
-            top: 20px;
-            left: 16px;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            border: 2px solid var(--border-color);
-            transition: all 0.25s ease;
-        }
-
-        .activity-option input[type="radio"]:checked + .option-content::before {
-            border-color: var(--primary-color);
-            background-color: var(--primary-color);
-        }
-
-        .activity-option h3 {
-            margin: 0 0 4px 0;
-            font-size: 16px;
-            font-weight: 600;
-        }
-
-        .activity-option p {
-            margin: 0;
-            font-size: 14px;
-            color: var(--secondary-text);
-        }
-
+        /* Nota */
         .note {
             color: var(--secondary-text);
             font-size: 13px;
@@ -156,11 +98,9 @@
 
         <p class="note">No te preocupes, luego lo puedes cambiar</p>
 
-
-        <h:commandLink action="#{activityBean.processSelection}"  styleClass="auth-button">
+        <h:commandLink action="#{activityBean.processSelection}" styleClass="auth-button">
             Continuar
         </h:commandLink>
-
     </h:form>
 </div>
 </body>

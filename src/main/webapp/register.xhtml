@@ -1,20 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html
-        PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xml:lang="es" lang="es">
 <h:head>
-    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Registro</title>
     <link rel="icon" href="images/KawsayFit.png" type="image/png"/>
-    <!-- Eliminé FontAwesome porque usaremos emojis -->
-
     <style type="text/css">
-        /* Reset */
         * {
             margin: 0;
             padding: 0;
@@ -78,7 +69,6 @@
             outline: none;
         }
 
-        /* Botón */
         .auth-button {
             display: inline-block;
             width: 100%;
@@ -164,7 +154,7 @@
 
                 <div class="form-group">
                     <label for="name">Nombre Completo</label>
-                    <h:inputText id="name" value="#{registerBean.username}" required="true" styleClass=""/>
+                    <h:inputText id="name" value="#{registerBean.username}" required="true" />
                 </div>
 
                 <div class="form-group">
@@ -205,7 +195,6 @@
     </div>
 
     <script type="text/javascript">
-        // <![CDATA[
         var toggleIcons = document.querySelectorAll('.toggle-password');
 
         toggleIcons.forEach(function(icon) {
@@ -228,7 +217,6 @@
                 }
             });
         });
-        // ]]>
     </script>
 </h:body>
 </html>
