@@ -1,17 +1,11 @@
 package edu.unl.cc.kawsayfit.controller.beans;
 
-import edu.unl.cc.kawsayfit.controller.UserSession;
-import edu.unl.cc.kawsayfit.model.User;
-import edu.unl.cc.kawsayfit.repository.UserRepository;
 import edu.unl.cc.kawsayfit.service.UserService;
 import jakarta.enterprise.context.RequestScoped;
-import jakarta.faces.application.FacesMessage;
-import jakarta.faces.context.FacesContext;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-
 import java.io.Serializable;
-import java.util.Optional;
+
 
 @Named("loginBean")
 @RequestScoped
