@@ -93,6 +93,29 @@
             margin: 0;
         }
 
+        .auth-button {
+            display: inline-block;
+            width: 12%;
+            height: 12%;
+            padding: 8px;
+            background: linear-gradient(to right, #4CA1AF, #2C3E50);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .auth-button:hover {
+            background: linear-gradient(to right, #2C3E50, #4CA1AF);
+            box-shadow: 0 8px 25px rgba(44, 62, 80, 0.2);
+            transform: translateY(-2px);
+        }
         #filtros {
             display: flex;
             align-items: center;
@@ -111,6 +134,7 @@
         .busqueda-autocompleta {
             margin-bottom: 400px;
             min-width: 650px;
+
         }
 
         .btn-buscar {
