@@ -343,7 +343,7 @@
                                     alt="Imagen de #{dishBean.name}"
                                     styleClass="imagen-centrada"/>
                     <p class="porcion">
-                        #{dishBean.amount}
+                        #{dishBean.description}
                     </p>
 
                     <h2>Información Nutricional</h2>
@@ -364,14 +364,7 @@
                     </div>
 
                     <div class="tabla-porcion">
-                        <table>
-                            <ui:repeat value="#{dishBean.ingredients}" var="ing">
-                                <tr>
-                                    <td>#{ing.name}</td>
-                                    <td>#{ing.amount} g</td>
-                                </tr>
-                            </ui:repeat>
-                        </table>
+                        <span class="cantidad">#{dishBean.information}</span>
 
                         <div class="registro-alimento">
                             <p>Registrar este alimento en KawsayFit</p>

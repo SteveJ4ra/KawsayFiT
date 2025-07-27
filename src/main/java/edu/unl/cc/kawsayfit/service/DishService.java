@@ -4,7 +4,6 @@ import edu.unl.cc.kawsayfit.model.Dish;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Named;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,945 +22,849 @@ public class  DishService implements Serializable {
         platosEcuatorianos.add(new Dish(
                 "Encebollado",
                 "Sopa tradicional de pescado",
-                3.75,
+                "Hola mundo",
                 "Encebollado.png",
                 300,
                 20.0,
-                25.0,
-                10.0
+                25.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Manzana",
                 "1 unidad mediana (182 g)",
-                0.80,
+                "sdfasd",
                 "ManzanaRoja.png",
                 95,
                 0.5,
-                25.0,
-                0.3
+                25.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Pera",
                 "1 unidad mediana (178 g)",
-                0.90,
+                "sdfasd",
                 "Pera.png",
                 101,
                 0.6,
-                27.0,
-                0.3
+                27.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Pinia",
                 "1 taza (165 g)",
-                1.20,
+                "sdfasd",
                 "Piña.png",
                 82,
                 0.9,
-                22.0,
-                0.2
+                22.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Papaya",
                 "1 taza (145 g)",
-                1.00,
+                "sdfasd",
                 "Papaya.png",
                 59,
                 0.9,
-                15.0,
-                0.2
+                15.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Mango",
                 "1 unidad mediana (200 g)",
-                1.30,
+                "sdfasd",
                 "Mango.png",
                 135,
                 1.0,
-                35.0,
-                0.4
+                35.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Hamburguesa",
                 "1 unidad (250 g)",
-                5.50,
+                "sdfasd",
                 "Hamburguesa.png",
                 550,
                 25.0,
-                40.0,
-                30.0
+                40.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Pizza",
                 "1 porción (180 g)",
-                4.00,
+                "sdfasd",
                 "PizzaQueso.png",
                 400,
                 15.0,
-                45.0,
-                18.0
+                45.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Alitas",
                 "5 unidades (150 g)",
-                4.50,
+                "sdfasd",
                 "AlitasAsadas.png",
                 430,
                 28.0,
-                4.0,
-                32.0
+                4.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Lasania",
                 "1 porción (300 g)",
-                6.00,
+                "sdfasd",
                 "Lasagna.png",
                 480,
                 20.0,
-                35.0,
-                25.0
+                35.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Tacos",
                 "2 unidades (180 g)",
-                4.00,
+                "sdfasd",
                 "TacoCarne.png",
                 350,
                 18.0,
-                30.0,
-                15.0
+                30.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Shawarma",
                 "1 unidad (250 g)",
-                5.00,
+                "sdfasd",
                 "ShawarmaPollo.png",
                 480,
                 25.0,
-                35.0,
-                22.0
+                35.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Yogurt",
                 "1 vaso (200 ml)",
-                1.80,
+                "sdfasd",
                 "YogurtFresa.png",
                 151,
                 6.0,
-                20.0,
-                4.0
+                20.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Tripa Mishki",
                 "1 porción (180 g)",
-                4.50,
+                "sdfasd",
                 "TripaMishki.png",
                 350,
                 28.0,
-                3.0,
-                23.0
+                3.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Arroz con leche",
                 "1 porción (150 g)",
-                2.50,
+                "sdfasd",
                 "ArrozConLeche.png",
                 210,
                 4.0,
-                40.0,
-                3.5
+                40.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Salchipapa",
                 "1 porción (300 g)",
-                4.00,
+                "sdfasd",
                 "Salchipapa.png",
                 500,
                 14.0,
-                45.0,
-                28.0
+                45.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Papipollo",
                 "1 porción (350 g)",
-                5.50,
+                "sdfasd",
                 "Papipollo.png",
                 620,
                 25.0,
-                50.0,
-                35.0
+                50.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Chuzos",
                 "2 palitos (200 g)",
-                4.50,
+                "sdfasd",
                 "ChuzosCarne.png",
                 400,
                 30.0,
-                8.0,
-                25.0
+                8.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Naranja",
                 "1 unidad (130 g)",
-                0.70,
+                "sdfasd",
                 "Naranja.png",
                 62,
                 1.2,
-                15.0,
-                0.2
+                15.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Mandarina",
                 "1 unidad (120 g)",
-                0.60,
+                "sdfasd",
                 "Mandarina.png",
                 53,
                 0.8,
-                13.0,
-                0.2
+                13.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Guayaba",
                 "1 unidad (100 g)",
-                0.80,
+                "sdfasd",
                 "Guayaba.png",
                 68,
                 2.6,
-                14.0,
-                0.9
+                14.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Guanabana",
                 "1 taza (225 g)",
-                1.50,
+                "sdfasd",
                 "Guanabana.png",
                 135,
                 2.5,
-                34.0,
-                0.7
+                34.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Maduro",
                 "1 unidad (150 g)",
-                1.00,
-                "Maduro.png",
+                "sdfasd",
+                "Banana.png",
                 160,
                 1.3,
-                37.0,
-                0.5
+                37.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Kiwi",
                 "1 unidad (75 g)",
-                0.80,
+                "sdfasd",
                 "Kiwi.png",
                 42,
                 0.8,
-                10.0,
-                0.4
+                10.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Zapote",
                 "1 unidad (250 g)",
-                1.50,
+                "sdfasd",
                 "Zapote.png",
                 110,
                 2.0,
-                28.0,
-                0.5
+                28.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Durazno",
                 "1 unidad (150 g)",
-                0.90,
+                "sdfasd",
                 "Durazno.png",
                 59,
                 1.0,
-                15.0,
-                0.3
+                15.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Sandia",
                 "1 taza (150 g)",
-                0.80,
+                "sdfasd",
                 "Sandia.png",
                 46,
                 0.9,
-                12.0,
-                0.2
+                12.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Melon",
                 "1 taza (160 g)",
-                0.90,
+                "sdfasd",
                 "Melon.png",
                 60,
                 1.0,
-                15.0,
-                0.3
+                15.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Tamales",
                 "1 unidad (200 g)",
-                3.50,
+                "sdfasd",
                 "TamalPollo.png",
                 250,
                 8.0,
-                35.0,
-                8.0
+                35.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Humitas",
                 "1 unidad (180 g)",
-                3.00,
+                "sdfasd",
                 "Humita.png",
                 230,
                 7.0,
-                33.0,
-                7.0
+                33.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Tigrillo",
                 "1 porción (250 g)",
-                4.00,
+                "sdfasd",
                 "Tigrillo.png",
                 400,
                 12.0,
-                30.0,
-                22.0
+                30.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Quimbolitos",
                 "1 unidad (150 g)",
-                2.50,
+                "sdfasd",
                 "Quimbolito.png",
                 200,
                 4.0,
-                35.0,
-                5.0
+                35.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Mote sucio",
                 "1 porción (200 g)",
-                3.50,
+                "sdfasd",
                 "MoteSucio.png",
                 280,
                 10.0,
-                25.0,
-                15.0
+                25.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Bolon",
                 "1 unidad (250 g)",
-                3.50,
+                "sdfasd",
                 "Bolon.png",
                 420,
                 10.0,
-                35.0,
-                25.0
+                35.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Empanada de verde",
                 "1 unidad (150 g)",
-                2.50,
+                "sdfasd",
                 "EmpanadaVerde.png",
                 290,
                 6.0,
-                28.0,
-                15.0
+                28.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Empanada de viento",
                 "1 unidad (140 g)",
-                2.50,
+                "sdfasd",
                 "EmpanadaViento.png",
                 320,
                 5.0,
-                35.0,
-                15.0
+                35.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Empanada de yuca",
                 "1 unidad (130 g)",
-                2.50,
+                "sdfasd",
                 "EmpanadaYuca.png",
                 280,
                 5.0,
-                30.0,
-                14.0
+                30.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Llapingachos",
                 "2 unidades (200 g)",
-                3.50,
+                "sdfasd",
                 "Llapingachos.png",
                 360,
                 8.0,
-                30.0,
-                20.0
+                30.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Bollo de pescado",
                 "1 unidad (300 g)",
-                5.00,
+                "sdfasd",
                 "BolloPescado.png",
                 480,
                 20.0,
-                35.0,
-                25.0
+                35.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Tostadas",
                 "2 unidades (160 g)",
-                2.50,
+                "sdfasd",
                 "Tostada.png",
                 300,
                 8.0,
-                30.0,
-                12.0
+                30.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Mote con chicharron",
                 "1 porción (250 g)",
-                4.50,
+                "sdfasd",
                 "MoteChicharron.png",
                 500,
                 15.0,
-                30.0,
                 30.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Pan de yuca",
                 "3 unidades (90 g)",
-                2.00,
+                "sdfasd",
                 "PanYuca.png",
                 220,
                 5.0,
-                25.0,
-                10.0
+                25.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Batidos",
                 "1 vaso (300 ml)",
-                2.50,
+                "sdfasd",
                 "Batido.png",
                 180,
                 4.0,
-                30.0,
-                3.0
+                30.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Cafe con pan",
                 "1 taza + 1 pan (180 g)",
-                2.00,
+                "sdfasd",
                 "CafePan.png",
                 220,
                 4.0,
-                28.0,
-                8.0
+                28.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Ceviche de camaron",
                 "1 porción (456 g)",
-                6.00,
+                "sdfasd",
                 "CevicheCamaron.png",
                 208,
                 34.0,
-                19.0,
-                2.0
-        ));
-
-        platosEcuatorianos.add(new Dish(
-                "Pan con cafe",
-                "1 pan + 1 taza (180 g)",
-                2.00,
-                "PanCafe.png",
-                220,
-                4.0,
-                28.0,
-                8.0
+                19.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Cevichocho",
                 "1 porción (350 g)",
-                4.00,
+                "sdfasd",
                 "Cevichocho.png",
                 280,
                 12.0,
-                30.0,
-                10.0
+                30.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Ceviche de pescado",
                 "1 porción (400 g)",
-                5.50,
+                "sdfasd",
                 "CevichePescado.png",
                 220,
                 30.0,
-                18.0,
-                3.0
+                18.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Arroz con menestra y carne",
                 "1 porción (400 g)",
-                6.50,
+                "sdfasd",
                 "ArrozMenestraCarne.png",
                 700,
                 35.0,
-                60.0,
-                30.0
+                60.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Seco de pollo",
                 "1 porción (350 g)",
-                6.00,
+                "sdfasd",
                 "SecoPollo.png",
                 620,
                 32.0,
-                40.0,
-                30.0
+                40.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Caldo de pollo",
                 "1 plato (350 g)",
-                4.50,
+                "sdfasd",
                 "CaldoPollo.png",
                 300,
                 25.0,
-                10.0,
-                15.0
+                10.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Caldo de bolas",
                 "1 porción (400 g)",
-                5.00,
+                "sdfasd",
                 "CaldoBola.png",
                 450,
                 20.0,
-                35.0,
-                20.0
+                35.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Caldo de carne",
                 "1 plato (350 g)",
-                5.00,
+                "sdfasd",
                 "CaldoCarne.png",
                 360,
                 30.0,
-                12.0,
-                18.0
+                12.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Sopa de fideos",
                 "1 plato (300 g)",
-                3.50,
+                "sdfasd",
                 "SopaFideo.png",
                 220,
                 6.0,
-                30.0,
-                7.0
+                30.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Aguado de gallina",
                 "1 porción (400 g)",
-                4.50,
+                "sdfasd",
                 "AguadoGallina.png",
                 310,
                 20.0,
-                25.0,
-                12.0
+                25.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Caldo de bagre",
                 "1 plato (350 g)",
-                5.50,
+                "sdfasd",
                 "CaldoBagre.png",
                 340,
                 28.0,
-                12.0,
-                18.0
+                12.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Sopa de mani",
                 "1 plato (300 g)",
-                4.00,
+                "sdfasd",
                 "SopaMani.png",
                 400,
                 10.0,
-                25.0,
                 25.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Guatita",
                 "1 porción (350 g)",
-                5.00,
+                "sdfasd",
                 "Guatita.png",
                 500,
                 22.0,
-                35.0,
-                25.0
+                35.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Arroz marinero",
                 "1 porción (400 g)",
-                7.00,
+                "sdfasd",
                 "ArrozMarinero.png",
                 580,
                 35.0,
-                50.0,
-                20.0
+                50.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Estofado de carne",
                 "1 porción (350 g)",
-                6.00,
+                "sdfasd",
                 "EstofadoCarne.png",
                 520,
                 30.0,
-                28.0,
-                25.0
+                28.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Hornado",
                 "1 porción (400 g)",
-                6.50,
+                "sdfasd",
                 "Hornado.png",
                 650,
                 32.0,
-                40.0,
-                35.0
+                40.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Cuy asado",
                 "1 porción (350 g)",
-                8.00,
+                "sdfasd",
                 "CuyAsado.png",
                 480,
                 35.0,
-                12.0,
-                30.0
+                12.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Caldo de pata",
                 "1 plato (350 g)",
-                5.00,
+                "sdfasd",
                 "CaldoPata.png",
                 430,
                 22.0,
-                20.0,
-                25.0
+                20.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Arroz con pescado frito",
                 "1 porción (400 g)",
-                6.00,
+                "sdfasd",
                 "ArrozPescadoFrito.png",
                 580,
                 30.0,
-                40.0,
-                25.0
+                40.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Arroz con Pollo Frito",
                 "1 porción (400 g)",
-                6.00,
+                "sdfasd",
                 "ArrozPolloFrito.png",
                 650,
                 32.0,
-                45.0,
-                30.0
+                45.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Arroz con Carne Frita",
                 "1 porción (400 g)",
-                6.50,
+                "sdfasd",
                 "ArrozCarneFrita.png",
                 700,
                 35.0,
-                42.0,
-                35.0
+                42.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Ceviche de concha",
                 "1 porción (400 g)",
-                6.00,
+                "sdfasd",
                 "CevicheConcha.png",
                 210,
                 28.0,
-                15.0,
-                3.0
+                15.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Ensalada de frutas",
                 "1 vaso (300 g)",
-                3.00,
+                "sdfasd",
                 "EnsaladaFrutas.png",
                 180,
                 3.0,
-                40.0,
-                2.0
+                40.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Arroz con longaniza",
                 "1 porción (400 g)",
-                6.00,
+                "sdfasd",
                 "ArrozLonganiza.png",
                 680,
                 28.0,
-                50.0,
-                30.0
+                50.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Fritada",
                 "1 porción (450 g)",
-                7.00,
+                "sdfasd",
                 "Fritada.png",
                 720,
                 35.0,
-                45.0,
-                35.0
+                45.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Parrillada",
                 "1 porción (500 g)",
-                8.50,
+                "sdfasd",
                 "Parrillada.png",
                 900,
                 50.0,
-                30.0,
-                60.0
+                30.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Corviche",
                 "1 unidad (200 g)",
-                3.50,
+                "sdfasd",
                 "Corviche.png",
                 340,
                 10.0,
-                25.0,
-                20.0
+                25.0
         ));
 
         platosEcuatorianos.add(new Dish(
-                "Arroz con pollo",
+                "Arroz con pollo frito",
                 "1 porción (400 g)",
-                6.00,
-                "ArrozConPollo.png",
+                "sdfasd",
+                "ArrozPolloFrito.png",
                 600,
                 28.0,
-                45.0,
-                25.0
+                45.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Chaulafan",
                 "1 porción (400 g)",
-                6.50,
+                "sdfasd",
                 "Chaulafan.png",
                 650,
                 30.0,
-                55.0,
-                25.0
+                55.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Menestron",
                 "1 plato (350 g)",
-                4.50,
+                "sdfasd",
                 "Menestron.png",
                 400,
                 12.0,
-                40.0,
-                15.0
+                40.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Seco de chivo",
                 "1 porción (400 g)",
-                7.00,
+                "sdfasd",
                 "SecoChivo.png",
                 680,
                 32.0,
-                40.0,
-                35.0
+                40.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Ceviche mixto",
                 "1 porción (400 g)",
-                6.50,
+                "sdfasd",
                 "CevicheMixto.png",
                 230,
                 30.0,
-                15.0,
-                5.0
+                15.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Cangrejada",
                 "1 porción (500 g)",
-                8.00,
+                "sdfasd",
                 "Cangrejada.png",
                 500,
                 35.0,
-                20.0,
-                25.0
+                20.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Repe",
                 "1 taza (300 g)",
-                3.50,
+                "sdfasd",
                 "Repe.png",
                 240,
                 6.0,
-                30.0,
-                8.0
+                30.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Alverjas con cuero",
                 "1 porción (350 g)",
-                5.00,
+                "sdfasd",
                 "AlverjasCuero.png",
                 480,
                 20.0,
-                35.0,
-                25.0
+                35.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Locro de papa",
                 "1 taza (300 g)",
-                4.00,
+                "sdfasd",
                 "LocroPapa.png",
                 350,
                 8.0,
-                35.0,
-                15.0
+                35.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Chivo al hueco",
                 "1 porción (400 g)",
-                7.50,
+                "sdfasd",
                 "ChivoHueco.png",
                 720,
                 35.0,
-                40.0,
-                35.0
+                40.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Sopa de habas",
                 "1 taza (300 g)",
-                3.50,
+                "sdfasd",
                 "SopaHaba.png",
                 320,
                 10.0,
-                30.0,
-                12.0
+                30.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Yahuarlocro",
                 "1 plato (350 g)",
-                5.00,
+                "sdfasd",
                 "Yahuarlocro.png",
                 500,
                 20.0,
-                30.0,
-                25.0
+                30.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Encocado de pescado",
                 "1 porción (400 g)",
-                6.50,
+                "sdfasd",
                 "EncocadoPescado.png",
                 550,
                 30.0,
-                25.0,
-                30.0
+                25.0
         ));
 
         platosEcuatorianos.add(new Dish(
                 "Chanfaina",
                 "1 porción (350 g)",
-                5.00,
+                "sdfasd",
                 "Chanfaina.png",
                 480,
-                25.0,
                 25.0,
                 25.0
         ));
@@ -969,12 +872,11 @@ public class  DishService implements Serializable {
         platosEcuatorianos.add(new Dish(
                 "Sopa de porotos",
                 "1 taza (300 g)",
-                3.50,
+                "sdfasd",
                 "SopaPoroto.png",
                 330,
                 10.0,
-                35.0,
-                12.0
+                35.0
         ));
 
     }

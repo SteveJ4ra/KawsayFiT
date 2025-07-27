@@ -16,11 +16,11 @@ import java.util.List;
 public class DishBean implements Serializable {
 
     private String name;
-    private String amount;
+    private String description;
+    private String information;
     private double calories;
     private double proteins;
     private double carbohydrates;
-    private double fats;
     private String img;
     private List<Ingredient> ingredients = new ArrayList<>();
 
@@ -35,23 +35,23 @@ public class DishBean implements Serializable {
         if (dashboardBean != null && dashboardBean.getSelectedDish() != null) {
             Dish selectedDish = dashboardBean.getSelectedDish();
             this.name = selectedDish.getName();
-            this.amount = selectedDish.getDescription();
+            this.description = selectedDish.getDescription();
+            this.information = selectedDish.getInformation();
             this.calories = selectedDish.getCalories();
             this.proteins = selectedDish.getProteins();
             this.carbohydrates = selectedDish.getCarbohydrates();
-            this.fats = selectedDish.getFats();
             this.img = selectedDish.getImageUrl();
 
             this.ingredients.clear();
             this.ingredients.add(new Ingredient(selectedDish.getName(), 100));
         } else {
             this.name = "Plato no encontrado";
-            this.amount = "0 g";
+            this.description = "0 g";
+            this.information = "0 g";
             this.calories = 0;
             this.proteins = 0;
             this.carbohydrates = 0;
-            this.fats = 0;
-            this.img = "default-food.png";
+            this.img = "KawsayFit.png";
         }
     }
 
@@ -63,8 +63,12 @@ public class DishBean implements Serializable {
         return name;
     }
 
-    public String getAmount() {
-        return amount;
+    public String getDescription() {
+        return description;
+    }
+
+    public String getInformation() {
+        return information;
     }
 
     public double getCalories() {
@@ -77,10 +81,6 @@ public class DishBean implements Serializable {
 
     public double getCarbohydrates() {
         return carbohydrates;
-    }
-
-    public double getFats() {
-        return fats;
     }
 
     public String getImg() {
