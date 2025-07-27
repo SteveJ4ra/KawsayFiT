@@ -68,8 +68,5 @@ public class GoalSelectionBean implements Serializable {
         this.selectedGoal = selectedGoal;
     }
 
-    public String getMessage() {
-        return message;
-    }
 }
 

@@ -187,7 +187,14 @@ public class ProfileBean implements Serializable {
     public void setCarbohydratesGoal(int carbohydratesGoal) {
         this.carbohydratesGoal = carbohydratesGoal;
     }
+/*
 
+
+
+
+
+
+ */
     public Map<String, Number> getCaloriesData() {
         Map<String, Number> data = new LinkedHashMap<>();
         data.put("Consumido", consumedCalories);

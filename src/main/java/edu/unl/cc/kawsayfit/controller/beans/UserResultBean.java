@@ -1,9 +1,10 @@
 package edu.unl.cc.kawsayfit.controller.beans;
 
 import edu.unl.cc.kawsayfit.controller.UserSession;
+import edu.unl.cc.kawsayfit.model.NutritionalPlan;
 import edu.unl.cc.kawsayfit.model.User;
 import edu.unl.cc.kawsayfit.service.NutritionService;
-import edu.unl.cc.kawsayfit.service.NutritionService.NutritionalPlan;
+import edu.unl.cc.kawsayfit.service.NutritionService;
 import jakarta.annotation.PostConstruct;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
@@ -37,7 +38,4 @@ public class UserResultBean implements Serializable {
         return plan;
     }
 
-    public boolean hasPlan() {
-        return plan != null;
-    }
 }

@@ -29,25 +29,6 @@ public class DailyLog {
     @OneToMany(mappedBy = "dailyLog", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ConsumedDish> consumedDishes = new ArrayList<>();
 
-    @Transient
-    public double getTotalCalories() {
-        return consumedDishes.stream().mapToDouble(ConsumedDish::getTotalCalories).sum();
-    }
-
-    @Transient
-    public double getTotalProteins() {
-        return consumedDishes.stream().mapToDouble(ConsumedDish::getTotalProteins).sum();
-    }
-
-    @Transient
-    public double getTotalCarbohydrates() {
-        return consumedDishes.stream().mapToDouble(ConsumedDish::getTotalCarbohydrates).sum();
-    }
-
-    @Transient
-    public double getTotalFats() {
-        return consumedDishes.stream().mapToDouble(ConsumedDish::getTotalFats).sum();
-    }
 
     public Long getId() {
         return id;
@@ -55,10 +36,6 @@ public class DailyLog {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public @NotNull LocalDate getDate() {
-        return date;
     }
 
     public void setDate(@NotNull LocalDate date) {
@@ -75,10 +52,6 @@ public class DailyLog {
 
     public List<ConsumedDish> getConsumedDishes() {
         return consumedDishes;
-    }
-
-    public void setConsumedDishes(List<ConsumedDish> consumedDishes) {
-        this.consumedDishes = consumedDishes;
     }
 
     @Override

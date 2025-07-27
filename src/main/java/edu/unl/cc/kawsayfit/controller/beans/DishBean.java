@@ -5,6 +5,9 @@ import edu.unl.cc.kawsayfit.model.Ingredient;
 import edu.unl.cc.kawsayfit.service.DishService;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.context.Flash;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import java.io.Serializable;
@@ -56,6 +59,21 @@ public class DishBean implements Serializable {
     }
 
     public String registerFood() {
+        dashboardBean.addNutritionValues(calories, proteins, carbohydrates);
+
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        Flash flash = facesContext.getExternalContext().getFlash();
+        flash.setKeepMessages(true);
+
+        String nombreComida = this.name;
+        String mensaje = "Los valores nutricionales se han guardado correctamente";
+
+        facesContext.addMessage(null, new FacesMessage(
+                FacesMessage.SEVERITY_INFO,
+                "¡"+nombreComida + "! Se ha registrado correctamente!",
+                mensaje
+        ));
+
         return "dashboard?faces-redirect=true";
     }
 

@@ -18,17 +18,4 @@ public class ConsumedDishRepository {
                 .setParameter("user", user)
                 .getResultList();
     }
-
-    public ConsumedDish save(ConsumedDish consumedDish) {
-        em.persist(consumedDish);
-        return consumedDish;
-    }
-
-    public ConsumedDish update(ConsumedDish consumedDish) {
-        return em.merge(consumedDish);
-    }
-
-    public void delete(ConsumedDish consumedDish) {
-        em.remove(em.contains(consumedDish) ? consumedDish : em.merge(consumedDish));
-    }
 }

@@ -19,10 +19,8 @@ public class Dish {
     private double proteins;
     private double carbohydrates;
 
-    // Constructor vacío requerido por JPA
     public Dish() {}
 
-    // Constructor con parámetros
     public Dish(String name, String description, String information, String imageUrl,
                 double caloriesPerServing, double proteins, double carbohydrates) {
         this.name = name;
@@ -34,7 +32,6 @@ public class Dish {
         this.carbohydrates = carbohydrates;
     }
 
-    // Getters y setters
     public Long getId() {
         return id;
     }
@@ -52,37 +49,21 @@ public class Dish {
     public String getDescription() {
         return description;
     }
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
 
     public String getImageUrl() {
         return imageUrl;
-    }
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
     }
 
     public double getCaloriesPerServing() {
         return caloriesPerServing;
     }
-    public void setCaloriesPerServing(double caloriesPerServing) {
-        this.caloriesPerServing = caloriesPerServing;
-    }
 
     public double getProteins() {
         return proteins;
     }
-    public void setProteins(double proteins) {
-        this.proteins = proteins;
-    }
 
     public double getCarbohydrates() {
         return carbohydrates;
-    }
-    public void setCarbohydrates(double carbohydrates) {
-        this.carbohydrates = carbohydrates;
     }
 
     public double getCalories() {
@@ -91,8 +72,5 @@ public class Dish {
 
     public String getInformation() {
         return information;
-    }
-    public void setInformation(String information) {
-        this.information = information;
     }
 }

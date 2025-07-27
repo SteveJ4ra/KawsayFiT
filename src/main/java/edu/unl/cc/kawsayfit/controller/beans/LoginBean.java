@@ -1,7 +1,5 @@
 package edu.unl.cc.kawsayfit.controller.beans;
 
-import edu.unl.cc.kawsayfit.exception.CredentialInvalidException;
-import edu.unl.cc.kawsayfit.exception.EncryptorException;
 import edu.unl.cc.kawsayfit.exception.LoginFailedException;
 import edu.unl.cc.kawsayfit.service.UserService;
 import jakarta.enterprise.context.RequestScoped;

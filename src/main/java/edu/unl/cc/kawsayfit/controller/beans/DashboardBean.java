@@ -9,12 +9,22 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Named("dashboardBean")
+@Named
 @SessionScoped
 public class DashboardBean implements Serializable {
 
     private String searching;
     private Dish selectedDish;
+    private double totalCalories = 0;
+    private double totalProteins = 0;
+    private double totalCarbohydrates = 0;
+
+
+    public void addNutritionValues(double calories, double proteins, double carbohydrates) {
+        this.totalCalories += calories;
+        this.totalProteins += proteins;
+        this.totalCarbohydrates += carbohydrates;
+    }
 
     @Inject
     private DishService dishService;
@@ -46,4 +56,7 @@ public class DashboardBean implements Serializable {
     public void setSearching(String searching) {
         this.searching = searching;
     }
+    public double getTotalCalories() { return totalCalories; }
+    public double getTotalProteins() { return totalProteins; }
+    public double getTotalCarbohydrates() { return totalCarbohydrates; }
 }

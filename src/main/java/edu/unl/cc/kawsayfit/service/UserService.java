@@ -51,7 +51,6 @@ public class UserService {
     public User register(User user) throws DuplicateEmailException, EncryptorException {
         user.setRegistrationDate(LocalDate.now());
 
-        // Generar salt y hash de la contraseña aquí:
         String salt = PasswordUtils.generateSalt();
         String hashedPassword = PasswordUtils.hashPassword(user.getPasswordHash(), salt);
         user.setSalt(salt);
@@ -67,7 +66,6 @@ public class UserService {
         }
     }
 
-
     @Transactional
     public User update(User user) throws EntityNotFoundException, UserUpdateException {
         validateUserForUpdate(user);
@@ -78,13 +76,6 @@ public class UserService {
     public void updateGoal(User user, Goal newGoal) throws EntityNotFoundException, UserUpdateException {
         validateUserForUpdate(user);
         user.setGoal(newGoal);
-        safeUpdate(user);
-    }
-
-    @Transactional
-    public void updateWeight(User user, double newWeight) throws EntityNotFoundException, UserUpdateException {
-        validateUserForUpdate(user);
-        user.setWeight(newWeight);
         safeUpdate(user);
     }
 
@@ -120,4 +111,3 @@ public class UserService {
         }
     }
 }
-

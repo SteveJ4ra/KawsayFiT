@@ -46,7 +46,7 @@ public class User implements Serializable {
 
     @NotNull
     @Column(nullable = false)
-    private double height; // Centímetros
+    private double height;
 
     @NotNull
     @Column(nullable = false)
@@ -207,23 +207,5 @@ public class User implements Serializable {
         LocalDate birthLocal = birthDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         return Period.between(birthLocal, LocalDate.now()).getYears();
     }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", email='" + email + '\'' +
-                ", username='" + username + '\'' +
-                ", registrationDate=" + registrationDate +
-                ", birthDate=" + birthDate +
-                ", gender=" + gender +
-                ", weight=" + weight +
-                ", height=" + height +
-                ", targetWeight=" + targetWeight +
-                ", goal=" + goal +
-                ", physicalActivityLevel=" + physicalActivityLevel +
-                ", strengthTraining=" + strengthTraining +
-                ", velocity='" + velocity + '\'' +
-                '}';
-    }
+    
 }

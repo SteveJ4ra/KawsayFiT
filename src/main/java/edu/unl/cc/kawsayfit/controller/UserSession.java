@@ -31,23 +31,10 @@ public class UserSession implements Serializable {
         return loggedUser != null || userId != null;
     }
 
-    public void logout() {
-        this.loggedUser = null;
-        this.userId = null;
-    }
-
     public User getLoggedUser() {
         return loggedUser;
     }
 
-    public Long getUserId() {
-        return userId;
-    }
-
-    /**
-     * Este método intenta obtener el usuario actual, preferiblemente de memoria,
-     * si no está, lo busca en la base de datos.
-     */
     public User getCurrentUser() {
         if (loggedUser != null) {
             return loggedUser;

@@ -519,6 +519,16 @@ public class  DishService implements Serializable {
                 25.0,
                 55.0
         ));
+
+        platosEcuatorianos.add(new Dish(
+                "Pan",
+                "1 unidad (50 g)",
+                "50g de harina de trigo, 2g de levadura, 1g de sal, 5g de azúcar, 5g de manteca o aceite, 30ml de agua",
+                "Pan.png",
+                135,
+                4.0,
+                25.0
+        ));
     }
 
     public Dish findById(Long id) {

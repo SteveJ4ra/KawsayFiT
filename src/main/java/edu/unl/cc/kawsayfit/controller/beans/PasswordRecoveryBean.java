@@ -1,10 +1,11 @@
 package edu.unl.cc.kawsayfit.controller.beans;
 
+import edu.unl.cc.kawsayfit.exception.EncryptorException;
 import edu.unl.cc.kawsayfit.model.RecoveryCode;
 import edu.unl.cc.kawsayfit.model.User;
 import edu.unl.cc.kawsayfit.repository.RecoveryCodeRepository;
 import edu.unl.cc.kawsayfit.repository.UserRepository;
-import edu.unl.cc.kawsayfit.util.EncryptorManager;
+import edu.unl.cc.kawsayfit.util.PasswordUtils;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -68,15 +69,22 @@ public class PasswordRecoveryBean implements Serializable {
         }
 
         try {
-            String encrypted = EncryptorManager.encrypt(newPassword);
-            user.setPasswordHash(encrypted);
+            // Generar nuevo salt y hashear la contraseña
+            String salt = PasswordUtils.generateSalt();
+            String hashedPassword = PasswordUtils.hashPassword(newPassword, salt);
+
+            // Actualizar el usuario con nueva contraseña y salt
+            user.setPasswordHash(hashedPassword);
+            user.setSalt(salt);
+
             userRepository.update(user);
             recoveryCodeRepository.deleteByEmail(email); // limpieza
             message = "Contraseña actualizada con éxito.";
             clearForm();
-        } catch (Exception e) {
+        } catch (EncryptorException e) {
             message = "Error al actualizar la contraseña: " + e.getMessage();
         }
+
     }
 
     private String generateRandomCode() {

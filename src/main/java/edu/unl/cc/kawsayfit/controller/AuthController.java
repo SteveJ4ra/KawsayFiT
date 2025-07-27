@@ -17,18 +17,15 @@ public class AuthController {
     private UserRepository userRepository;
 
     public User validateUser(String email, String password) throws CredentialInvalidException {
-        // Busca el usuario o lanza excepción si no existe
         User user = userRepository.findByEmail(email).orElseThrow(CredentialInvalidException::new);
 
         try {
-            // Verifica la contraseña con la utilidad, puede lanzar EncryptorException
             if (PasswordUtils.verifyPassword(password, user.getPasswordHash(), user.getSalt())) {
                 return user;
             } else {
                 throw new CredentialInvalidException("Contraseña incorrecta");
             }
         } catch (EncryptorException e) {
-            // Aquí "envolvemos" el error técnico en excepción de credenciales inválidas para no exponer detalles
             throw new CredentialInvalidException("Error verificando contraseña", e);
         }
     }
