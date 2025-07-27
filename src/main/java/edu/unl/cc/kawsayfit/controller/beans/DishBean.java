@@ -1,117 +1,96 @@
 package edu.unl.cc.kawsayfit.controller.beans;
 
-import edu.unl.cc.kawsayfit.controller.UserSession;
 import edu.unl.cc.kawsayfit.model.Dish;
-import edu.unl.cc.kawsayfit.model.User;
+import edu.unl.cc.kawsayfit.model.Ingredient;
 import edu.unl.cc.kawsayfit.service.DishService;
-import edu.unl.cc.kawsayfit.service.UserService;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.RequestScoped;
-import jakarta.faces.application.FacesMessage;
-import jakarta.faces.context.FacesContext;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Named("dishBean")
 @RequestScoped
 public class DishBean implements Serializable {
 
-    private Dish dish;
-
-    private double calories;
-    private double carbohydrates;
-    private double proteins;
     private String name;
+    private String amount;
+    private double calories;
+    private double proteins;
+    private double carbohydrates;
+    private double fats;
     private String img;
-    private double amount;
-    private String ingredients;
+    private List<Ingredient> ingredients = new ArrayList<>();
+
+    @Inject
+    private DashboardBean dashboardBean;
 
     @Inject
     private DishService dishService;
 
-    @Inject
-    private UserService userService;
-
-    @Inject
-    private UserSession sessionBean;
-
-    private void addMessage(String summary, FacesMessage.Severity severity) {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(severity, summary, null));
-    }
-
     @PostConstruct
     public void init() {
-        FacesContext context = FacesContext.getCurrentInstance();
-        String dishIdStr = context.getExternalContext().getRequestParameterMap().get("id");
-        if (dishIdStr != null) {
-            try {
-                Long dishId = Long.parseLong(dishIdStr);
-                this.dish = dishService.findById(dishId);
+        if (dashboardBean != null && dashboardBean.getSelectedDish() != null) {
+            Dish selectedDish = dashboardBean.getSelectedDish();
+            this.name = selectedDish.getName();
+            this.amount = "1 porción (100g)";
+            this.calories = selectedDish.getCalories();
+            this.proteins = selectedDish.getProteins();
+            this.carbohydrates = selectedDish.getCarbohydrates();
+            this.fats = selectedDish.getFats();
+            this.img = selectedDish.getImageUrl();
 
-                if (this.dish != null) {
-                    this.calories = dish.getCalories();
-                    this.carbohydrates = dish.getCarbohydrates();
-                    this.proteins = dish.getProteins();
-                    this.name = dish.getName();
-                    this.img = dish.getImagePath();
-                    this.amount = dish.getAmount();
-                    this.ingredients = dish.getIngredients();
-                }
-
-            } catch (NumberFormatException e) {
-                addMessage("ID inválido: no es un número.", FacesMessage.SEVERITY_ERROR);
-            } catch (Exception e) {
-                addMessage("Error inesperado al cargar el plato.", FacesMessage.SEVERITY_ERROR);
-                e.printStackTrace();
-            }
+            // Ingredientes de ejemplo
+            this.ingredients.clear();
+            this.ingredients.add(new Ingredient(selectedDish.getName(), 100));
+        } else {
+            // Valores por defecto
+            this.name = "Plato no encontrado";
+            this.amount = "0 g";
+            this.calories = 0;
+            this.proteins = 0;
+            this.carbohydrates = 0;
+            this.fats = 0;
+            this.img = "default-food.png";
         }
     }
 
     public String registerFood() {
-        User user = sessionBean.getCurrentUser();
-
-        if (user != null && dish != null) {
-            userService.updateActivityLevel(user, user.getPhysicalActivityLevel());
-        }
-
-        return "profile.xhtml?faces-redirect=true";
+        return "dashboard?faces-redirect=true";
     }
 
-    public Dish getDish() {
-        return dish;
+    // GETTERS - DEBEN SER PÚBLICOS Y CON NOMBRE CORRECTO
+    public String getName() {
+        return name;
     }
 
-    public void setDish(Dish dish) {
-        this.dish = dish;
+    public String getAmount() {
+        return amount;
     }
 
     public double getCalories() {
         return calories;
     }
 
-    public double getCarbohydrates() {
-        return carbohydrates;
-    }
-
     public double getProteins() {
         return proteins;
     }
 
-    public String getName() {
-        return name;
+    public double getCarbohydrates() {
+        return carbohydrates;
+    }
+
+    public double getFats() {
+        return fats;
     }
 
     public String getImg() {
         return img;
     }
 
-    public double getAmount() {
-        return amount;
-    }
-
-    public String getIngredients() {
+    public List<Ingredient> getIngredients() {
         return ingredients;
     }
 }

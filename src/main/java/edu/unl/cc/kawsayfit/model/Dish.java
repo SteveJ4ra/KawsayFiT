@@ -1,156 +1,106 @@
 package edu.unl.cc.kawsayfit.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "dishes")
-@NamedQueries({
-        @NamedQuery(name = "User.findLikeName",
-                query = "select o from Dish o where o.name like :name"),
-        @NamedQuery(name = "User.findById",
-                query = "select o from Dish o where o.id = :id ")
-})
 public class Dish {
 
-    public Dish() {
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
-    @Column(nullable = false, unique = true)
     private String name;
-
-    @NotBlank
-    @Column(nullable = false)
     private String description;
+    private double price;
+    private String imageUrl;
 
-    @NotBlank
-    @Column(nullable = false)
-    private String imagePath; // ejemplo para recordar: "arroz-con-pollo.jpg"
-
-    @Lob
-    @Column(nullable = false)
-    private String ingredients;
-
-    @Positive
-    @Column(nullable = false)
     private double caloriesPerServing;
-
-    @Positive
-    @Column(nullable = false)
-    private double amount;
-
-    @PositiveOrZero
-    @Column(nullable = false)
     private double proteins;
-
-    @PositiveOrZero
-    @Column(nullable = false)
     private double carbohydrates;
+    private double fats;
 
-    @PositiveOrZero
-    @Column(nullable = false)
-    private double calories;
+    // Constructor vacío requerido por JPA
+    public Dish() {}
 
-
-    public double getAmount() {
-        return amount;
+    // Constructor con parámetros
+    public Dish(String name, String description, double price, String imageUrl,
+                double caloriesPerServing, double proteins, double carbohydrates, double fats) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.imageUrl = imageUrl;
+        this.caloriesPerServing = caloriesPerServing;
+        this.proteins = proteins;
+        this.carbohydrates = carbohydrates;
+        this.fats = fats;
     }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
-
+    // Getters y setters
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
 
-    public @NotBlank String getName() {
+    public String getName() {
         return name;
     }
-
-    public void setName(@NotBlank String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public @NotBlank String getDescription() {
+    public String getDescription() {
         return description;
     }
-
-    public void setDescription(@NotBlank String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    public @NotBlank String getImagePath() {
-        return imagePath;
+    public double getPrice() {
+        return price;
+    }
+    public void setPrice(double price) {
+        this.price = price;
     }
 
-    public void setImagePath(@NotBlank String imagePath) {
-        this.imagePath = imagePath;
+    public String getImageUrl() {
+        return imageUrl;
+    }
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
-    public String getIngredients() {
-        return ingredients;
-    }
-
-    public void setIngredients(String ingredients) {
-        this.ingredients = ingredients;
-    }
-
-    public @Positive double getCaloriesPerServing() {
+    public double getCaloriesPerServing() {
         return caloriesPerServing;
     }
-
-    public void setCaloriesPerServing(@Positive double caloriesPerServing) {
+    public void setCaloriesPerServing(double caloriesPerServing) {
         this.caloriesPerServing = caloriesPerServing;
     }
 
-    public @PositiveOrZero double getProteins() {
+    public double getProteins() {
         return proteins;
     }
-
-    public void setProteins(@PositiveOrZero double proteins) {
+    public void setProteins(double proteins) {
         this.proteins = proteins;
     }
 
-    public @PositiveOrZero double getCarbohydrates() {
+    public double getCarbohydrates() {
         return carbohydrates;
     }
-
-    public void setCarbohydrates(@PositiveOrZero double carbohydrates) {
+    public void setCarbohydrates(double carbohydrates) {
         this.carbohydrates = carbohydrates;
     }
 
-    public @PositiveOrZero double getCalories() {
-        return calories;
+    public double getFats() {
+        return fats;
     }
-
-    public void setCalories(@PositiveOrZero double calories) {
-        this.calories = calories;
+    public void setFats(double fats) {
+        this.fats = fats;
     }
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("Dish{");
-        sb.append("id=").append(id);
-        sb.append(", name='").append(name).append('\'');
-        sb.append(", description='").append(description).append('\'');
-        sb.append(", imagePath='").append(imagePath).append('\'');
-        sb.append(", ingredients='").append(ingredients).append('\'');
-        sb.append(", caloriesPerServing=").append(caloriesPerServing);
-        sb.append(", proteins=").append(proteins);
-        sb.append(", carbohydrates=").append(carbohydrates);
-        sb.append(", calories=").append(calories);
-        sb.append('}');
-        return sb.toString();
+    public double getCalories() {
+        return this.caloriesPerServing;
     }
-
 }

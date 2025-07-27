@@ -61,6 +61,7 @@
 
     <build>
         <finalName>kawsayfit-web</finalName>
+
         <plugins>
             <!-- Compilación -->
             <plugin>
