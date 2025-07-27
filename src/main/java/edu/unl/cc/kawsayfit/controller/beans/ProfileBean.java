@@ -1,7 +1,9 @@
 package edu.unl.cc.kawsayfit.controller.beans;
 
 import edu.unl.cc.kawsayfit.controller.UserSession;
+import edu.unl.cc.kawsayfit.model.ConsumedDish;
 import edu.unl.cc.kawsayfit.model.User;
+import edu.unl.cc.kawsayfit.repository.ConsumedDishRepository;
 import edu.unl.cc.kawsayfit.service.Calculator;
 import jakarta.annotation.PostConstruct;
 import jakarta.faces.view.ViewScoped;
@@ -9,6 +11,9 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 import java.io.Serializable;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 @Named("profileBean")
 @ViewScoped
@@ -33,6 +38,9 @@ public class ProfileBean implements Serializable {
     @Inject
     private UserSession userSession;
 
+    @Inject
+    private ConsumedDishRepository consumedDishRepository;
+
     @PostConstruct
     public void init() {
         User user = userSession.getLoggedUser();
@@ -44,16 +52,26 @@ public class ProfileBean implements Serializable {
             this.weight = user.getWeight();
             this.goal = user.getGoal() != null ? user.getGoal().toString() : "Sin objetivo";
 
-            this.consumedCalories = 0;
             this.caloriesGoal = Calculator.calculateCaloricGoal(user);
-
-            this.comsumedProteins = 0;
             this.proteinsGoal = Calculator.calculateProteinGoal(user);
-
-            this.consumedCarbohydrates = 0;
             this.carbohydratesGoal = Calculator.calculateCarbohydrateGoal(user);
+
+            List<ConsumedDish> consumed = consumedDishRepository.findByUser(user);
+
+            this.consumedCalories = (int) consumed.stream()
+                    .mapToDouble(ConsumedDish::getTotalCalories)
+                    .sum();
+
+            this.comsumedProteins = (int) consumed.stream()
+                    .mapToDouble(ConsumedDish::getTotalProteins)
+                    .sum();
+
+            this.consumedCarbohydrates = (int) consumed.stream()
+                    .mapToDouble(ConsumedDish::getTotalCarbohydrates)
+                    .sum();
         }
     }
+
 
 
     public double getImc() {
@@ -169,4 +187,26 @@ public class ProfileBean implements Serializable {
     public void setCarbohydratesGoal(int carbohydratesGoal) {
         this.carbohydratesGoal = carbohydratesGoal;
     }
+
+    public Map<String, Number> getCaloriesData() {
+        Map<String, Number> data = new LinkedHashMap<>();
+        data.put("Consumido", consumedCalories);
+        data.put("Restante", Math.max(0, caloriesGoal - consumedCalories));
+        return data;
+    }
+
+    public Map<String, Number> getProteinsData() {
+        Map<String, Number> data = new LinkedHashMap<>();
+        data.put("Consumido", comsumedProteins);
+        data.put("Restante", Math.max(0, proteinsGoal - comsumedProteins));
+        return data;
+    }
+
+    public Map<String, Number> getCarbsData() {
+        Map<String, Number> data = new LinkedHashMap<>();
+        data.put("Consumido", consumedCarbohydrates);
+        data.put("Restante", Math.max(0, carbohydratesGoal - consumedCarbohydrates));
+        return data;
+    }
+
 }
