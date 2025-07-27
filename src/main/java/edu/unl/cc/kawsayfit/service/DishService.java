@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 @Named
 @ApplicationScoped
-public class DishService implements Serializable {
+public class  DishService implements Serializable {
 
     private List<Dish> platosEcuatorianos;
 
