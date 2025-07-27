@@ -70,6 +70,9 @@ public class User implements Serializable {
     @Column(nullable = true)
     private String velocity;
 
+    @Column(nullable = false)
+    private String salt;
+
     public double calculate() {
         Calculator calculator = new Calculator();
         imc = calculator.calculateIMC(weight, height);
@@ -186,6 +189,14 @@ public class User implements Serializable {
 
     public void setVelocity(String velocity) {
         this.velocity = velocity;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
     }
 
     /**

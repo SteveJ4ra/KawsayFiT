@@ -7,6 +7,8 @@ import edu.unl.cc.kawsayfit.model.enums.PhysicalActivityLevel;
 import edu.unl.cc.kawsayfit.model.training.*;
 import edu.unl.cc.kawsayfit.service.UserService;
 import jakarta.annotation.PostConstruct;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -41,9 +43,13 @@ public class ActivityBean implements Serializable {
 
     public String processSelection() {
         PhysicalActivityLevel levelEnum;
+
         if (activityLevel == null || activityLevel.isEmpty()) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_WARN, "Advertencia", "Debes seleccionar un nivel de actividad."));
             return null;
         }
+
         switch (activityLevel) {
             case "sedentario":
                 levelEnum = PhysicalActivityLevel.SEDENTARY;
@@ -74,12 +80,22 @@ public class ActivityBean implements Serializable {
         if (levelEnum != null) {
             User user = userSession.getCurrentUser();
             if (user == null) {
+                FacesContext.getCurrentInstance().addMessage(null,
+                        new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Usuario no autenticado."));
                 return "login.xhtml?faces-redirect=true";
             }
-            userService.updateActivityLevel(user, levelEnum);
 
+            try {
+                userService.updateActivityLevel(user, levelEnum);
+            }catch (Exception e) {
+                FacesContext.getCurrentInstance().addMessage(null,
+                        new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al actualizar el nivel de actividad", e.getMessage()));
+                return null;
+            }
+
+            return "strength-training.xhtml?faces-redirect=true";
         }
-        return "strength-training.xhtml?faces-redirect=true";
+        return null;
     }
 
     private List<ActivityOption> activityOptions;

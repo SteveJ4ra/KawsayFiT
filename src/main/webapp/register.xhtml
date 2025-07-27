@@ -148,18 +148,17 @@
 
             <h:form styleClass="auth-form" prependId="false">
                 <h:messages globalOnly="true" style="color:red; margin-bottom: 15px;" layout="table"/>
-                <h:outputText value="#{registerBean.message}"
-                              rendered="#{not empty registerBean.message}"
-                              style="color:red; font-weight:bold; display:block; margin-bottom: 10px;" />
 
                 <div class="form-group">
                     <label for="name">Nombre Completo</label>
                     <h:inputText id="name" value="#{registerBean.username}" required="true" />
+                    <h:message for="name" style="color:red; font-size: 0.85em; margin-top: 2px;" />
                 </div>
 
                 <div class="form-group">
                     <label for="email">Correo Electrónico</label>
                     <h:inputText id="email" value="#{registerBean.email}" required="true" type="email"/>
+                    <h:message for="email" style="color:red; font-size: 0.85em; margin-top: 2px;" />
                 </div>
 
                 <div class="form-group password-group">
@@ -167,6 +166,7 @@
                     <div class="password-input-wrapper">
                         <h:inputSecret id="password" value="#{registerBean.password}" required="true"
                                        styleClass="password-input"/>
+                        <h:message for="password" style="color:red; font-size: 0.85em; margin-top: 2px;" />
                         <span class="icon-eye toggle-password" data-target="password" role="button" tabindex="0" aria-label="Mostrar u ocultar contraseña">👁️</span>
                     </div>
                 </div>
@@ -176,6 +176,7 @@
                     <div class="password-input-wrapper">
                         <h:inputSecret id="confirm-password" value="#{registerBean.confirmPassword}" required="true"
                                        styleClass="password-input"/>
+                        <h:message for="confirm-password" style="color:red; font-size: 0.85em; margin-top: 2px;" />
                         <span class="icon-eye toggle-password" data-target="confirm-password" role="button" tabindex="0" aria-label="Mostrar u ocultar contraseña">👁️</span>
                     </div>
                 </div>

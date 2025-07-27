@@ -1,7 +1,12 @@
 package edu.unl.cc.kawsayfit.controller.beans;
 
+import edu.unl.cc.kawsayfit.exception.CredentialInvalidException;
+import edu.unl.cc.kawsayfit.exception.EncryptorException;
+import edu.unl.cc.kawsayfit.exception.LoginFailedException;
 import edu.unl.cc.kawsayfit.service.UserService;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import java.io.Serializable;
@@ -15,10 +20,23 @@ public class LoginBean implements Serializable {
     private String password;
 
     @Inject
-    private UserService userservice;
+    private UserService userService;
 
     public String login() {
-        return userservice.login(email, password);
+        if (email == null || email.isEmpty() || password == null || password.isEmpty()) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_WARN, "Campos requeridos", "Email y contraseña son obligatorios"));
+            return null;
+        }
+        try {
+            return userService.login(email, password);
+        } catch (LoginFailedException e) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al iniciar sesión", e.getMessage()));
+            return null;
+        } finally {
+            password = null; // limpiar la contraseña de memoria
+        }
     }
 
     public String getEmail() {

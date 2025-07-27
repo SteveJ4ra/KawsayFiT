@@ -1,7 +1,12 @@
 package edu.unl.cc.kawsayfit.controller;
 
+import edu.unl.cc.kawsayfit.exception.EntityNotFoundException;
 import edu.unl.cc.kawsayfit.model.User;
+import edu.unl.cc.kawsayfit.service.UserService;
 import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 import java.io.Serializable;
@@ -10,38 +15,57 @@ import java.io.Serializable;
 @SessionScoped
 public class UserSession implements Serializable {
 
-    private User user;
+    private Long userId;
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
     private User loggedUser;
+
+    @Inject
+    private UserService userService;
+
+    public void setLoggedUser(User user) {
+        this.loggedUser = user;
+        this.userId = user.getId();
+    }
+
+    public boolean isLoggedIn() {
+        return loggedUser != null || userId != null;
+    }
+
+    public void logout() {
+        this.loggedUser = null;
+        this.userId = null;
+    }
 
     public User getLoggedUser() {
         return loggedUser;
     }
 
-    public void setLoggedUser(User loggedUser) {
-        this.loggedUser = loggedUser;
+    public Long getUserId() {
+        return userId;
     }
 
-    public boolean isLoggedIn() {
-        return loggedUser != null;
-    }
-
-    public void logout() {
-        loggedUser = null;
-    }
-
+    /**
+     * Este método intenta obtener el usuario actual, preferiblemente de memoria,
+     * si no está, lo busca en la base de datos.
+     */
     public User getCurrentUser() {
-        return getLoggedUser();
-    }
+        if (loggedUser != null) {
+            return loggedUser;
+        }
+        if (userId != null) {
+            try {
+                User userFromDb = userService.findById(userId);
+                this.loggedUser = userFromDb;
+                return userFromDb;
+            }catch (EntityNotFoundException e) {
+                FacesContext.getCurrentInstance().addMessage(null,
+                        new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario no encontrado", e.getMessage()));
+                return null;
+            }
 
-    public void setCurrentUser(User user) {
-        setLoggedUser(user);
+        }
+        FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage(FacesMessage.SEVERITY_WARN, "Advertencia", "Usuario no autenticado."));
+        return null;
     }
 }

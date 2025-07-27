@@ -5,6 +5,8 @@ import edu.unl.cc.kawsayfit.model.User;
 import edu.unl.cc.kawsayfit.model.enums.Gender;
 import edu.unl.cc.kawsayfit.service.UserService;
 import jakarta.annotation.PostConstruct;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
 import jakarta.faces.model.SelectItem;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
@@ -55,7 +57,14 @@ public class CustomizeGoalBean implements Serializable {
             user.setHeight(height);
             user.calculate();
             user.setVelocity(velocity);
-            userService.update(user);
+
+            try{
+                userService.update(user);
+            }catch (Exception e){
+                FacesContext.getCurrentInstance().addMessage(null,
+                        new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al actualizar el usuario", e.getMessage()));
+                return null;
+            }
         }
 
         return "user-results.xhtml?faces-redirect=true";

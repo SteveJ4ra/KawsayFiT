@@ -4,6 +4,8 @@ import edu.unl.cc.kawsayfit.controller.UserSession;
 import edu.unl.cc.kawsayfit.model.User;
 import edu.unl.cc.kawsayfit.model.enums.Goal;
 import edu.unl.cc.kawsayfit.service.UserService;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -30,17 +32,26 @@ public class GoalSelectionBean implements Serializable {
         User user = userSession.getLoggedUser();
 
         if (user == null) {
-            message = "Usuario no autenticado.";
+            FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Usuario no autenticado."));
             return null;
         }
 
         if (selectedGoal == null) {
-            message = "Debes seleccionar un objetivo.";
+            FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage(FacesMessage.SEVERITY_WARN, "Advertencia", "Debes seleccionar un objetivo."));
             return null;
         }
 
-        userService.updateGoal(user, selectedGoal);
-        message = "Objetivo actualizado a: " + selectedGoal.name();
+        try {
+            userService.updateGoal(user,selectedGoal);
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Éxito", "Objetivo actualizado a: " + selectedGoal.name()));
+        }catch (Exception e) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al actualizar el objetivo", e.getMessage()));
+            return null;
+        }
 
         return "activity-level.xhtml?faces-redirect=true";
     }
