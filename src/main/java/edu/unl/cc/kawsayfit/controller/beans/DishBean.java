@@ -35,18 +35,16 @@ public class DishBean implements Serializable {
         if (dashboardBean != null && dashboardBean.getSelectedDish() != null) {
             Dish selectedDish = dashboardBean.getSelectedDish();
             this.name = selectedDish.getName();
-            this.amount = "1 porción (100g)";
+            this.amount = selectedDish.getDescription();
             this.calories = selectedDish.getCalories();
             this.proteins = selectedDish.getProteins();
             this.carbohydrates = selectedDish.getCarbohydrates();
             this.fats = selectedDish.getFats();
             this.img = selectedDish.getImageUrl();
 
-            // Ingredientes de ejemplo
             this.ingredients.clear();
             this.ingredients.add(new Ingredient(selectedDish.getName(), 100));
         } else {
-            // Valores por defecto
             this.name = "Plato no encontrado";
             this.amount = "0 g";
             this.calories = 0;
@@ -61,7 +59,6 @@ public class DishBean implements Serializable {
         return "dashboard?faces-redirect=true";
     }
 
-    // GETTERS - DEBEN SER PÚBLICOS Y CON NOMBRE CORRECTO
     public String getName() {
         return name;
     }

@@ -54,7 +54,7 @@ public class  DishService implements Serializable {
         ));
 
         platosEcuatorianos.add(new Dish(
-                "Piña",
+                "Pinia",
                 "1 taza (165 g)",
                 1.20,
                 "Piña.png",
@@ -120,10 +120,10 @@ public class  DishService implements Serializable {
         ));
 
         platosEcuatorianos.add(new Dish(
-                "Lasaña",
+                "Lasania",
                 "1 porción (300 g)",
                 6.00,
-                "Lasaña.png",
+                "Lasagna.png",
                 480,
                 20.0,
                 35.0,
