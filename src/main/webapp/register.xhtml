@@ -1,5 +1,5 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
       xml:lang="es" lang="es">
 <h:head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -151,13 +151,15 @@
 
                 <div class="form-group">
                     <label for="name">Nombre Completo</label>
-                    <h:inputText id="name" value="#{registerBean.username}" required="true" />
+                    <h:inputText id="name" value="#{registerBean.username}" required="true"
+                    requiredMessage="El nombre es obligatorio." />
                     <h:message for="name" style="color:red; font-size: 0.85em; margin-top: 2px;" />
                 </div>
 
                 <div class="form-group">
                     <label for="email">Correo Electrónico</label>
-                    <h:inputText id="email" value="#{registerBean.email}" required="true" type="email"/>
+                    <h:inputText id="email" value="#{registerBean.email}" required="true" type="email"
+                                 requiredMessage="El correo electrónico es obligatorio." />
                     <h:message for="email" style="color:red; font-size: 0.85em; margin-top: 2px;" />
                 </div>
 
@@ -165,17 +167,25 @@
                     <label for="password">Contraseña</label>
                     <div class="password-input-wrapper">
                         <h:inputSecret id="password" value="#{registerBean.password}" required="true"
-                                       styleClass="password-input"/>
-                        <h:message for="password" style="color:red; font-size: 0.85em; margin-top: 2px;" />
-                        <span class="icon-eye toggle-password" data-target="password" role="button" tabindex="0" aria-label="Mostrar u ocultar contraseña">👁️</span>
+                                       styleClass="password-input"
+                                       requiredMessage="La contraseña es obligatoria.">
+                            <f:validator validatorId="passwordLengthValidator" />
+                        </h:inputSecret>
+                        <h:message for="password"
+                                   style="color:red; font-size: 0.85em; margin-top: 2px;" />
+                        <span class="icon-eye toggle-password" data-target="password"
+                              role="button" tabindex="0"
+                              aria-label="Mostrar u ocultar contraseña">👁️</span>
                     </div>
                 </div>
+
 
                 <div class="form-group password-group">
                     <label for="confirm-password">Confirmar Contraseña</label>
                     <div class="password-input-wrapper">
                         <h:inputSecret id="confirm-password" value="#{registerBean.confirmPassword}" required="true"
-                                       styleClass="password-input"/>
+                                       styleClass="password-input"
+                                       requiredMessage="La confirmación de la contraseña es obligatoria." />
                         <h:message for="confirm-password" style="color:red; font-size: 0.85em; margin-top: 2px;" />
                         <span class="icon-eye toggle-password" data-target="confirm-password" role="button" tabindex="0" aria-label="Mostrar u ocultar contraseña">👁️</span>
                     </div>

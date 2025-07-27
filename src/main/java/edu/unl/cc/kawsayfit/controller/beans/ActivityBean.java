@@ -51,7 +51,7 @@ public class ActivityBean implements Serializable {
         }
 
         switch (activityLevel) {
-            case "sedentario":
+            case "sedentario ":
                 levelEnum = PhysicalActivityLevel.SEDENTARY;
                 trainType = new Sedentary();
                 break;
@@ -103,11 +103,11 @@ public class ActivityBean implements Serializable {
     @PostConstruct
     public void init() {
         activityOptions = List.of(
-                new ActivityOption("sedentario", "Sedentario", "Poco o nada de ejercicio"),
-                new ActivityOption("ligeramente-activo", "Ligeramente Activo", "Ejercicio 2 a 3 días por semana"),
-                new ActivityOption("moderadamente-activo", "Moderadamente Activo", "Ejercicio 4 a 5 días por semana"),
-                new ActivityOption("muy-activo", "Muy Activo", "Ejercicio 6 a 7 días por semana"),
-                new ActivityOption("atleta", "Atleta Profesional", "Ejercicio intenso 6 a 7 días por semana")
+                new ActivityOption("sedentario", "🛋️ Sedentario", "Poco o nada de ejercicio"),
+                new ActivityOption("ligeramente-activo", "🚶 Ligeramente Activo", "Ejercicio 2 a 3 días por semana"),
+                new ActivityOption("moderadamente-activo", "🚴 Moderadamente Activo", "Ejercicio 4 a 5 días por semana"),
+                new ActivityOption("muy-activo", "🏃 Muy Activo", "Ejercicio 6 a 7 días por semana"),
+                new ActivityOption("atleta", "🏅 Atleta Profesional", "Ejercicio intenso 6 a 7 días por semana")
         );
     }
 
