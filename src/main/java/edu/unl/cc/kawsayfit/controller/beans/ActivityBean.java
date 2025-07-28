@@ -51,7 +51,7 @@ public class ActivityBean implements Serializable {
         }
 
         switch (activityLevel) {
-            case "sedentario ":
+            case "sedentario":
                 levelEnum = PhysicalActivityLevel.SEDENTARY;
                 trainType = new Sedentary();
                 break;
