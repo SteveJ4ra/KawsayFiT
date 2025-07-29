@@ -1,6 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
       xml:lang="es" lang="es">
 <h:head>
     <title>Selecciona tu Objetivo</title>
@@ -59,6 +60,37 @@
             box-shadow: 0 8px 25px rgba(44, 62, 80, 0.2);
             transform: translateY(-2px);
         }
+
+        /* Estilos para los mensajes */
+        .messages-container {
+            margin: 15px 0;
+        }
+
+        .ui-messages-error,
+        .ui-messages-warn,
+        .ui-messages-info {
+            border-radius: 8px;
+            margin: 5px 0;
+            padding: 10px;
+        }
+
+        .ui-messages-error {
+            background: #ffebee;
+            color: #c62828;
+            border: 1px solid #ef9a9a;
+        }
+
+        .ui-messages-warn {
+            background: #fff8e1;
+            color: #f57f17;
+            border: 1px solid #ffcc80;
+        }
+
+        .ui-messages-info {
+            background: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #a5d6a7;
+        }
     </style>
 </h:head>
 
@@ -66,6 +98,14 @@
     <div class="container">
         <h1>¿Cuál es tu objetivo?</h1>
         <p class="subtitle">Calcularemos tus calorías necesarias para lograrlo</p>
+
+        <!-- Contenedor para mensajes -->
+        <div class="messages-container">
+            <h:messages id="messages" globalOnly="false" showDetail="true"
+                        errorClass="ui-messages-error"
+                        warnClass="ui-messages-warn"
+                        infoClass="ui-messages-info"/>
+        </div>
 
         <h:form>
             <div class="options-container">

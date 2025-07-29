@@ -129,14 +129,30 @@
 
         .input-busqueda {
             min-width: 650px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 14px 18px;
+            border: 2px solid #4CA1AF;
+            border-radius: 12px; /* Bordes menos redondeados */
+            font-size: 17px;      /* Texto un poco más grande */
+            background-color: #fff;
+            color: #2C3E50;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+            transition: all 0.3s ease;
         }
+
+        .input-busqueda:focus {
+            outline: none;
+            border-color: #2C3E50;
+            box-shadow: 0 0 0 3px rgba(76, 161, 175, 0.25);
+        }
+
 
         .busqueda-autocompleta {
             margin-bottom: 400px;
             min-width: 650px;
 
         }
+
+
 
         .btn-buscar {
             padding: 0 18px;
@@ -157,7 +173,7 @@
 
         .video-decorativo {
             position: fixed;
-            bottom: 20px;
+            bottom: 120px;
             right: -70px;
             width: 450px;
             height: 450px;
@@ -194,6 +210,35 @@
             transform: translate(-50%, -50%) !important;
             width: auto !important;
             max-width: 350px;
+        }
+        .footer {
+            background: linear-gradient(to right, #4CA1AF, #2C3E50);
+            color: #333;
+            padding: 10px;
+            text-align: center;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .footer-section p {
+            margin: 5px 0;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .footer-social {
+            margin-top: 15px;
+        }
+
+        .footer-social a img {
+            width: 30px;
+            height: 30px;
+            margin: 0 8px;
+            transition: filter 0.3s, transform 0.3s;
+        }
+
+        .footer-social a:hover img {
+            filter: none;
+            transform: scale(1.1);
         }
 
     </style>
@@ -238,5 +283,19 @@
         </h:form>
     </div>
 </main>
+<footer class="footer">
+    <div class="footer-section">
+        <p>© 2025 KawsayFiT. Todos los derechos reservados.</p>
+        <p>Promoviendo una alimentación saludable con el sabor de Ecuador 🇪🇨</p>
+    </div>
+
+    <div class="footer-social">
+        <a href="#"><img src="images/instagram.png" alt="Instagram" /></a>
+        <a href="#"><img src="images/tik-tok.png" alt="TikTok" /></a>
+        <a href="#"><img src="images/facebook.png" alt="facebook" /></a>
+        <a href="#"><img src="images/twitter.png" alt="Twitter" /></a>
+    </div>
+</footer>
+
 </body>
 </html>

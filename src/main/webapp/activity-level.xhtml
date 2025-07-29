@@ -18,6 +18,9 @@
             --secondary-text: #7f8c8d;
             --light-bg: #f8f9fa;
             --border-color: #e9ecef;
+            --error-color: #e74c3c;
+            --warning-color: #f39c12;
+            --success-color: #2ecc71;
         }
 
         body {
@@ -42,6 +45,43 @@
             margin-bottom: 8px;
             color: var(--text-color);
             text-align: center;
+        }
+
+        /* Estilos para mensajes */
+        .messages-container {
+            margin: 15px 0;
+        }
+
+        .message {
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+
+        .error-message {
+            background-color: #fdecea;
+            color: var(--error-color);
+            border: 1px solid #f5c2c7;
+        }
+
+        .warning-message {
+            background-color: #fff4e5;
+            color: var(--warning-color);
+            border: 1px solid #ffdfb3;
+        }
+
+        .success-message {
+            background-color: #edf7ed;
+            color: var(--success-color);
+            border: 1px solid #b7e1b7;
+        }
+
+        .message-icon {
+            margin-right: 10px;
+            font-size: 18px;
         }
 
         /* Estilos básicos para el radio button group */
@@ -89,6 +129,18 @@
 <body>
 <div class="container">
     <h1>¿Cuál es tu nivel de actividad física?</h1>
+
+    <!-- Contenedor para mensajes -->
+    <div class="messages-container">
+        <h:messages id="messages" globalOnly="false" showDetail="true"
+                    errorClass="error-message"
+                    warnClass="warning-message"
+                    infoClass="success-message"
+                    styleClass="message"
+                    infoIcon="✓"
+                    warnIcon="⚠️"
+                    errorIcon="✗"/>
+    </div>
 
     <h:form id="activityForm">
         <h:selectOneRadio value="#{activityBean.activityLevel}" layout="pageDirection" styleClass="activity-options">

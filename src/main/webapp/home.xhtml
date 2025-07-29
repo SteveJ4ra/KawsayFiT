@@ -147,17 +147,36 @@
             box-shadow: 0 8px 25px rgba(44, 62, 80, 0.4);
         }
 
-        footer {
-            background-color: #222;
-            color: #fff;
+        .footer {
+            background: linear-gradient(to right, #4CA1AF, #2C3E50);
+            color: #333;
+            padding: 10px;
             text-align: center;
-            padding: 20px 10px;
-            font-size: 0.9em;
+            font-family: 'Segoe UI', sans-serif;
         }
 
-        footer p {
+        .footer-section p {
             margin: 5px 0;
+            font-size: 15px;
+            font-weight: 500;
         }
+
+        .footer-social {
+            margin-top: 15px;
+        }
+
+        .footer-social a img {
+            width: 30px;
+            height: 30px;
+            margin: 0 8px;
+            transition: filter 0.3s, transform 0.3s;
+        }
+
+        .footer-social a:hover img {
+            filter: none;
+            transform: scale(1.1);
+        }
+
     </style>
 </h:head>
 
@@ -218,18 +237,26 @@
 
         <div class="cta-button">
             <h:form>
-            <h:commandLink action="register.xhtml" styleClass="btn-cta">
-                ¡Empieza tu plan ahora!
-            </h:commandLink>
+                <h:commandLink action="register.xhtml" styleClass="btn-cta">
+                    ¡Empieza tu plan ahora!
+                </h:commandLink>
             </h:form>
 
         </div>
     </div>
 
-    <footer>
-        <p><strong>KawsayFit</strong></p>
-        <p>Fecha: 21/07/2025</p>
-        <p>Creado por: Emilio Flores, Steven Jumbo, Steven Perez y Anderson Coello</p>
+    <footer class="footer">
+        <div class="footer-section">
+            <p>© 2025 KawsayFiT. Todos los derechos reservados.</p>
+            <p>Promoviendo una alimentación saludable con el sabor de Ecuador 🇪🇨</p>
+        </div>
+
+        <div class="footer-social">
+            <a href="#"><img src="images/instagram.png" alt="Instagram" /></a>
+            <a href="#"><img src="images/tik-tok.png" alt="TikTok" /></a>
+            <a href="#"><img src="images/facebook.png" alt="facebook" /></a>
+            <a href="#"><img src="images/twitter.png" alt="Twitter" /></a>
+        </div>
     </footer>
 </h:body>
 </html>

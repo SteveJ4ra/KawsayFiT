@@ -75,6 +75,47 @@
             font-weight: 400;
         }
 
+        /* Estilos para mensajes */
+        .messages-container {
+            margin: 0 0 1.5rem 0;
+            width: 100%;
+        }
+
+        .message {
+            padding: 12px 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: left;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .error-message {
+            background-color: #FFF0F0;
+            color: #E74C3C;
+            border: 1px solid #FFD1D1;
+        }
+
+        .warning-message {
+            background-color: #FFF8E6;
+            color: #F39C12;
+            border: 1px solid #FFE8B3;
+        }
+
+        .success-message {
+            background-color: #F0FFF4;
+            color: #2ECC71;
+            border: 1px solid #C6F6D5;
+        }
+
+        .message-icon {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
         .input-group {
             margin-bottom: 1.7rem;
             text-align: left;
@@ -134,50 +175,46 @@
 
         /* Styling for h:selectOneRadio options */
         .velocity-options-container {
-            /* This div contains all radio options */
             display: flex;
-            flex-direction: column; /* Stack options vertically */
-            gap: 15px; /* Space between each radio option */
+            flex-direction: column;
+            gap: 15px;
             margin-top: 10px;
         }
 
-        /* This targets each individual radio option (the td containing the radio input and label) */
         .velocity-options-container table tr td {
-            padding: 0; /* Remove default table cell padding */
-            border: none; /* Remove default table cell borders */
+            padding: 0;
+            border: none;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        /* This targets the label itself */
         .input-group .ui-radio-label {
-            display: flex; /* Use flex to align icon and text horizontally */
-            align-items: center; /* Vertically center icon and text */
+            display: flex;
+            align-items: center;
             cursor: pointer;
             color: #555;
             font-weight: 500;
             font-size: 1rem;
             transition: color 0.2s ease;
-            width: fit-content; /* Make label only as wide as its content */
+            width: fit-content;
         }
 
         .input-group .ui-radio-label:hover {
             color: #2c3e50;
         }
 
-        /* Custom radio button appearance */
         .input-group .ui-radio-icon {
             width: 20px;
             height: 20px;
             border: 2px solid #b0c4de;
             border-radius: 50%;
-            margin-right: 10px; /* Space between the circle and the text */
+            margin-right: 10px;
             display: inline-flex;
             justify-content: center;
             align-items: center;
             transition: all 0.3s ease;
-            flex-shrink: 0; /* Prevent icon from shrinking */
+            flex-shrink: 0;
             background: #fff;
         }
 
@@ -194,7 +231,6 @@
             border-radius: 50%;
         }
 
-        /* Specific styling for the 'Velocidad' label */
         .input-group .velocity-label {
             display: block;
             margin-bottom: 8px;
@@ -257,6 +293,18 @@
     <div class="container">
         <h1>Personaliza tu Meta</h1>
         <p class="subtitle">Último paso para conocer tus calorías, carbohidratos y proteínas</p>
+
+        <!-- Contenedor para mensajes de error/éxito -->
+        <div class="messages-container">
+            <h:messages id="messages" globalOnly="false" showDetail="true"
+                        errorClass="error-message"
+                        warnClass="warning-message"
+                        infoClass="success-message"
+                        styleClass="message"
+                        infoIcon="✓"
+                        warnIcon="⚠️"
+                        errorIcon="✗"/>
+        </div>
 
         <h:form>
             <div class="input-group">
